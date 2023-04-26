@@ -42,41 +42,15 @@ function catalogo_x_categoria(string $categoria): array
     $catalogo = catalogo_completo();
 
     foreach ($catalogo as $p) { //recorre catalogo y se queda con los productos
+        //en caso de querer utilizar arrays para las categorias, filtrar con in_array
+        //if (in_array($categoria, $p['filtro_por_categoria'])) {
+
         if ($p['filtro_por_categoria'] == $categoria) {
             $resultado[] = $p; //versión reducida del push. me guardo el producto completo
         };
     }
     return $resultado;
 };
-
-
-/*------------------------------------------------------------------------------------------------*/
-
-/*INTENTO DE HACER OTRO FILTRO*/
-/*
-function catalogo_x_categoria(string $categoria): array
-{
-    $resultado = [];
-
-    //llamo al catalogo completo
-    $catalogo = catalogo_completo();
-
-    $resultado = array_filter($catalogo, function($p) use ($categoria) { //La función use se utiliza para pasar la variable $categoria desde el ámbito de la función principal al ámbito de la función array_filter
-        return in_array($categoria, $p['filtro_por_categoria']);
-    });
-
-    return $resultado;
-}
-*/
-/*------------------------------------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
 
 
 
@@ -108,7 +82,7 @@ function producto_x_id(int $id): mixed
  * 
  * @return array Un array con todos los productos dentro del rango de precio en stock.
  */
-function catalogo_precio2000(float $precio): array
+function catalogo_precio_menor_a(float $precio): array
 {
     $resultado = [];
 

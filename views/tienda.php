@@ -13,11 +13,18 @@ require_once "libraries/productos.php";
 //hago un decode para volver a tenerlo en un array que pueda utilizar
 
 
+
 //corrijo la falta de tildes y agrego mayúscula en la categoría
 $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
 
+if ($categoriaSeleccionada == "todos") {
+    $catalogo = catalogo_completo();
+} elseif ($categoriaSeleccionada == "ofertas") {
+    $catalogo = catalogo_precio_menor_a(2000);
+} else {
+    $catalogo = catalogo_x_categoria($categoriaSeleccionada);
+}
 
-$catalogo = catalogo_x_categoria($categoriaSeleccionada);
 
 ?>
 

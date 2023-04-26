@@ -1,10 +1,7 @@
 [
     {
         "id": 1,
-        "filtro_por_categoria": [
-            "decoracion",
-            "todos"
-        ],
+        "filtro_por_categoria": "decoracion",
         "categoria": "Decoraci\u00f3n",
         "nombre_producto": "Porta incienso plateado Buda",
         "descripcion": "Con un dise\u00f1o inspirado en Buda, este porta incienso es perfecto para crear un ambiente relajado y meditativo. Adem\u00e1s, su dise\u00f1o es elegante y se ajusta perfectamente a cualquier decoraci\u00f3n.",
@@ -20,10 +17,7 @@
     },
     {
         "id": 2,
-        "filtro_por_categoria": [
-            "decoracion",
-            "todos"
-        ],
+        "filtro_por_categoria": "decoracion",
         "categoria": "Decoraci\u00f3n",
         "nombre_producto": "Jard\u00edn Zen Yin-yang",
         "descripcion": "El karesansui, tambi\u00e9n conocido como jard\u00edn zen, es un estilo de jard\u00edn japon\u00e9s seco que consiste en un campo de arena poco profunda y que contiene arena, grava, rocas y ocasionalmente hierbas, musgo y otros elementos naturales. Son utilizados como forma de meditaci\u00f3n por los monjes Zen japoneses.",
@@ -87,10 +81,7 @@
     },
     {
         "id": 6,
-        "filtro_por_categoria": [
-            "yoga",
-            "todos"
-        ],
+        "filtro_por_categoria": "yoga",
         "categoria": "Yoga",
         "nombre_producto": "Yoga Mat Colchoneta Pilates",
         "descripcion": "Colchoneta Pilates Yoga Mat. Ideal para Fitness \u2013 Yoga \u2013 Meditaci\u00f3n. Antideslizante | Enrollable | Transportable | S\u00faper liviana",
