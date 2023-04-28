@@ -88,7 +88,7 @@ class Producto
     * Devuelve los datos de un producto en particular
     * @param int $id EL ID único del producto a mostrar
     * 
-    * @return mixed Un array con los datos del producto seleccionado // o null si no lo encuentra
+    * @return mixed Devuelve un objeto Producto o, si no lo encuentra, null
      */
     public function producto_x_id(int $id): mixed {
 
@@ -108,7 +108,7 @@ class Producto
     * Devuelve el catálogo de productos con un precio menor al valor determinado
     * @param float $precio Un numero con el precio máximo a filtrar
     * 
-    * @return array Un array con todos los productos dentro del rango de precio en stock.
+    * @return array Un array de objetos Producto dentro del rango de precio.
     */
     public function catalogo_precio_menor_a(float $precio): array {
             
@@ -128,6 +128,27 @@ class Producto
             return $resultado;
     }
 
+
+    /** 
+    * Devuelve las primeras X palabras de un párrafo.
+    * @param string $texto Este es el párrafo a reducir.
+    * @param int $cantidad Esta es la cantidad de palabras a extraer (Opcional, si no se provee se asumirá 15).
+    * 
+    * @return string La cantidad de palabras solicitada con un elipsis(...) concatenado al final. 
+    */
+    public function recortar_palabras(string $texto, int $cantidad = 15): string
+    {
+        $arrayPalabras = explode(' ', $texto); //convierto el string en un array de palabras, separandolas siempre que haya un espacio
+
+        if(count($arrayPalabras) <= $cantidad) { //si la cantidad de palabras es menor o igual a la cantidad solicitada, retorno el texto completo
+            $resultado = $texto; 
+        } else {
+            array_splice($arrayPalabras, $cantidad); //si la cantidad de palabras es mayor a la solicitada, corto el array en la cantidad solicitada
+            $texto = implode(' ', $arrayPalabras); //vuelvo a convertir el array en un string, separando las palabras con un espacio
+            $resultado = $texto . '...'; //retorno el texto con un elipsis al final
+        }
+        return $resultado;
+    }
 
 }
 
