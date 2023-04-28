@@ -103,6 +103,31 @@ class Producto
         return null; // si no lo encuentra, retorna null
     }
 
+
+    /**
+    * Devuelve el catálogo de productos con un precio menor al valor determinado
+    * @param float $precio Un numero con el precio máximo a filtrar
+    * 
+    * @return array Un array con todos los productos dentro del rango de precio en stock.
+    */
+    public function catalogo_precio_menor_a(float $precio): array {
+            
+            $resultado = [];
     
+            //llamo al catalogo completo
+            $catalogo = $this->catalogo_completo();
+    
+            //recorro catalogo y me quedo con los productos
+            foreach ($catalogo as $p) {
+                if($p->precio <= $precio) {
+                    $resultado[] = $p; //versión reducida del push
+                }
+    
+            }
+    
+            return $resultado;
+    }
+
+
 }
 
