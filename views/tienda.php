@@ -7,7 +7,7 @@ $categoriaSeleccionada = $_GET['cat'] ?? FALSE;
 
 // ahora tengo acceso al array de productos
 require_once "classes/Producto.php";
-
+$producto = new Producto();
 
 
 //hago un decode para volver a tenerlo en un array que pueda utilizar
@@ -18,11 +18,11 @@ require_once "classes/Producto.php";
 $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
 
 if ($categoriaSeleccionada == "todos") {
-    $catalogo = catalogo_completo();
+    $catalogo = $producto->catalogo_completo();
 } elseif ($categoriaSeleccionada == "ofertas") {
-    $catalogo = catalogo_precio_menor_a(2000);
+    $catalogo = $producto->catalogo_precio_menor_a(2000);
 } else {
-    $catalogo = catalogo_x_categoria($categoriaSeleccionada);
+    $catalogo = $producto->catalogo_x_categoria($categoriaSeleccionada);
 }
 
 

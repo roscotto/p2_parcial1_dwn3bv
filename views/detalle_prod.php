@@ -1,8 +1,9 @@
 <?PHP
 require_once "classes/Producto.php";
+$producto = new Producto();
 
 $idSeleccionado = $_GET['id'] ?? FALSE;
-$producto = producto_x_id($idSeleccionado);
+$productElegido = $producto->producto_x_id($idSeleccionado);
 
 
 // echo "<pre>";
@@ -59,7 +60,7 @@ $producto = producto_x_id($idSeleccionado);
                         <p class=""><small><b>Material:</b> <?= $producto['material'] ?></small></p>
                         <p class=""><small><b>Peso:</b> <?= $producto['peso'] ?></small></p>
                         <p class=""><small><b>Medidas:</b> <?= $producto['medidas'] ?></small></p>
-                        <p class="fs-3 fw-bold my-3">$<?= number_format($producto['precio'], 2, ",", ".") ?></p>
+                        <p class="fs-3 fw-bold my-3">$<?= $producto['precio'] ?></p>
 
                     </div>
 

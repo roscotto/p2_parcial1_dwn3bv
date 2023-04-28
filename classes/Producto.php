@@ -62,7 +62,7 @@ class Producto
     * Devuelve el catálogo de productos de una categoria en particular
     * @param string $categoria Un string con el nombre de la categoria a buscar
     * 
-    * @return array Un array con todos los productos de la categoria en stock.
+    * @return Producto[] Un array con todos los productos de la categoria en stock.
     */
 
     public function catalogo_x_categoria(string $categoria): array
@@ -88,9 +88,10 @@ class Producto
     * Devuelve los datos de un producto en particular
     * @param int $id EL ID único del producto a mostrar
     * 
-    * @return mixed Devuelve un objeto Producto o, si no lo encuentra, null
+    * @return ?Producto Devuelve un objeto Producto o, si no lo encuentra, null
      */
-    public function producto_x_id(int $id): mixed {
+    public function producto_x_id(int $id): ?Producto 
+    {
 
         $catalogo = $this->catalogo_completo();
 
@@ -108,9 +109,10 @@ class Producto
     * Devuelve el catálogo de productos con un precio menor al valor determinado
     * @param float $precio Un numero con el precio máximo a filtrar
     * 
-    * @return array Un array de objetos Producto dentro del rango de precio.
+    * @return Producto[] Un array de objetos Producto dentro del rango de precio.
     */
-    public function catalogo_precio_menor_a(float $precio): array {
+    public function catalogo_precio_menor_a(float $precio): array 
+    {
             
             $resultado = [];
     
@@ -136,8 +138,10 @@ class Producto
     * 
     * @return string La cantidad de palabras solicitada con un elipsis(...) concatenado al final. 
     */
-    public function recortar_palabras(string $texto, int $cantidad = 15): string
+    public function recortar_palabras(int $cantidad = 15): string
     {
+        $texto = $this->descripcion; //tomo el texto de la propiedad descripcion
+
         $arrayPalabras = explode(' ', $texto); //convierto el string en un array de palabras, separandolas siempre que haya un espacio
 
         if(count($arrayPalabras) <= $cantidad) { //si la cantidad de palabras es menor o igual a la cantidad solicitada, retorno el texto completo
@@ -150,5 +154,17 @@ class Producto
         return $resultado;
     }
 
+
+    /**
+     * Devuelve el precio formateado con el signo $ y separador de miles
+     */
+    public function precio_formateado(): string
+    {
+        $precio = $this->precio; //tomo el precio de la propiedad precio
+
+        $resultado = '$' . number_format($precio, 2, ',', '.'); //formateo el precio con el signo $ y separador de miles
+
+        return $resultado;
+    }
 }
 
