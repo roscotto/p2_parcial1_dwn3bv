@@ -6,7 +6,7 @@
 $categoriaSeleccionada = $_GET['cat'] ?? FALSE;
 
 // ahora tengo acceso al array de productos
-require_once "libraries/productos.php";
+require_once "classes/Producto.php";
 
 
 

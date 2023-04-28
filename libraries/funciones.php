@@ -25,34 +25,6 @@ function recortar_palabras(string $texto, int $cantidad = 15): string
 
 
 
-/*COMENTO ESTA FUNCION PARA PROBAR LA DE ABAJO*/
-/*
-/**
- * Devuelve el catálogo de productos de una categoria en particular
- * @param string $categoria Un string con el nombre de la categoria a buscar
- * 
- * @return array Un array con todos los productos de la categoria en stock.
- */
-
-function catalogo_x_categoria(string $categoria): array
-{
-    $resultado = [];
-
-    //llamo al catalogo completo
-    $catalogo = catalogo_completo();
-
-    foreach ($catalogo as $p) { //recorre catalogo y se queda con los productos
-        //en caso de querer utilizar arrays para las categorias, filtrar con in_array
-        //if (in_array($categoria, $p['filtro_por_categoria'])) {
-
-        if ($p['filtro_por_categoria'] == $categoria) {
-            $resultado[] = $p; //versión reducida del push. me guardo el producto completo
-        };
-    }
-    return $resultado;
-};
-
-
 
 /**
  * Devuelve los datos de un producto en particular

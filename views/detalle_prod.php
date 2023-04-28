@@ -1,13 +1,13 @@
 <?PHP
-require_once "libraries/productos.php";
+require_once "classes/Producto.php";
 
 $idSeleccionado = $_GET['id'] ?? FALSE;
 $producto = producto_x_id($idSeleccionado);
 
 
-echo "<pre>";
-print_r($producto);
-echo "</pre>";
+// echo "<pre>";
+// print_r($producto);
+// echo "</pre>";
 
 ?>
 

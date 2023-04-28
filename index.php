@@ -1,5 +1,5 @@
 <?PHP
-require_once 'libraries/funciones.php';
+require_once 'classes/Producto.php';
 
 $seccionesValidas = [
     "home" => [
