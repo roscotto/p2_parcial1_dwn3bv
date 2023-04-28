@@ -65,7 +65,7 @@ class Producto
     * @return array Un array con todos los productos de la categoria en stock.
     */
 
-    function catalogo_x_categoria(string $categoria): array
+    public function catalogo_x_categoria(string $categoria): array
     {
         $resultado = [];
 
@@ -84,5 +84,25 @@ class Producto
     }
 
 
+    /**
+    * Devuelve los datos de un producto en particular
+    * @param int $id EL ID único del producto a mostrar
+    * 
+    * @return mixed Un array con los datos del producto seleccionado // o null si no lo encuentra
+     */
+    public function producto_x_id(int $id): mixed {
+
+        $catalogo = $this->catalogo_completo();
+
+        foreach ($catalogo as $p) {
+            if ($p->id == $id) {
+                return $p; //como va a encontrar uno solo, que retorne ese.
+            }
+        }
+
+        return null; // si no lo encuentra, retorna null
+    }
+
+    
 }
 
