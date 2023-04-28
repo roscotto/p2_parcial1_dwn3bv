@@ -5,26 +5,23 @@
 //null coalesce
 $categoriaSeleccionada = $_GET['cat'] ?? FALSE;
 
-// ahora tengo acceso al array de productos
-require_once "classes/Producto.php";
-$producto = new Producto();
+// ahora tengo acceso a la instancia de la clase Producto
+$objetoProducto = new Producto();
 
-
-//hago un decode para volver a tenerlo en un array que pueda utilizar
-
-
+if ($categoriaSeleccionada == "todos") {
+    $catalogo = $objetoProducto->catalogo_completo();
+} elseif ($categoriaSeleccionada == "ofertas") {
+    $catalogo = $objetoProducto->catalogo_precio_menor_a(2000);
+} else {
+    $catalogo = $objetoProducto->catalogo_x_categoria($categoriaSeleccionada);
+}
 
 //corrijo la falta de tildes y agrego mayúscula en la categoría
 $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
 
-if ($categoriaSeleccionada == "todos") {
-    $catalogo = $producto->catalogo_completo();
-} elseif ($categoriaSeleccionada == "ofertas") {
-    $catalogo = $producto->catalogo_precio_menor_a(2000);
-} else {
-    $catalogo = $producto->catalogo_x_categoria($categoriaSeleccionada);
-}
-
+// echo "<pre>";
+// print_r($catalogo);
+// echo "</pre>";
 
 ?>
 
@@ -43,22 +40,16 @@ if ($categoriaSeleccionada == "todos") {
         <div class="col-12">
             <div class="row d-flex g-3">
 
-                <!-- un pre en caso de necesitar chequear una variable
-                    echo "<pre>";
-                    print_r($variable);
-                    echo "</pre>";
-                    -->
-
                 <?PHP foreach ($catalogo as $producto) {   ?>
                     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
                         <div class="card  shadow-sm mx-auto bg-sand" style="width: 18rem;">
-                            <img src="./img/productos/<?= $producto['imagen'] ?>" class=" img-fluid" alt="<?= $producto['alt'] ?>">
+                            <img src="./img/productos/<?= $producto->imagen ?>" class=" img-fluid" alt="<?= $producto->alt ?>">
                             <div class="card-body">
-                                <p class="card-text"><b><?= $producto['categoria'] ?></b></p>
-                                <h3 class="card-title fs-4 fw-bold"><?= $producto['nombre_producto'] ?></h3>
-                                <p class="card-text"><?= recortar_palabras($producto['descripcion']) ?></p>
-                                <p class="fs-3 fw-semibold">$<?= number_format($producto['precio'], 2, ",", ".") ?></p>
-                                <a href="index.php?sec=detalle_prod&id=<?= $producto['id'] ?>" class="btn shadow-sm btn-grey-white w-100">
+                                <p class="card-text"><b><?= $producto->categoria ?></b></p>
+                                <h3 class="card-title fs-4 fw-bold"><?= $producto->nombre_producto ?></h3>
+                                <p class="card-text"><?= $objetoProducto->recortar_palabras(15) ?></p>
+                                <p class="fs-3 fw-semibold">$<?= $objetoProducto->precio_formateado() ?></p>
+                                <a href="index.php?sec=detalle_prod&id=<?= $producto->id ?>" class="btn shadow-sm btn-grey-white w-100">
                                     Ver más
                                 </a>
                             </div>

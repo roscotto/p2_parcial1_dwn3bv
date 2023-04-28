@@ -1,25 +1,19 @@
 <?PHP
-require_once "classes/Producto.php";
-$producto = new Producto();
-
 $idSeleccionado = $_GET['id'] ?? FALSE;
-$productElegido = $producto->producto_x_id($idSeleccionado);
+$objetoProducto = new Producto();
 
 
-// echo "<pre>";
-// print_r($producto);
-// echo "</pre>";
+$productElegido = $objetoProducto->producto_x_id($idSeleccionado);
 
 ?>
 
 
-<!-- Modal  detalle de producto-->
 <section id="detalle" class="container">
     <div class="row">
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
-            <h2 class="fw-bold" id=""><?= $producto['categoria'] ?></h2>
+            <h2 class="fw-bold" id=""><?= $producto->categoria ?></h2>
 
         </div>
         <div class="col-12 d-flex">
@@ -28,7 +22,7 @@ $productElegido = $producto->producto_x_id($idSeleccionado);
                     <div id="carouselProductos" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./img/productos/<?= $producto['imagen'] ?>" class="img-fluid d-block w-100" alt="<?= $producto['alt'] ?>">
+                                <img src="./img/productos/<?= $producto->imagen ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
                             <div class="carousel-item">
                                 <img src="./img/slide-prod-2.jpg" class="img-fluid d-block w-100" alt="manos agarrando una ilustracion de mandala para colorear">
@@ -53,14 +47,14 @@ $productElegido = $producto->producto_x_id($idSeleccionado);
 
                     <div>
                         <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto['nombre_producto'] ?></h3>
-                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto['origen'] ?></h4>
-                        <p><?= $producto['descripcion'] ?>
+                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->origen ?></h4>
+                        <p><?= $producto->descripcion ?>
                         </p>
-                        <p class=""><small><b>Cuidados:</b> <?= $producto['cuidado'] ?></small></p>
-                        <p class=""><small><b>Material:</b> <?= $producto['material'] ?></small></p>
-                        <p class=""><small><b>Peso:</b> <?= $producto['peso'] ?></small></p>
-                        <p class=""><small><b>Medidas:</b> <?= $producto['medidas'] ?></small></p>
-                        <p class="fs-3 fw-bold my-3">$<?= $producto['precio'] ?></p>
+                        <p class=""><small><b>Cuidados:</b> <?= $producto->cuidado ?></small></p>
+                        <p class=""><small><b>Material:</b> <?= $producto->material ?></small></p>
+                        <p class=""><small><b>Peso:</b> <?= $producto->peso ?></small></p>
+                        <p class=""><small><b>Medidas:</b> <?= $producto->medidas ?></small></p>
+                        <p class="fs-3 fw-bold my-3">$<?= $objetoProducto->precio_formateado() ?></p>
 
                     </div>
 
