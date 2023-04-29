@@ -47,8 +47,8 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
                             <div class="card-body">
                                 <p class="card-text"><b><?= $producto->categoria ?></b></p>
                                 <h3 class="card-title fs-4 fw-bold"><?= $producto->nombre_producto ?></h3>
-                                <p class="card-text"><?= $objetoProducto->recortar_palabras(15) ?></p>
-                                <p class="fs-3 fw-semibold">$<?= $objetoProducto->precio_formateado() ?></p>
+                                <p class="card-text"><?= $producto->recortar_palabras(15) ?></p>
+                                <p class="fs-3 fw-semibold"><?= $producto->precio_formateado() ?></p>
                                 <a href="index.php?sec=detalle_prod&id=<?= $producto->id ?>" class="btn shadow-sm btn-grey-white w-100">
                                     Ver más
                                 </a>
