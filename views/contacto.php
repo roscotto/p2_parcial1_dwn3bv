@@ -1,4 +1,17 @@
-         <!--seccion contacto-->
+<?php
+
+if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_POST["inputEmail"]) and isset($_POST["inputelefono"])){
+    //header("Location: gracias.html");
+?>    
+    <p>
+        Mucha gracias <?= $_POST["inputNombre"]?> <?= $_POST["inputApellido"]?> en momentos recibiras un email a la dirección de correo <?=$_POST["inputEmail"]?>
+    </p>
+
+<?php
+}
+?>
+
+<!--seccion contacto-->
          <section id="contacto" class="py-5">
              <div id="container-formulario" class="row container mx-auto py-5 d-flex">
                  <div class="col-sm-12 col-lg-7 d-flex">
@@ -16,7 +29,7 @@
                  </div>
 
                  <div class="col-12 col-lg-7 col-xxl-7">
-                     <form class="row g-3" action="#" method="post">
+                     <form class="row g-3" action="index.php?sec=contacto" method="post">
                          <div class="col-xxl-6">
                              <label for="inputNombre" class="form-label">Nombre</label>
                              <input type="text" class="form-control border-brown" id="inputNombre" name="inputNombre" placeholder="Juan" required>
