@@ -10,7 +10,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
 
 
 <section id="detalle" class="container">
-    <div class="row">
+    <div class="row my-5">
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
