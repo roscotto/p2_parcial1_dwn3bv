@@ -130,8 +130,8 @@ option:hover {
 
 .iconos-redes svg:hover {
     fill: #e6896a;
-    -webkit-filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, 0.3));
-    filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, 0.3));
+    /* -webkit-filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, 0.3)); */
 }
 
 
@@ -145,9 +145,24 @@ footer>div {
 
 }
 
-.datos-footer ul {
+footer ul {
+    text-align: center;
+}
+
+footer ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+
+}
+
+.lista-datos-alumno {
     list-style-type: none;
+    list-style: none;
     padding: 0;
+
 }
 
 textarea {
@@ -183,13 +198,7 @@ textarea {
         flex-direction: row;
     }
 
-    .datos-footer {
-        text-align: left;
-    }
 
-    .datos-footer ul {
-        list-style-type: circle;
-    }
 }
 
 /*X-Large devices (large desktops, 1200px and up)*/
