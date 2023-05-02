@@ -55,7 +55,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                         <p class=""><small><b>Material:</b> <?= $producto->material ?></small></p>
                         <p class=""><small><b>Peso:</b> <?= $producto->peso ?></small></p>
                         <p class=""><small><b>Medidas:</b> <?= $producto->medidas ?></small></p>
-                        <p class="fs-3 fw-bold my-3">$<?= $producto->precio_formateado() ?></p>
+                        <p class="fs-3 fw-bold my-3"><?= $producto->precio_formateado() ?></p>
 
                     </div>
 
