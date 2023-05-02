@@ -3,7 +3,8 @@ $idSeleccionado = $_GET['id'] ?? FALSE;
 $objetoProducto = new Producto();
 
 
-$productElegido = $objetoProducto->producto_x_id($idSeleccionado);
+$producto = $objetoProducto->producto_x_id($idSeleccionado);
+
 
 ?>
 
@@ -46,7 +47,7 @@ $productElegido = $objetoProducto->producto_x_id($idSeleccionado);
                 <div class="col-md-7 card-body">
 
                     <div>
-                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto['nombre_producto'] ?></h3>
+                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->nombre_producto ?></h3>
                         <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->origen ?></h4>
                         <p><?= $producto->descripcion ?>
                         </p>
@@ -54,7 +55,7 @@ $productElegido = $objetoProducto->producto_x_id($idSeleccionado);
                         <p class=""><small><b>Material:</b> <?= $producto->material ?></small></p>
                         <p class=""><small><b>Peso:</b> <?= $producto->peso ?></small></p>
                         <p class=""><small><b>Medidas:</b> <?= $producto->medidas ?></small></p>
-                        <p class="fs-3 fw-bold my-3">$<?= $objetoProducto->precio_formateado() ?></p>
+                        <p class="fs-3 fw-bold my-3">$<?= $producto->precio_formateado() ?></p>
 
                     </div>
 
