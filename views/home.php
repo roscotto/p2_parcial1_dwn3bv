@@ -5,16 +5,15 @@
             <div class="p-2 p-lg-5 pb-md-0">
                 <h2 class="pb-md-3 pb-lg-3">Bienvenidos a la tienda online de Dhara</h2>
 
-                <p><strong>En nuestra tienda encontrarás diseños únicos de mandalas y dibujos zentangle</strong>
-                    en formato JPG para que puedas imprimir y colorear, y potenciar tus habilidades.</p>
+                <p><strong>En nuestra tienda encontrarás gran variedad de productos de decoración y todo lo necesario para practicar yoga y meditación.</strong></p>
 
 
-                <p> Explorá entre las diferentes opciones según complejidad y específicamente creados para niños
+                <p> <em>¡Explorá entre las diferentes categorías y encontrá el producto perfecto para vos!.</em></p>
                 </p>
             </div>
         </div>
         <div class="col-12 col-lg-6 my-sm-3 mb-md-5 py-sm-5 pb-md-2 align-self-center">
-            <img src="./img/img-productos.jpg" alt="persona pintando un mandala con fibras en un libro para colorear"
+            <img src="./img/img-home.jpg" alt="foto de un alohadon zafu junto a un cuenco tibetano"
                 class="img-fluid rounded-3 shadow-sm">
         </div>
     </div>
