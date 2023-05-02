@@ -10,7 +10,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
 
 
 <section id="detalle" class="container">
-    <div class="row">
+    <div class="row my-5">
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
@@ -44,7 +44,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                     </div>
 
                 </div>
-                <div class="col-md-7 card-body">
+                <div class="col-md-7 card-body ps-4">
 
                     <div>
                         <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->nombre_producto ?></h3>
