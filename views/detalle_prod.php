@@ -26,10 +26,10 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                                 <img src="./img/productos/<?= $producto->imagen ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
                             <div class="carousel-item">
-                                <img src="./img/slide-prod-2.jpg" class="img-fluid d-block w-100" alt="manos agarrando una ilustracion de mandala para colorear">
+                               <img src="./img/productos/<?= $producto->imagen_2 ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
                             <div class="carousel-item">
-                                <img src="./img/slide-prod-3.jpg" class="img-fluid d-block w-100" alt="hoja con mandala impreso sobre una mesa">
+                            <img src="./img/productos/<?= $producto->imagen_3 ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
 
                         </div>

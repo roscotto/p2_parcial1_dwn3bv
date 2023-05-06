@@ -9,6 +9,8 @@ class Producto
     public string $nombre_producto;
     public string $descripcion;
     public string $imagen;
+    public string $imagen_2;
+    public string $imagen_3;
     public string $alt;
     public string $origen;
     public string $material;
@@ -42,6 +44,8 @@ class Producto
             $producto->nombre_producto = $cadaProducto->nombre_producto;
             $producto->descripcion = $cadaProducto->descripcion;
             $producto->imagen = $cadaProducto->imagen;
+            $producto->imagen_2 = $cadaProducto->imagen_2;
+            $producto->imagen_3 = $cadaProducto->imagen_3;
             $producto->alt = $cadaProducto->alt;
             $producto->origen = $cadaProducto->origen;
             $producto->material = $cadaProducto->material;
