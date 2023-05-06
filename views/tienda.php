@@ -11,7 +11,7 @@ $objetoProducto = new Producto();
 if ($categoriaSeleccionada == "todos") {
     $catalogo = $objetoProducto->catalogo_completo();
 } elseif ($categoriaSeleccionada == "ofertas") {
-    $catalogo = $objetoProducto->catalogo_precio_menor_a(2000);
+    $catalogo = $objetoProducto->catalogo_precio_menor_a(5000);
 } else {
     $catalogo = $objetoProducto->catalogo_x_categoria($categoriaSeleccionada);
 }

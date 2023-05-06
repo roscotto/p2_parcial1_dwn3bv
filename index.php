@@ -123,7 +123,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                     <a href="index.php?sec=tienda&cat=decoracion" class="btn shadow-sm btn-grey-white">Decoración</a>
                     <a href="index.php?sec=tienda&cat=yoga" class="btn shadow-sm btn-grey-white">Yoga</a>
                     <a href="index.php?sec=tienda&cat=meditacion" class="btn shadow-sm btn-grey-white">Meditación</a>
-                    <a href="index.php?sec=tienda&cat=ofertas" class="btn shadow-sm btn-grey-white">- $2000</a>
+                    <a href="index.php?sec=tienda&cat=ofertas" class="btn shadow-sm btn-grey-white">- $5000</a>
                 </div>
             </div>
         </section>
