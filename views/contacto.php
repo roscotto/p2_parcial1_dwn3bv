@@ -22,10 +22,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                      <h2 class="ps-3">Contacto</h2>
                  </div>
                  <div class="col-sm-12  col-lg-7">
-                     <p>Suscribite a nuestro newsletter y recibí de regalo el <b>
-                             Reto de Meditación completo de 21 días de
-                             Deepak Chopra
-                         </b>.</p>
+                     <em>Suscribite a nuestro newsletter y recibí las últimas novedades y promociones.</em>
                  </div>
 
                  <div class="col-12 col-lg-7 col-xxl-7">

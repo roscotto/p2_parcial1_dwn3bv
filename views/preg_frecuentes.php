@@ -17,7 +17,7 @@
             <ul>
                 <li>
                     <h3>¿Cómo puedo realizar una compra en la tienda online?</h3>
-                    <p>Para realizar una compra en nuestra tienda online, simplemente tienes que elegir los productos que te interesen, añadirlos a tu carrito de compra y completar el proceso de pago.</p>
+                    <p><strong>Para realizar una compra en nuestra tienda online, simplemente tienes que elegir los productos que te interesen, añadirlos a tu carrito de compra y completar el proceso de pago.</strong></p>
                 </li>
                 <li>
                     <h3>¿Cuáles son las formas de pago disponibles?</h3>
