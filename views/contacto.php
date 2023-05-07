@@ -4,9 +4,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
     //header("Location: gracias.html");
     
 ?>    
-     <!-- <p>
-        Mucha gracias <?= $_POST["inputNombre"]?> <?= $_POST["inputApellido"]?> en momentos recibiras un email a la dirección de correo <?=$_POST["inputEmail"]?>
-    </p>  -->
+     
     <div class="container text-light d-flex my-3">
             <div class="row justify-content-center background-caption p-4">
                 <div class="col-10 ">
