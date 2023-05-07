@@ -19,7 +19,8 @@ class Producto
     public string $cuidado;
     public int $stock;
     public int $precio;
-
+    public string $inicio_promocion;
+    public string $fin_promocion; 
     
     /**
      * Devuelve el catálogo completo
@@ -54,7 +55,8 @@ class Producto
             $producto->cuidado = $cadaProducto->cuidado;
             $producto->stock = $cadaProducto->stock;
             $producto->precio = $cadaProducto->precio;
-
+            $producto->inicio_promocion = $cadaProducto->inicio_promocion;        
+            $producto->fin_promocion = $cadaProducto->fin_promocion;
             $catalogo[] = $producto; //guardo la instancia en el array
         }
 
