@@ -81,6 +81,13 @@ pre {
     color: whitesmoke;
 }
 
+.text-orange-h3 {
+    color: #e6896a;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
 #logo {
     width: 120px;
     height: 34px;
