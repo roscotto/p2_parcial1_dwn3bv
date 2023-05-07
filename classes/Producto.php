@@ -19,7 +19,8 @@ class Producto
     public string $cuidado;
     public int $stock;
     public int $precio;
-
+    public string $inicio_promocion;
+    public string $fin_promocion; 
     
     /**
      * Devuelve el catálogo completo
@@ -54,7 +55,8 @@ class Producto
             $producto->cuidado = $cadaProducto->cuidado;
             $producto->stock = $cadaProducto->stock;
             $producto->precio = $cadaProducto->precio;
-
+            $producto->inicio_promocion = $cadaProducto->inicio_promocion;        
+            $producto->fin_promocion = $cadaProducto->fin_promocion;
             $catalogo[] = $producto; //guardo la instancia en el array
         }
 
@@ -169,6 +171,24 @@ class Producto
         $resultado = '$' . number_format($precio, 2, ',', '.'); //formateo el precio con el signo $ y separador de miles
 
         return $resultado;
+    }
+
+    public function en_promocion(): string
+    {
+        $cadena = "";
+        $fecha_actual = date('Y/m/d');
+        $inicio_f = date($this->inicio_promocion);
+        $fin_f    = date($this->fin_promocion);
+
+        if ($this->inicio_promocion != "" && $this->fin_promocion != ""){
+            if ($fecha_actual >= $inicio_f && $fecha_actual <= $fin_f){
+                $cadena = "
+                    <p><strong>ESTE PRODUCTO ESTA EN PROMOCIÓN</strong></p>
+                ";
+            } 
+            
+        }
+        return $cadena;
     }
 }
 
