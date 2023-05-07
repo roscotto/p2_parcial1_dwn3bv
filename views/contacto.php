@@ -49,16 +49,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                              <label for="inputComentario" class="form-label">Comentario</label>
                              <textarea class="form-control border-brown" id="inputComentario" name="inputComentario" rows="5" required></textarea>
                          </div>
-                         <div class="col-xxl-6">
-                             <label for="inputState" class="form-label">Elegí qué producto te interesa más?</label>
-                             <select id="inputState" name="inputState" class="form-select">
-                                 <option selected disabled>Seleccioná una opción</option>
-                                 <option>Paquetes de contenido descargable</option>
-                                 <option>Meditaciones grabadas</option>
-                                 <option>Cursos dibujo de mandalas</option>
-                                 <option>Cursos de dibujo zentangle</option>
-                             </select>
-                         </div>
+                         
 
                          <div class="col-xxl-12">
                              <div class="form-check">
@@ -69,7 +60,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                              </div>
                          </div>
                          <div class="col-xxl-12">
-                             <button type="submit" class="btn  shadow-sm btn-violet-gradient">Suscribirme</button>
+                             <button type="submit" class="btn  shadow-sm btn-violet-gradient">Enviar</button>
                          </div>
                      </form>
                  </div>
