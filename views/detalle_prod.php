@@ -50,6 +50,8 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                         <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->nombre_producto ?></h3>
                         <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->origen ?></h4>
                         <p><?= $producto->descripcion ?>
+                        <br>
+                        <?= $producto->en_promocion() ?>
                         </p>
                         <p class=""><small><b>Cuidados:</b> <?= $producto->cuidado ?></small></p>
                         <p class=""><small><b>Material:</b> <?= $producto->material ?></small></p>

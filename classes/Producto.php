@@ -172,5 +172,23 @@ class Producto
 
         return $resultado;
     }
+
+    public function en_promocion(): string
+    {
+        $cadena = "";
+        $fecha_actual = date('Y/m/d');
+        $inicio_f = date($this->inicio_promocion);
+        $fin_f    = date($this->fin_promocion);
+
+        if ($this->inicio_promocion != "" && $this->fin_promocion != ""){
+            if ($fecha_actual >= $inicio_f && $fecha_actual <= $fin_f){
+                $cadena = "
+                    <p><strong>ESTE PRODUCTO ESTA EN PROMOCIÓN</strong></p>
+                ";
+            } 
+            
+        }
+        return $cadena;
+    }
 }
 
