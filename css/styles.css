@@ -77,6 +77,10 @@ pre {
     color: #55392b;
 }
 
+.text-light {
+    color: whitesmoke;
+}
+
 #logo {
     width: 120px;
     height: 34px;

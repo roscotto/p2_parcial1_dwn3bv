@@ -2,11 +2,28 @@
 
 if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_POST["inputEmail"]) and isset($_POST["inputelefono"])){
     //header("Location: gracias.html");
+    
 ?>    
-    <p>
+     <!-- <p>
         Mucha gracias <?= $_POST["inputNombre"]?> <?= $_POST["inputApellido"]?> en momentos recibiras un email a la dirección de correo <?=$_POST["inputEmail"]?>
-    </p>
-
+    </p>  -->
+    <div class="container text-light d-flex my-3">
+            <div class="row justify-content-center background-caption p-4">
+                <div class="col-10 ">
+                    <h2>Datos formulario enviado</h2>
+                </div>
+                <div class="col-10 mx-auto">
+                        <p><b>Nombre: </b><?= $_POST["inputNombre"]?></p>
+                        <p><b>Apellido: </b><?= $_POST["inputApellido"]?></p>
+                        <p><b>Email: </b><?=$_POST["inputEmail"]?></p>
+                        <p><b>Teléfono: </b><?=$_POST["inputelefono"]?>.</p>
+                        <p><b>Comentario: </b><?=$_POST["inputComentario"]?>.</p>
+                </div>
+                  
+            </div>
+    </div>
+           
+        
 <?php
 }
 ?>
@@ -50,15 +67,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                              <textarea class="form-control border-brown" id="inputComentario" name="inputComentario" rows="5" required></textarea>
                          </div>
                          
-
-                         <div class="col-xxl-12">
-                             <div class="form-check">
-                                 <input class="form-check-input" type="checkbox" id="checkTerminos" name="checkTerminos">
-                                 <label class="form-check-label" for="checkTerminos">
-                                     Acepto Términos y Condiciones
-                                 </label>
-                             </div>
-                         </div>
+                         
                          <div class="col-xxl-12">
                              <button type="submit" class="btn  shadow-sm btn-violet-gradient">Enviar</button>
                          </div>
@@ -68,3 +77,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
              </div>
 
          </section>
+
+
+       
+       
