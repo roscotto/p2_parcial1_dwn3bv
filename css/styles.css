@@ -63,6 +63,11 @@ pre {
     color: whitesmoke;
 }
 
+.background-caption {
+    background-color: #1d1d1db9;
+    opacity: 0.8;
+ }
+
 .btn:hover {
     background-color: #e6896a;
     color: whitesmoke;
@@ -93,6 +98,12 @@ h2 {
     font-family: 'Catamaran', sans-serif;
     font-weight: 800;
     color: #e6896a;
+}
+
+.h2-caption {
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 800;
+    color: whitesmoke;
 }
 
 a {

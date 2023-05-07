@@ -115,46 +115,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     </header>
 
     <main>
-        <section id="slider">
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="./img/slider_1.jpg" class="d-block w-100" alt="foto de estatua de buda">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2>Decoración</h2>
-                    <p>Encontrá los más lindos objetos para decorar tu hogar.</p>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img src="./img/slider_2.jpg" class="d-block w-100" alt="manos de mujer enrollando colchoneta">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2>Yoga</h2>
-                    <p>Conocé las últimas tendencias en equipamiento para la práctica de yoga.</p>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img src="./img/slider_3.jpg" class="d-block w-100" alt="objetos tibetanos para meditación sobre una mesa">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2>Meditación</h2>
-                    <p>Te ofrecemos artículos únicos para que tu experiencia de meditación sea de otro nivel.</p>
-                </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
-            </div>
-        </section>
+       
         <section id="filtros" class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-around mt-5">
