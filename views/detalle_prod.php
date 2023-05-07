@@ -59,7 +59,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
 
                     </div>
 
-                    <div class="">
+                    <div class="mb-5">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -93,7 +93,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
             </div>
 
         </div>
-        <div class="col-12 modal-footer">
+        <div class="col-12 modal-footer d-none">
 
             <div>
                 <button type="button" class="btn shadow-sm btn-violet-gradient w-100">Agregar al carrito</button>
