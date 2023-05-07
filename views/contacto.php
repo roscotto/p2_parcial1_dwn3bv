@@ -1,31 +1,6 @@
 <?php
 
-if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_POST["inputEmail"]) and isset($_POST["inputelefono"])){
-    //header("Location: gracias.html");
-    
-?>    
-     
-    <div class="container text-light d-flex my-3">
-            <div class="row justify-content-center background-caption p-4">
-                <div class="col-10 ">
-                    <h2>Datos formulario enviado</h2>
-                </div>
-                <div class="col-10 mx-auto">
-                        <p><b>Nombre: </b><?= $_POST["inputNombre"]?></p>
-                        <p><b>Apellido: </b><?= $_POST["inputApellido"]?></p>
-                        <p><b>Email: </b><?=$_POST["inputEmail"]?></p>
-                        <p><b>Teléfono: </b><?=$_POST["inputelefono"]?>.</p>
-                        <p><b>Comentario: </b><?=$_POST["inputComentario"]?>.</p>
-                </div>
-                  
-            </div>
-    </div>
-           
-        
-<?php
-}
 ?>
-
 <!--seccion contacto-->
          <section id="contacto" class="py-5">
              <div id="container-formulario" class="row container mx-auto py-5 d-flex">
@@ -41,7 +16,7 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                  </div>
 
                  <div class="col-12 col-lg-7 col-xxl-7">
-                     <form class="row g-3" action="index.php?sec=contacto" method="post">
+                     <form class="row g-3" action="form_process.php" method="get">
                          <div class="col-xxl-6">
                              <label for="inputNombre" class="form-label">Nombre</label>
                              <input type="text" class="form-control border-brown" id="inputNombre" name="inputNombre" placeholder="Juan" required>
@@ -56,8 +31,8 @@ if (isset($_POST["inputNombre"]) and isset($_POST["inputApellido"]) and isset($_
                              <p class="form-text" id="d-email">emaildeejemplo@hotmail.com</p>
                          </div>
                          <div class="col-xxl-6">
-                             <label class="form-label" for="inputelefono">Teléfono</label>
-                             <input class="form-control border-brown" type="number" name="inputelefono" id="inputelefono" placeholder="+ 54 9 11 xxxx xxxx " required>
+                             <label class="form-label" for="inputTelefono">Teléfono</label>
+                             <input class="form-control border-brown" type="number" name="inputTelefono" id="inputTelefono" placeholder="+ 54 9 11 xxxx xxxx " required>
 
                          </div>
                          <div class="mb-3 col-xxl-12">
