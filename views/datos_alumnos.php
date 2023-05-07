@@ -4,13 +4,14 @@
         <h2 class="mt-5 text-center">Datos alumnos</h2>
     </div>
     <div class="row mt-3 mb-5">
-        <div class="col-12 col-lg-6 mx-auto my-lg-5 align-self-center d-flex">
-        <img src="./img/foto-pedro.jpg" alt="foto Pedro" class="img-fluid rounded-3 shadow-sm m-auto">
-            <div class="row container mx-auto p-3 d-flex">
-        
+        <div class="col-12 col-lg-6 my-lg-5 d-flex justify-content-sm-center justify-content-lg-end">
+            <img src="./img/foto-pedro.jpg" alt="foto Pedro" class="img-fluid rounded-3 shadow-sm m-auto">
+        </div>    
+        <div class="col-12 col-lg-6 d-flex">
+            <div class="row container mx-auto p-3 align-items-center">
                 <div class="col-12 col-lg-12 datos align-self-center">
                     <ul class="lista-datos-alumno">
-                        <li><b>Alumna:</b> Pedro González Chávez</li>
+                        <li><b>Alumno:</b> Pedro Gonzalez Chavez</li>
                         <li><b>Edad:</b> 33 años</li>
                         <li><b>Email:</b> pedro.gonzalez@davinci.edu.ar</li>
         
@@ -37,11 +38,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6 mx-auto my-lg-5 align-self-center d-flex">
+    </div>
+    <div class="row mt-3 mb-5">
+        <div class="col-12 col-lg-6 mx-auto my-lg-5 d-flex align-self-center align-self-lg-end">
             <img src="./img/foto-ro.jpg" alt="foto Rocío" class="img-fluid rounded-3 shadow-sm m-auto">
-            <div class="row container mx-auto p-3 d-flex">
+        </div>
+        <div class="col-12 col-lg-6 d-flex">
+            <div class="row container mx-auto p-3 align-items-center">
         
-                <div class="col-12 col-lg-12 datos align-self-center ">
+                <div class="col-12 col-lg-12 datos d-flex align-items-center">
                     <ul class="lista-datos-alumno">
                         <li><b>Alumna:</b> Rocío B. Scotto</li>
                         <li><b>Edad:</b> 33 años</li>
@@ -68,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>    
     </div>
 
 
