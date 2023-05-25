@@ -1,0 +1,18 @@
+TABLA origen
+    continente
+    ubicacion
+
+
+
+TABLA categoria
+    descripcion
+
+
+TABLA usuarios
+    id
+    nombre
+    contraseña
+    email
+    rol (usuario / admin / superadmin)
+
+
