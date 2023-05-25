@@ -1,24 +1,20 @@
 <?PHP
-require_once "libraries/productos.php";
-
 $idSeleccionado = $_GET['id'] ?? FALSE;
-$producto = producto_x_id($idSeleccionado);
+$objetoProducto = new Producto();
 
 
-echo "<pre>";
-print_r($producto);
-echo "</pre>";
+$producto = $objetoProducto->producto_x_id($idSeleccionado);
+
 
 ?>
 
 
-<!-- Modal  detalle de producto-->
 <section id="detalle" class="container">
-    <div class="row">
+    <div class="row my-5">
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
-            <h2 class="fw-bold" id=""><?= $producto['categoria'] ?></h2>
+            <h2 class="fw-bold" id=""><?= $producto->categoria ?></h2>
 
         </div>
         <div class="col-12 d-flex">
@@ -27,13 +23,13 @@ echo "</pre>";
                     <div id="carouselProductos" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./img/productos/<?= $producto['imagen'] ?>" class="img-fluid d-block w-100" alt="<?= $producto['alt'] ?>">
+                                <img src="./img/productos/<?= $producto->imagen ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
                             <div class="carousel-item">
-                                <img src="./img/slide-prod-2.jpg" class="img-fluid d-block w-100" alt="manos agarrando una ilustracion de mandala para colorear">
+                               <img src="./img/productos/<?= $producto->imagen_2 ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
                             <div class="carousel-item">
-                                <img src="./img/slide-prod-3.jpg" class="img-fluid d-block w-100" alt="hoja con mandala impreso sobre una mesa">
+                            <img src="./img/productos/<?= $producto->imagen_3 ?>" class="img-fluid d-block w-100" alt="<?= $producto->alt ?>">
                             </div>
 
                         </div>
@@ -48,22 +44,24 @@ echo "</pre>";
                     </div>
 
                 </div>
-                <div class="col-md-7 card-body">
+                <div class="col-md-7 card-body ps-4">
 
                     <div>
-                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto['nombre_producto'] ?></h3>
-                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto['origen'] ?></h4>
-                        <p><?= $producto['descripcion'] ?>
+                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->nombre_producto ?></h3>
+                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->origen ?></h4>
+                        <p><?= $producto->descripcion ?>
+                        <br>
+                        <?= $producto->en_promocion() ?>
                         </p>
-                        <p class=""><small><b>Cuidados:</b> <?= $producto['cuidado'] ?></small></p>
-                        <p class=""><small><b>Material:</b> <?= $producto['material'] ?></small></p>
-                        <p class=""><small><b>Peso:</b> <?= $producto['peso'] ?></small></p>
-                        <p class=""><small><b>Medidas:</b> <?= $producto['medidas'] ?></small></p>
-                        <p class="fs-3 fw-bold my-3">$<?= number_format($producto['precio'], 2, ",", ".") ?></p>
+                        <p class=""><small><b>Cuidados:</b> <?= $producto->cuidado ?></small></p>
+                        <p class=""><small><b>Material:</b> <?= $producto->material ?></small></p>
+                        <p class=""><small><b>Peso:</b> <?= $producto->peso ?></small></p>
+                        <p class=""><small><b>Medidas:</b> <?= $producto->medidas ?></small></p>
+                        <p class="fs-3 fw-bold my-3"><?= $producto->precio_formateado() ?></p>
 
                     </div>
 
-                    <div class="">
+                    <div class="mb-5">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -97,7 +95,7 @@ echo "</pre>";
             </div>
 
         </div>
-        <div class="col-12 modal-footer">
+        <div class="col-12 modal-footer d-none">
 
             <div>
                 <button type="button" class="btn shadow-sm btn-violet-gradient w-100">Agregar al carrito</button>

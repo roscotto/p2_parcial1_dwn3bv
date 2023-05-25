@@ -8,11 +8,7 @@
             Es fluir al compás de los vaivenes de la vida.
         </p>
         <p>
-            <strong>Es un emprendimiento dedicado al desarrollo y comercialización de cursos sobre técnicas de
-                creación de mandalas y dibujo zentangle</strong>, paquetes de contenido descargable para poder
-            colorear y ofrece también la suscripción
-            a membresías mensuales que permiten acceder a videos de meditaciones guiadas, e
-            información acerca de los beneficios para la salud que brindan estas prácticas.
+            <strong>Es un emprendimiento dedicado a la comercialización de productos de decoración y todo lo necesario para que la práctica de yoga y meditación se convierta en una experiencia única.</strong>
         </p>
         <p>
             <em>
