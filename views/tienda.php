@@ -66,13 +66,13 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
                 <?PHP foreach ($catalogo as $producto) {   ?>
                     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
                         <div class="card  shadow-sm mx-auto bg-sand" style="width: 18rem;">
-                            <img src="./img/productos/<?= $producto->imagen ?>" class=" img-fluid" alt="<?= $producto->alt ?>">
+                            <img src="./img/productos/<?= $producto->getImagen() ?>" class=" img-fluid" alt="<?= $producto->getAlt() ?>">
                             <div class="card-body">
-                                <p class="card-text"><b><?= $producto->categoria ?></b></p>
-                                <h3 class="card-title fs-4 fw-bold"><?= $producto->nombre_producto ?></h3>
+                                <p class="card-text"><b><?= $producto->getCategoria() ?></b></p>
+                                <h3 class="card-title fs-4 fw-bold"><?= $producto->getNombre_producto() ?></h3>
                                 <p class="card-text"><?= $producto->recortar_palabras(15) ?></p>
                                 <p class="fs-3 fw-semibold"><?= $producto->precio_formateado() ?></p>
-                                <a href="index.php?sec=detalle_prod&id=<?= $producto->id ?>" class="btn shadow-sm btn-grey-white w-100">
+                                <a href="index.php?sec=detalle_prod&id=<?= $producto->getId() ?>" class="btn shadow-sm btn-grey-white w-100">
                                     Ver más
                                 </a>
                             </div>

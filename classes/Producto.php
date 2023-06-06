@@ -3,24 +3,24 @@
 class Producto 
 {
     //propiedades que necesita la clase para funcionar
-    public int $id;
-    public string $filtro_por_categoria;
-    public string $categoria;
-    public string $nombre_producto;
-    public string $descripcion;
-    public string $imagen;
-    public string $imagen_2;
-    public string $imagen_3;
-    public string $alt;
-    public string $origen;
-    public string $material;
-    public string $medidas;
-    public string $peso;
-    public string $cuidado;
-    public int $stock;
-    public int $precio;
-    public string $inicio_promocion;
-    public string $fin_promocion; 
+    private int $id;
+    private string $filtro_por_categoria;
+    private string $categoria;
+    private string $nombre_producto;
+    private string $descripcion;
+    private string $imagen;
+    private string $imagen_2;
+    private string $imagen_3;
+    private string $alt;
+    private string $origen;
+    private string $material;
+    private string $medidas;
+    private string $peso;
+    private string $cuidado;
+    private int $stock;
+    private int $precio;
+    private string $inicio_promocion;
+    private string $fin_promocion; 
     
     /**
      * Devuelve el catálogo completo
@@ -189,6 +189,152 @@ class Producto
             
         }
         return $cadena;
+    }
+
+    /* GETTERS */
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the value of filtro_por_categoria
+     */ 
+    public function getFiltro_por_categoria()
+    {
+        return $this->filtro_por_categoria;
+    }
+
+    /**
+     * Get the value of categoria
+     */ 
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * Get the value of nombre_producto
+     */ 
+    public function getNombre_producto()
+    {
+        return $this->nombre_producto;
+    }
+
+    /**
+     * Get the value of descripcion
+     */ 
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Get the value of imagen
+     */ 
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Get the value of imagen_2
+     */ 
+    public function getImagen_2()
+    {
+        return $this->imagen_2;
+    }
+
+    /**
+     * Get the value of imagen_3
+     */ 
+    public function getImagen_3()
+    {
+        return $this->imagen_3;
+    }
+
+    /**
+     * Get the value of alt
+     */ 
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Get the value of origen
+     */ 
+    public function getOrigen()
+    {
+        return $this->origen;
+    }
+
+    /**
+     * Get the value of material
+     */ 
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
+    /**
+     * Get the value of medidas
+     */ 
+    public function getMedidas()
+    {
+        return $this->medidas;
+    }
+
+    /**
+     * Get the value of peso
+     */ 
+    public function getPeso()
+    {
+        return $this->peso;
+    }
+
+    /**
+     * Get the value of cuidado
+     */ 
+    public function getCuidado()
+    {
+        return $this->cuidado;
+    }
+
+    /**
+     * Get the value of stock
+     */ 
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Get the value of precio
+     */ 
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
+     * Get the value of inicio_promocion
+     */ 
+    public function getInicio_promocion()
+    {
+        return $this->inicio_promocion;
+    }
+
+    /**
+     * Get the value of fin_promocion
+     */ 
+    public function getFin_promocion()
+    {
+        return $this->fin_promocion;
     }
 }
 
