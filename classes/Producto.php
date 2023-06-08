@@ -173,10 +173,12 @@ class Producto
         return $resultado;
     }
 
+    //$hoy = date("Ymd");           // 20010310
+    //$hoy = date("Y-m-d H:i:s");   // 2001-03-10 17:16:18 (el formato DATETIME de MySQL)
     public function en_promocion(): string
     {
         $cadena = "";
-        $fecha_actual = date('Y/m/d');
+        $fecha_actual = date('Y-m-d H:i:s');
         $inicio_f = date($this->inicio_promocion);
         $fin_f    = date($this->fin_promocion);
 
