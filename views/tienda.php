@@ -13,7 +13,7 @@ if ($categoriaSeleccionada == "todos") {
 } elseif ($categoriaSeleccionada == "ofertas") {
     $catalogo = $objetoProducto->catalogo_precio_menor_a(5000);
 } else {
-    $catalogo = $objetoProducto->catalogo_x_categoria($categoriaSeleccionada);
+   $catalogo = $objetoProducto->catalogo_x_categoria($categoriaSeleccionada);
 }
 
 //corrijo la falta de tildes y agrego mayúscula en la categoría

@@ -52,22 +52,19 @@ class Producto
     * @return Producto[] Un array con todos los productos de la categoria en stock.
     */
 
-    public function catalogo_x_categoria(string $categoria): array
+    public function catalogo_x_categoria(int $categoria_id): array
     {
-        $resultado = [];
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM productos WHERE categoria_id = $categoria_id";
 
-        //llamo al catalogo completo
-        $catalogo = $this->catalogo_completo();
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
 
-        //recorro catalogo y me quedo con los productos
-        foreach ($catalogo as $p) {
-            if($p->filtro_por_categoria == $categoria) {
-                $resultado[] = $p; //versión reducida del push
-            }
+        $catalogo = $PDOStatement->fetchAll();
 
-        }
-
-        return $resultado;
+        return $catalogo;
+ 
     }
 
 
@@ -303,6 +300,14 @@ class Producto
     public function getFin_promocion()
     {
         return $this->fin_promocion;
+    }
+
+    /**
+     * Get the value of etiqueta_id
+     */ 
+    public function getEtiqueta_id()
+    {
+        return $this->etiqueta_id;
     }
 }
 
