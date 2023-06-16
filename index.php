@@ -1,4 +1,5 @@
 <?PHP
+require_once 'classes/Conexion.php';
 require_once 'classes/Producto.php';
 
 $seccionesValidas = [
