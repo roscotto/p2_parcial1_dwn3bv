@@ -3,24 +3,23 @@
 class Producto 
 {
     //propiedades que necesita la clase para funcionar
-    private int $id;
-    private string $filtro_por_categoria;
-    private string $categoria;
-    private string $nombre_producto;
-    private string $descripcion;
-    private string $imagen;
-    private string $imagen_2;
-    private string $imagen_3;
-    private string $alt;
-    private string $origen;
-    private string $material;
-    private string $medidas;
-    private string $peso;
-    private string $cuidado;
-    private int $stock;
-    private int $precio;
-    private string $inicio_promocion;
-    private string $fin_promocion; 
+    private $id;
+    //private string $filtro_por_categoria;
+    private $nombre_prod;
+    private $categoria_id;
+    private $imagen;
+    private $alt;
+    private $descripcion;
+    private $origen_id;
+    private $material;
+    private $medidas;
+    private $peso;
+    private $cuidado;
+    private $stock;
+    private $precio;
+    private $etiqueta_id;
+    private $inicio_promocion;
+    private $fin_promocion; 
     
     /**
      * Devuelve el catálogo completo
@@ -28,39 +27,21 @@ class Producto
      * @return array Un array de objetos clase Producto.
      */
     public function catalogo_completo(): array {
-        $catalogo = []; //creo un array vacio
+   
+        $conexion = (new Conexion())->getConexion(); //instancio la conexion para acceder al método getConexion
+        $query = "SELECT * FROM productos";
+    
+        $PDOStatement = $conexion->prepare($query); 
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute(); //ejecuto la query
 
-        $catalogoJSON = file_get_contents('datos/productos.json');   //tomo el JSON y lo guardo en una variable
-        $JSONData = json_decode($catalogoJSON); //decodifico el JSON y lo guardo en una variable - contiene un array de objetos
+        $catalogo = $PDOStatement->fetchAll(); //guardo el resultado en un array
 
-        //recorro el array de objetos y voy creando instancias de la clase Producto
-        foreach ($JSONData as $cadaProducto) {
+        echo "<pre>";
+        print_r($catalogo);
+        echo "</pre>";
 
-            $producto = new self(); //creo una nueva instancia de la clase donde estoy
-
-            //asigno los valores que tomo del JSONData a las propiedades de la instancia
-            $producto->id = $cadaProducto->id;
-            $producto->filtro_por_categoria = $cadaProducto->filtro_por_categoria;
-            $producto->categoria = $cadaProducto->categoria;
-            $producto->nombre_producto = $cadaProducto->nombre_producto;
-            $producto->descripcion = $cadaProducto->descripcion;
-            $producto->imagen = $cadaProducto->imagen;
-            $producto->imagen_2 = $cadaProducto->imagen_2;
-            $producto->imagen_3 = $cadaProducto->imagen_3;
-            $producto->alt = $cadaProducto->alt;
-            $producto->origen = $cadaProducto->origen;
-            $producto->material = $cadaProducto->material;
-            $producto->medidas = $cadaProducto->medidas;
-            $producto->peso = $cadaProducto->peso;
-            $producto->cuidado = $cadaProducto->cuidado;
-            $producto->stock = $cadaProducto->stock;
-            $producto->precio = $cadaProducto->precio;
-            $producto->inicio_promocion = $cadaProducto->inicio_promocion;        
-            $producto->fin_promocion = $cadaProducto->fin_promocion;
-            $catalogo[] = $producto; //guardo la instancia en el array
-        }
-
-        return $catalogo; //retorno el array con todas las instancias
+        return $catalogo; 
     }
 
 
@@ -203,28 +184,28 @@ class Producto
         return $this->id;
     }
 
-    /**
-     * Get the value of filtro_por_categoria
-     */ 
-    public function getFiltro_por_categoria()
-    {
-        return $this->filtro_por_categoria;
-    }
+    // /**
+    //  * Get the value of filtro_por_categoria
+    //  */ 
+    // public function getFiltro_por_categoria()
+    // {
+    //     return $this->filtro_por_categoria;
+    // }
 
     /**
      * Get the value of categoria
      */ 
-    public function getCategoria()
+    public function getCategoria_id()
     {
-        return $this->categoria;
+        return $this->categoria_id;
     }
 
     /**
      * Get the value of nombre_producto
      */ 
-    public function getNombre_producto()
+    public function getNombre_prod()
     {
-        return $this->nombre_producto;
+        return $this->nombre_prod;
     }
 
     /**
@@ -243,22 +224,7 @@ class Producto
         return $this->imagen;
     }
 
-    /**
-     * Get the value of imagen_2
-     */ 
-    public function getImagen_2()
-    {
-        return $this->imagen_2;
-    }
-
-    /**
-     * Get the value of imagen_3
-     */ 
-    public function getImagen_3()
-    {
-        return $this->imagen_3;
-    }
-
+    
     /**
      * Get the value of alt
      */ 
@@ -270,9 +236,9 @@ class Producto
     /**
      * Get the value of origen
      */ 
-    public function getOrigen()
+    public function getOrigen_id()
     {
-        return $this->origen;
+        return $this->origen_id;
     }
 
     /**
