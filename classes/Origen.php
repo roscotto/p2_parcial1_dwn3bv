@@ -1,7 +1,7 @@
-<?PHP 
+<?PHP
 
 
-class Origen 
+class Origen
 {
     private $id;
     private $nombre;
@@ -33,7 +33,7 @@ class Origen
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -41,7 +41,7 @@ class Origen
 
     /**
      * Get the value of nombre
-     */ 
+     */
     public function getNombre()
     {
         return $this->nombre;
@@ -49,7 +49,7 @@ class Origen
 
     /**
      * Get the value of continente
-     */ 
+     */
     public function getContinente()
     {
         return $this->continente;

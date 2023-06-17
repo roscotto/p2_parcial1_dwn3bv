@@ -1,7 +1,7 @@
-<?PHP 
+<?PHP
 
 
-class Categoria 
+class Categoria
 {
     private $id;
     private $nombre;
@@ -33,7 +33,7 @@ class Categoria
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -41,7 +41,7 @@ class Categoria
 
     /**
      * Get the value of nombre
-     */ 
+     */
     public function getNombre()
     {
         return $this->nombre;
@@ -49,7 +49,7 @@ class Categoria
 
     /**
      * Get the value of descripcion
-     */ 
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
@@ -57,7 +57,7 @@ class Categoria
 
     /**
      * Get the value of fecha_lanzamiento
-     */ 
+     */
     public function getFecha_lanzamiento()
     {
         return $this->fecha_lanzamiento;

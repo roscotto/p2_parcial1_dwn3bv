@@ -3,6 +3,7 @@ require_once 'classes/Conexion.php';
 require_once 'classes/Producto.php';
 require_once 'classes/Categoria.php';
 require_once 'classes/Origen.php';
+require_once 'classes/Etiqueta.php';
 
 $seccionesValidas = [
     "home" => [
@@ -118,7 +119,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     </header>
 
     <main>
-       
+
         <?PHP
 
         // Verificamos si el archivo existe, sino, redireccionamos al 404
@@ -134,9 +135,9 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
 
     <footer class="bg-grey py-lg-3 mt-5">
         <ul>
-          <li><b>Comisión:</b> DWN3BV - Parcial 1</li>
-          <li><b>Materia:</b> Programación II</li>
-          <li><b>Prof:</b> Jorge Pérez</li>
+            <li><b>Comisión:</b> DWN3BV - Parcial 1</li>
+            <li><b>Materia:</b> Programación II</li>
+            <li><b>Prof:</b> Jorge Pérez</li>
         </ul>
 
 

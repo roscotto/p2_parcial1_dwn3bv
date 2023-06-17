@@ -17,7 +17,7 @@ class Conexion
      */
     private static ?PDO $db = null;
     //private function __construct()
-    
+
     private static function conectar()
     {
 
@@ -49,7 +49,7 @@ class Conexion
     public static function getConexion(): PDO
     {
 
-        if(self::$db === null){
+        if (self::$db === null) {
             self::conectar();
         }
         return self::$db;
