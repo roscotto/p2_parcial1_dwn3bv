@@ -77,15 +77,16 @@ class Producto
     public function producto_x_id(int $id): ?Producto 
     {
 
-        $catalogo = $this->catalogo_completo();
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM productos WHERE id = $id";
 
-        foreach ($catalogo as $p) {
-            if ($p->id == $id) {
-                return $p; //como va a encontrar uno solo, que retorne ese.
-            }
-        }
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
 
-        return null; // si no lo encuentra, retorna null
+        $producto = $PDOStatement->fetch();
+
+        return $producto ?? null; //si no lo encuentra, retorna null
     }
 
 
@@ -194,7 +195,11 @@ class Producto
      */ 
     public function getCategoria_id()
     {
-        return $this->categoria_id;
+         $categoria = (new Categoria())->get_x_id($this->categoria_id);
+        
+         $nombre_categoria = $categoria->getNombre();
+
+         return $nombre_categoria;
     }
 
     /**
@@ -235,7 +240,11 @@ class Producto
      */ 
     public function getOrigen_id()
     {
-        return $this->origen_id;
+        $origen = (new Origen())->get_x_id($this->origen_id);
+        
+         $paisOrigen = $origen->getNombre();
+
+         return $paisOrigen;
     }
 
     /**

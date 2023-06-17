@@ -1,6 +1,8 @@
 <?PHP
 require_once 'classes/Conexion.php';
 require_once 'classes/Producto.php';
+require_once 'classes/Categoria.php';
+require_once 'classes/Origen.php';
 
 $seccionesValidas = [
     "home" => [

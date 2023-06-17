@@ -14,7 +14,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
-            <h2 class="fw-bold" id=""><?= $producto->getCategoria() ?></h2>
+            <h2 class="fw-bold" id=""><?= $producto->getCategoria_id() ?></h2>
 
         </div>
         <div class="col-12 d-flex">
@@ -26,10 +26,10 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                                 <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
                             </div>
                             <div class="carousel-item">
-                               <img src="./img/productos/<?= $producto->getImagen_2() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
+                               <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
                             </div>
                             <div class="carousel-item">
-                            <img src="./img/productos/<?= $producto->getImagen_3() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
+                            <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
                             </div>
 
                         </div>
@@ -47,8 +47,8 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
                 <div class="col-md-7 card-body ps-4">
 
                     <div>
-                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->getNombre_producto() ?></h3>
-                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen() ?></h4>
+                        <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->getNombre_prod() ?></h3>
+                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen_id() ?></h4>
                         <p><?= $producto->getDescripcion() ?>
                         <br>
                         <?= $producto->en_promocion() ?>
