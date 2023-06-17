@@ -1,10 +1,8 @@
 <?PHP
 $idSeleccionado = $_GET['id'] ?? FALSE;
-$objetoProducto = new Producto();
 
-
-$producto = $objetoProducto->producto_x_id($idSeleccionado);
-
+$producto = (new Producto())->producto_x_id($idSeleccionado);
+$titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria_id()));
 
 ?>
 
@@ -14,7 +12,7 @@ $producto = $objetoProducto->producto_x_id($idSeleccionado);
       
     <?PHP if(!empty($producto)) { ?>
         <div class="col-12">
-            <h2 class="fw-bold" id=""><?= $producto->getCategoria_id() ?></h2>
+            <h2 class="fw-bold" id=""><?= $titulo_categoria ?></h2>
 
         </div>
         <div class="col-12 d-flex">

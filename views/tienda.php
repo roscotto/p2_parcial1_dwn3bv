@@ -1,23 +1,19 @@
 <?PHP
-//ternario
-//$categoriaSeleccionada = isset($_GET['cat']) ? $_GET['cat'] : FALSE;
+$id_categoria = $_GET['cat'] ?? FALSE;
 
-//null coalesce
-$categoriaSeleccionada = $_GET['cat'] ?? FALSE;
+$categoria = (new Categoria())->get_x_id($id_categoria);
 
-// ahora tengo acceso a la instancia de la clase Producto
-$objetoProducto = new Producto();
+$nombre_categoria = $categoria->getNombre();
+$descripcion_categoria = $categoria->getDescripcion();
 
-if ($categoriaSeleccionada == "todos") {
-    $catalogo = $objetoProducto->catalogo_completo();
-} elseif ($categoriaSeleccionada == "ofertas") {
-    $catalogo = $objetoProducto->catalogo_precio_menor_a(5000);
+if ($id_categoria == "8") {
+    $catalogo = (new Producto())->catalogo_precio_menor_a(5000);
 } else {
-   $catalogo = $objetoProducto->catalogo_x_categoria($categoriaSeleccionada);
+   $catalogo = (new Producto())->catalogo_x_categoria($id_categoria);
 }
 
 //corrijo la falta de tildes y agrego mayúscula en la categoría
-$titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
+$titulo = ucwords(str_replace("cion", "ción", $nombre_categoria));
 
 // echo "<pre>";
 // print_r($catalogo);
@@ -30,11 +26,10 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
 <section id="filtros" class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-around mt-5">
-                    <a href="index.php?sec=tienda&cat=todos" class="btn shadow-sm btn-grey-white">Todos</a>
                     <a href="index.php?sec=tienda&cat=1" class="btn shadow-sm btn-grey-white">Decoración</a>
                     <a href="index.php?sec=tienda&cat=4" class="btn shadow-sm btn-grey-white">Yoga</a>
                     <a href="index.php?sec=tienda&cat=5" class="btn shadow-sm btn-grey-white">Meditación</a>
-                    <a href="index.php?sec=tienda&cat=ofertas" class="btn shadow-sm btn-grey-white">- $5000</a>
+                    <a href="index.php?sec=tienda&cat=8" class="btn shadow-sm btn-grey-white">-$5000</a>
                 </div>
             </div>
 </section>
@@ -48,8 +43,8 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
                 <?php
                     if ($titulo == "Todos"){
                         echo '<h2 class="ps-3"><span class="grey">Todos</span> nuestros productos</h2>';
-                    }else if ($titulo == "Ofertas"){
-                        echo '<h2 class="ps-3">Todas nuestras <span class="grey">Ofertas</span></h2>';
+                    }else if ($titulo == "Rebajas"){
+                        echo '<h2 class="ps-3">Todos nuestros <span class="grey">Productos -$5000</span></h2>';
                     }
                     else {
                     ?>    
@@ -57,18 +52,18 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
                     <?php
                     }
                     ?>
-                
+                    
             </div>
         </div>
         <div class="col-12">
             <div class="row d-flex g-3">
-
+            <p class="col-10 mx-auto"><strong><?=$descripcion_categoria?></strong></p>
                 <?PHP foreach ($catalogo as $producto) {   ?>
                     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
                         <div class="card  shadow-sm mx-auto bg-sand" style="width: 18rem;">
                             <img src="./img/productos/<?= $producto->getImagen() ?>" class=" img-fluid" alt="<?= $producto->getAlt() ?>">
                             <div class="card-body">
-                                <p class="card-text"><b><?= $producto->getCategoria_id() ?></b></p>
+                                <p class="card-text"><b><?= $titulo ?></b></p>
                                 <h3 class="card-title fs-4 fw-bold"><?= $producto->getNombre_prod() ?></h3>
                                 <p class="card-text"><?= $producto->recortar_palabras(15) ?></p>
                                 <p class="fs-3 fw-semibold"><?= $producto->precio_formateado() ?></p>
