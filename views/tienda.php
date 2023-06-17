@@ -23,16 +23,6 @@ $titulo = ucwords(str_replace("cion", "ción", $nombre_categoria));
 
 
 <!-- sección tienda-->
-<section id="filtros" class="container">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-around mt-5">
-                    <a href="index.php?sec=tienda&cat=1" class="btn shadow-sm btn-grey-white">Decoración</a>
-                    <a href="index.php?sec=tienda&cat=4" class="btn shadow-sm btn-grey-white">Yoga</a>
-                    <a href="index.php?sec=tienda&cat=5" class="btn shadow-sm btn-grey-white">Meditación</a>
-                    <a href="index.php?sec=tienda&cat=8" class="btn shadow-sm btn-grey-white">-$5000</a>
-                </div>
-            </div>
-</section>
 <section id="tienda" class="my-lg-5">
     <div class="row container mx-auto mt-4">
         <div class="col-12 my-4 text-center d-flex">
