@@ -31,9 +31,9 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
             <div class="row">
                 <div class="col-12 d-flex justify-content-around mt-5">
                     <a href="index.php?sec=tienda&cat=todos" class="btn shadow-sm btn-grey-white">Todos</a>
-                    <a href="index.php?sec=tienda&cat=decoracion" class="btn shadow-sm btn-grey-white">Decoración</a>
-                    <a href="index.php?sec=tienda&cat=yoga" class="btn shadow-sm btn-grey-white">Yoga</a>
-                    <a href="index.php?sec=tienda&cat=meditacion" class="btn shadow-sm btn-grey-white">Meditación</a>
+                    <a href="index.php?sec=tienda&cat=1" class="btn shadow-sm btn-grey-white">Decoración</a>
+                    <a href="index.php?sec=tienda&cat=4" class="btn shadow-sm btn-grey-white">Yoga</a>
+                    <a href="index.php?sec=tienda&cat=5" class="btn shadow-sm btn-grey-white">Meditación</a>
                     <a href="index.php?sec=tienda&cat=ofertas" class="btn shadow-sm btn-grey-white">- $5000</a>
                 </div>
             </div>
@@ -68,8 +68,8 @@ $titulo = ucwords(str_replace("cion", "ción", $categoriaSeleccionada));
                         <div class="card  shadow-sm mx-auto bg-sand" style="width: 18rem;">
                             <img src="./img/productos/<?= $producto->getImagen() ?>" class=" img-fluid" alt="<?= $producto->getAlt() ?>">
                             <div class="card-body">
-                                <p class="card-text"><b><?= $producto->getCategoria() ?></b></p>
-                                <h3 class="card-title fs-4 fw-bold"><?= $producto->getNombre_producto() ?></h3>
+                                <p class="card-text"><b><?= $producto->getCategoria_id() ?></b></p>
+                                <h3 class="card-title fs-4 fw-bold"><?= $producto->getNombre_prod() ?></h3>
                                 <p class="card-text"><?= $producto->recortar_palabras(15) ?></p>
                                 <p class="fs-3 fw-semibold"><?= $producto->precio_formateado() ?></p>
                                 <a href="index.php?sec=detalle_prod&id=<?= $producto->getId() ?>" class="btn shadow-sm btn-grey-white w-100">

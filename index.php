@@ -95,9 +95,9 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             <a class="nav-link active text-light" aria-current="page" href="index.php?sec=home">Inicio</a>
                             <a class="nav-link text-light" href="index.php?sec=nosotros">Nosotros</a>
 
-                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=decoracion">Decoración</a>
-                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=yoga">Yoga</a>
-                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=meditacion">Meditación</a>
+                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=1">Decoración</a>
+                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=4">Yoga</a>
+                            <a class="nav-link text-light" href="index.php?sec=tienda&cat=5">Meditación</a>
 
                             <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>
                             <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>

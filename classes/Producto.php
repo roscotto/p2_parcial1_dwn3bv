@@ -37,9 +37,9 @@ class Producto
 
         $catalogo = $PDOStatement->fetchAll(); //guardo el resultado en un array
 
-        echo "<pre>";
-        print_r($catalogo);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($catalogo);
+        // echo "</pre>";
 
         return $catalogo; 
     }

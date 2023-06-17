@@ -16,7 +16,8 @@ class Conexion
      * Propiedad de tipo PDO
      */
     private static ?PDO $db = null;
-
+    //private function __construct()
+    
     private static function conectar()
     {
 
