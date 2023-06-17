@@ -18,29 +18,7 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
         <div class="col-12 d-flex">
             <div class="row">
                 <div class="col-12 col-md-4 py-2">
-                    <div id="carouselProductos" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
-                            </div>
-                            <div class="carousel-item">
-                               <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
-                            </div>
-                            <div class="carousel-item">
-                            <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
-                            </div>
-
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Siguiente</span>
-                        </button>
-                    </div>
-
+                    <img src="./img/productos/<?= $producto->getImagen() ?>" class="img-fluid d-block w-100" alt="<?= $producto->getAlt() ?>">
                 </div>
                 <div class="col-md-7 card-body ps-4">
 

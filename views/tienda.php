@@ -47,7 +47,7 @@ $titulo = ucwords(str_replace("cion", "ción", $nombre_categoria));
         </div>
         <div class="col-12">
             <div class="row d-flex g-3">
-            <p class="col-10 mx-auto"><strong><?=$descripcion_categoria?></strong></p>
+            <p class="col-10 mx-auto p-2"><strong><?=$descripcion_categoria?></strong></p>
                 <?PHP foreach ($catalogo as $producto) {   ?>
                     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
                         <div class="card  shadow-sm mx-auto bg-sand" style="width: 18rem;">
