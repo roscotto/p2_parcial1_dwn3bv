@@ -4,7 +4,6 @@ class Producto
 {
     //propiedades que necesita la clase para funcionar
     private $id;
-    //private string $filtro_por_categoria;
     private $nombre_prod;
     private $categoria_id;
     private $imagen;
@@ -56,11 +55,13 @@ class Producto
     public function catalogo_x_categoria(int $categoria_id): array
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM productos WHERE categoria_id = $categoria_id";
+        $query = "SELECT * FROM productos WHERE categoria_id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute(
+            [$categoria_id]
+        );
 
         $catalogo = $PDOStatement->fetchAll();
 
@@ -78,11 +79,13 @@ class Producto
     {
 
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM productos WHERE id = $id";
+        $query = "SELECT * FROM productos WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute(
+            [$id]
+        );
 
         $producto = $PDOStatement->fetch();
 
@@ -182,16 +185,81 @@ class Producto
      public function buscador(string $palabraBusqueda): array
      {
          $conexion = (new Conexion())->getConexion();
-         $query = "SELECT * FROM productos WHERE nombre_prod LIKE '%$palabraBusqueda%' OR descripcion LIKE '%$palabraBusqueda%'";
+         $query = "SELECT * FROM productos WHERE nombre_prod LIKE '%?%' OR descripcion LIKE '%?%'";
  
          $PDOStatement = $conexion->prepare($query);
          $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-         $PDOStatement->execute();
+         $PDOStatement->execute(
+                [$palabraBusqueda, $palabraBusqueda]
+         );
  
          $catalogo = $PDOStatement->fetchAll();
  
          return $catalogo;
      }
+
+
+     /**
+      * Inserta un nuevo producto en la base de datos
+      * @param string $nombre_prod El nombre del producto
+      * @param int $categoria_id El ID de la categoría del producto
+      * @param string $imagen ruta a un archivo .jpg o .png
+      * @param string $alt El texto alternativo de la imagen
+      * @param string $descripcion La descripción del producto
+      * @param int $origen_id El ID del origen del producto
+      * @param string $material El material del producto
+      * @param string $medidas Las medidas del producto
+      * @param string $peso El peso del producto
+      * @param string $cuidado Las instrucciones de cuidado del producto
+      * @param int $stock La cantidad de stock del producto
+      * @param float $precio El precio del producto en formato 9999.99
+      * @param int $etiqueta_id El ID de la/s etiqueta del producto
+      * @param int $inicio_promocion La fecha de inicio de la promoción del producto en formato YYYY-MM-DD HH:MM:SS (ej 2001-03-10 17:16:18) / sino se provee se asumirá NULL
+      * @param int $fin_promocion La fecha de fin de la promoción del producto en formato YYYY-MM-DD HH:MM:SS (ej 2001-03-10 17:16:18) / sino se provee se asumirá NULL
+      */
+        public function insertar(string $nombre_prod, int $categoria_id,string $imagen, string $alt, string $descripcion, int $origen_id ,string $material, string $medidas, string $peso, string $cuidado, int $stock, float $precio, int $etiqueta_id, string $inicio_promocion, string $fin_promocion)
+        {
+            $conexion = (new Conexion())->getConexion();
+            $query = "INSERT INTO `productos` VALUES (NULL, :nombre_prod, :categoria_id, :imagen, :alt, :descripcion, :origen_id, :material, :medidas, :peso, :cuidado, :stock, :precio, :etiqueta_id, :inicio_promocion, :fin_promocion)";
+
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->execute(
+                [
+                    ':nombre_prod' => $nombre_prod,
+                    ':categoria_id' => $categoria_id,
+                    ':imagen' => $imagen,
+                    ':alt' => $alt,
+                    ':descripcion' => $descripcion,
+                    ':origen_id' => $origen_id,
+                    ':material' => $material,
+                    ':medidas' => $medidas,
+                    ':peso' => $peso,
+                    ':cuidado' => $cuidado,
+                    ':stock' => $stock,
+                    ':precio' => $precio,
+                    ':etiqueta_id' => $etiqueta_id,
+                    ':inicio_promocion' => $inicio_promocion,
+                    ':fin_promocion' => $fin_promocion
+                ]
+            );
+
+            return $conexion->lastInsertId();
+        }
+
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 

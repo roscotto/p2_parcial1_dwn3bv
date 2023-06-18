@@ -5,6 +5,13 @@ require_once 'classes/Categoria.php';
 require_once 'classes/Origen.php';
 require_once 'classes/Etiqueta.php';
 
+
+$botonesCategorias = (new Categoria())->listar_categorias();
+
+// echo "<pre>";
+// print_r($botonesCategorias);
+// echo "</pre>";
+
 $seccionesValidas = [
     "home" => [
         "titulo" => "Bienvenidos"
@@ -115,11 +122,11 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                                 <ul class="dropdown-menu bg-orange">
                                     <li><a class="dropdown-item text-light" href="index.php?sec=catalogo_completo">Catálogo completo</a></li>
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=1">Decoración</a></li>
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=4">Yoga</a>
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=5">Meditación</a>
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=8">Rebajas</a>
-                                </ul>
+                                    
+                                    <?PHP foreach ($botonesCategorias as $categoria) { ?>
+                                        <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></a></li>
+                                    <?PHP } ?>
+</ul>
                             </li>
 
                             <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>

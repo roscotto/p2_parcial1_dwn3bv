@@ -30,6 +30,24 @@ class Categoria
     }
 
 
+    /**
+     * Método que lista las categorías de la base de datos
+     * @return array
+     */
+    public function listar_categorias(): array 
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT DISTINCT categoria.id, categoria.nombre FROM productos JOIN categoria ON productos.id = categoria.id;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+
+        $listaCategorias = $PDOStatement->fetchAll();
+
+        return $listaCategorias;
+    }
+
 
     /**
      * Get the value of id
