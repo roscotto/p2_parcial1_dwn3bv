@@ -16,7 +16,6 @@ class Producto
     private $cuidado;
     private $stock;
     private $precio;
-    private $etiqueta;
     private $inicio_promocion;
     private $fin_promocion;
 
@@ -90,7 +89,7 @@ class Producto
 
         $producto->categoria = (new Categoria())->get_x_id($productoData['categoria_id']);
         $producto->origen = (new Origen())->get_x_id($productoData['origen_id']);
-        $producto->etiqueta = (new Etiqueta())->get_x_id($productoData['etiqueta_id']);
+        
 
 
 
@@ -426,12 +425,5 @@ class Producto
         return $this->fin_promocion;
     }
 
-    /**
-     * Get the value of etiqueta_id
-     */
-    public function getEtiqueta()
-    {
-                 
-        return $this->etiqueta->getNombre_etiqueta();
-    }
+   
 }
