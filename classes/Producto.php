@@ -170,6 +170,32 @@ class Producto
         return $cadena;
     }
 
+
+
+    /**
+     * Método buscador de productos por string en el nombre del producto y en la descripción
+     * @param string $palabraBusqueda Un string con la búsqueda del usuario
+     *  
+     * @return Producto[] Un array con todos los productos que coincidan con la búsqueda.
+     */
+
+     public function buscador(string $palabraBusqueda): array
+     {
+         $conexion = (new Conexion())->getConexion();
+         $query = "SELECT * FROM productos WHERE nombre_prod LIKE '%$palabraBusqueda%' OR descripcion LIKE '%$palabraBusqueda%'";
+ 
+         $PDOStatement = $conexion->prepare($query);
+         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+         $PDOStatement->execute();
+ 
+         $catalogo = $PDOStatement->fetchAll();
+ 
+         return $catalogo;
+     }
+
+
+
+
     /* GETTERS */
 
     /**

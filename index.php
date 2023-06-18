@@ -27,6 +27,9 @@ $seccionesValidas = [
     "datos_alumnos" => [
         "titulo" => "Alumnos"
     ],
+    "catalogo_completo" => [
+        "titulo" => "Catálogo completo"
+    ]
 ];
 
 //voy a pasar un parámetro que me va decir qué sección está cargando el sitio
@@ -104,7 +107,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                                 <ul class="dropdown-menu bg-orange">
-                                    <li><a class="dropdown-item text-light" href="#">Catálogo completo</a></li>
+                                    <li><a class="dropdown-item text-light" href="index.php?sec=catalogo_completo">Catálogo completo</a></li>
                                     <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=1">Decoración</a></li>
                                     <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=4">Yoga</a>
                                     <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=5">Meditación</a>
