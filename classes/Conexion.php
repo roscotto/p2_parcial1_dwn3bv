@@ -23,7 +23,7 @@ class Conexion
 
         try {
             self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            //echo "<p>Acabo de crear una conexion para poder traer datos! =D</p>";
+          
         } catch (Exception $e) {
 
             //bloque con detalle de error
