@@ -80,6 +80,12 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
             </div>
 
             <div class="align-self-end d-flex ">
+                <div class="pe-3">
+                    <form class="d-flex" role="search" action="actions/procesar_busqueda.php" method="get">
+                        <input class="form-control me-2" type="search" aria-label="Search" name="q" placeholder="Buscar productos">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
                 <div class="mt-3 mt-md-4 mt-lg-2 ">
 
                     <button type="button" class="btn text-light position-relative ">
@@ -92,6 +98,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                         </span>
                     </button>
                 </div>
+
                 <div>
                     <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon navbar-dark"></span>
@@ -114,7 +121,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                     <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=8">Rebajas</a>
                                 </ul>
                             </li>
-                            
+
                             <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>
                             <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
                             <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
