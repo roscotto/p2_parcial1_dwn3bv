@@ -17,11 +17,13 @@ class Categoria
     public function get_x_id(int $id): ?Categoria
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM categoria WHERE id = $id";
+        $query = "SELECT * FROM categoria WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute(
+            [$id]
+        );
 
         $categoria = $PDOStatement->fetch();
 

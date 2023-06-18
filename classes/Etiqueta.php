@@ -14,11 +14,13 @@ class Etiqueta
     public function get_x_id(int $id): ?Etiqueta
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM etiquetas WHERE id = $id";
+        $query = "SELECT * FROM etiquetas WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute(
+            [$id]
+        );
 
         $etiqueta = $PDOStatement->fetch();
 

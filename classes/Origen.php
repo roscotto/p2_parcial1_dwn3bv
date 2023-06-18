@@ -17,11 +17,13 @@ class Origen
     public function get_x_id(int $id): ?Origen
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM origen WHERE id = $id";
+        $query = "SELECT * FROM origen WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute(
+            [$id]
+        );
 
         $categoria = $PDOStatement->fetch();
 
