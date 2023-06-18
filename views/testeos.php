@@ -5,6 +5,9 @@ echo "<pre>";
 print_r($producto);
 echo "</pre>";
 
+echo "<pre>";
+print_r(Producto::$createValues);
+echo "</pre>";
 ?>
 
 <div class=" d-flex justify-content-center p-5">

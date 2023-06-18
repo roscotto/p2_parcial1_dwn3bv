@@ -16,12 +16,12 @@ class Conexion
      * Propiedad de tipo PDO
      */
     private static ?PDO $db = null;
-    //private function __construct()
-
+   
     private static function conectar()
     {
 
         try {
+            //se hace referencia la definición de la clase y no a la instancia
             self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
           
         } catch (Exception $e) {
@@ -48,10 +48,11 @@ class Conexion
      */
     public static function getConexion(): PDO
     {
-
+        //si es la primera vez que se llama al método, se crea la conexión
         if (self::$db === null) {
             self::conectar();
         }
+        //si ya existe una conexión, la devuelve (no crea una nueva)
         return self::$db;
     }
 }

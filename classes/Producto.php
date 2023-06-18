@@ -19,7 +19,7 @@ class Producto
     private $inicio_promocion;
     private $fin_promocion;
 
-    private $createValues = ['id', 'nombre_prod', 'imagen', 'alt', 'descripcion', 'material', 'medidas', 'peso', 'cuidado', 'stock', 'precio', 'inicio_promocion', 'fin_promocion'];
+    private static $createValues = ['id', 'nombre_prod', 'imagen', 'alt', 'descripcion', 'material', 'medidas', 'peso', 'cuidado', 'stock', 'precio', 'inicio_promocion', 'fin_promocion'];
     
     /**
      * Devuelve el catálogo completo
@@ -83,7 +83,7 @@ class Producto
         $producto = new self();
         //Configuracion de las propiedades del objeto
         //por cada elemento del array asociativo, le asigno el valor a la propiedad correspondiente
-        foreach ($this->createValues as $value) {
+        foreach (self::$createValues as $value) {
             $producto->{$value} = $productoData[$value];
         }
 
@@ -426,4 +426,6 @@ class Producto
     }
 
    
+
+    
 }

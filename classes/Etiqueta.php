@@ -28,6 +28,12 @@ class Etiqueta
         return $etiqueta ?? null; //si no lo encuentra, retorna null
     }
 
+
+
+
+
+
+    
     /**
      * Get the value of id
      */
