@@ -29,7 +29,7 @@ class Producto
     public function catalogo_completo(): array
     {
 
-        $conexion = (new Conexion())->getConexion(); //instancio la conexion para acceder al método getConexion
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM productos";
 
         $PDOStatement = $conexion->prepare($query);
@@ -57,7 +57,7 @@ class Producto
     {
         $catalogo = [];
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM productos WHERE categoria_id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -110,7 +110,7 @@ class Producto
     public function producto_x_id(int $id): ?Producto
     {
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM productos WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -216,7 +216,7 @@ class Producto
 
      public function buscador(string $palabraBusqueda): array
      {
-         $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
          $query = "SELECT * FROM productos WHERE nombre_prod LIKE CONCAT('%', ?, '%') OR descripcion LIKE CONCAT('%', ?, '%')";
  
          $PDOStatement = $conexion->prepare($query);
@@ -251,7 +251,7 @@ class Producto
       */
         public function insertar(string $nombre_prod, int $categoria_id,string $imagen, string $alt, string $descripcion, int $origen_id ,string $material, string $medidas, string $peso, string $cuidado, int $stock, float $precio, int $etiqueta_id, string $inicio_promocion, string $fin_promocion)
         {
-            $conexion = (new Conexion())->getConexion();
+            $conexion = Conexion::getConexion();
             $query = "INSERT INTO `productos` VALUES (NULL, :nombre_prod, :categoria_id, :imagen, :alt, :descripcion, :origen_id, :material, :medidas, :peso, :cuidado, :stock, :precio, :etiqueta_id, :inicio_promocion, :fin_promocion)";
 
             $PDOStatement = $conexion->prepare($query);

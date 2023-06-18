@@ -14,7 +14,7 @@ class Etiqueta
      */
     public function get_x_id(int $id): ?Etiqueta
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM etiquetas WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -33,7 +33,7 @@ class Etiqueta
 
 
 
-    
+
     /**
      * Get the value of id
      */

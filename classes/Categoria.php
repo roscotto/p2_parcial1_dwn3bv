@@ -16,7 +16,7 @@ class Categoria
      */
     public function get_x_id(int $id): ?Categoria
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM categoria WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -38,7 +38,7 @@ class Categoria
      */
     public function listar_categorias(): array 
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT DISTINCT categoria.id, categoria.nombre FROM productos JOIN categoria ON productos.id = categoria.id;";
 
         $PDOStatement = $conexion->prepare($query);
