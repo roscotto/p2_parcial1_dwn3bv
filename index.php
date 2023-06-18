@@ -1,9 +1,5 @@
 <?PHP
-require_once 'classes/Conexion.php';
-require_once 'classes/Producto.php';
-require_once 'classes/Categoria.php';
-require_once 'classes/Origen.php';
-require_once 'classes/Etiqueta.php';
+require_once "functions/autoload.php";
 
 
 $botonesCategorias = (new Categoria())->listar_categorias();
