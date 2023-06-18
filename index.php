@@ -32,6 +32,9 @@ $seccionesValidas = [
     ],
     "catalogo_completo" => [
         "titulo" => "Catálogo completo"
+    ],
+    "testeos" => [
+        "titulo" => "Página de pruebas"
     ]
 ];
 

@@ -2,7 +2,7 @@
 $idSeleccionado = $_GET['id'] ?? FALSE;
 
 $producto = (new Producto())->producto_x_id($idSeleccionado);
-$titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria_id()));
+$titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria()));
 
 ?>
 
@@ -24,7 +24,7 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
 
                     <div>
                         <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->getNombre_prod() ?></h3>
-                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen_id() ?></h4>
+                        <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen() ?></h4>
                         <p><?= $producto->getDescripcion() ?>
                         <br>
                         <?= $producto->en_promocion() ?>

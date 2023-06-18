@@ -10,6 +10,7 @@ class Etiqueta
     /**
      * Devuelve los datos de una etiqueta en particular
      * @param int $id El ID de la etiqueta
+     * @return ?Etiqueta El objeto Etiqueta o null si no lo encuentra
      */
     public function get_x_id(int $id): ?Etiqueta
     {

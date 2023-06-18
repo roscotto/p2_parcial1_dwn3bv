@@ -5,21 +5,23 @@ class Producto
     //propiedades que necesita la clase para funcionar
     private $id;
     private $nombre_prod;
-    private $categoria_id;
+    private $categoria;
     private $imagen;
     private $alt;
     private $descripcion;
-    private $origen_id;
+    private $origen;
     private $material;
     private $medidas;
     private $peso;
     private $cuidado;
     private $stock;
     private $precio;
-    private $etiqueta_id;
+    private $etiqueta;
     private $inicio_promocion;
     private $fin_promocion;
 
+    private $createValues = ['id', 'nombre_prod', 'imagen', 'alt', 'descripcion', 'material', 'medidas', 'peso', 'cuidado', 'stock', 'precio', 'inicio_promocion', 'fin_promocion'];
+    
     /**
      * Devuelve el catálogo completo
      * 
@@ -54,19 +56,50 @@ class Producto
 
     public function catalogo_x_categoria(int $categoria_id): array
     {
+        $catalogo = [];
+
         $conexion = (new Conexion())->getConexion();
         $query = "SELECT * FROM productos WHERE categoria_id = ?";
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(
             [$categoria_id]
         );
 
-        $catalogo = $PDOStatement->fetchAll();
+        while ($result = $PDOStatement->fetch()) {
+            $catalogo[] = $this->crear_producto($result);
+        }
 
         return $catalogo;
     }
+
+    /**
+     * Crea una instancia del objeto Producto a partir de un array asociativo, configurando sus propiedades
+     * @param array $productoData Un array asociativo con los datos del producto
+     * @return Producto Un objeto Producto
+     */
+    private function crear_producto($productoData): Producto
+    {
+        $producto = new self();
+        //Configuracion de las propiedades del objeto
+        //por cada elemento del array asociativo, le asigno el valor a la propiedad correspondiente
+        foreach ($this->createValues as $value) {
+            $producto->{$value} = $productoData[$value];
+        }
+
+        $producto->categoria = (new Categoria())->get_x_id($productoData['categoria_id']);
+        $producto->origen = (new Origen())->get_x_id($productoData['origen_id']);
+        $producto->etiqueta = (new Etiqueta())->get_x_id($productoData['etiqueta_id']);
+
+
+
+        return $producto;
+
+    }
+
+
+
 
 
     /**
@@ -82,12 +115,12 @@ class Producto
         $query = "SELECT * FROM productos WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(
             [$id]
         );
 
-        $producto = $PDOStatement->fetch();
+        $producto = $this->crear_producto($PDOStatement->fetch());
 
         return $producto ?? null; //si no lo encuentra, retorna null
     }
@@ -274,24 +307,15 @@ class Producto
         return $this->id;
     }
 
-    // /**
-    //  * Get the value of filtro_por_categoria
-    //  */ 
-    // public function getFiltro_por_categoria()
-    // {
-    //     return $this->filtro_por_categoria;
-    // }
+    
 
     /**
      * Get the value of categoria
      */
-    public function getCategoria_id()
+    public function getCategoria()
     {
-        $categoria = (new Categoria())->get_x_id($this->categoria_id);
-
-        $nombre_categoria = $categoria->getNombre();
-
-        return $nombre_categoria;
+   
+        return $this->categoria->getNombre();
     }
 
     /**
@@ -330,13 +354,12 @@ class Producto
     /**
      * Get the value of origen
      */
-    public function getOrigen_id()
+    public function getOrigen()
     {
-        $origen = (new Origen())->get_x_id($this->origen_id);
-
-        $paisOrigen = $origen->getNombre();
-
-        return $paisOrigen;
+    
+        
+        return $this->origen->getNombre();
+    
     }
 
     /**
@@ -406,13 +429,9 @@ class Producto
     /**
      * Get the value of etiqueta_id
      */
-    public function getEtiqueta_id()
+    public function getEtiqueta()
     {
-        $etiqueta = (new Etiqueta())->get_x_id($this->etiqueta_id);
-
-        $nombreEtiqueta = $etiqueta->getNombre_etiqueta();
-
-        return $nombreEtiqueta;
-               
+                 
+        return $this->etiqueta->getNombre_etiqueta();
     }
 }
