@@ -28,6 +28,16 @@ pre {
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+table {
+    border:thin solid rgb(186, 186, 186);
+    border-radius: 1em;
+    background-color: rgb(252, 252, 252);
+    margin: 1em;
+    padding: 1em;
+    color: rgb(44, 44, 44);
+}
+
+
 /**/
 .grey {
     color: #8EA3A6;

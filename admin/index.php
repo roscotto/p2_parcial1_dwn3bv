@@ -2,9 +2,6 @@
 require_once "../functions/autoload.php";
 
 
-$botonesCategorias = (new Categoria())->listar_categorias();
-
-
 $seccionesValidas = [
     "dashboard" => [
         "titulo" => "Panel de Administración"

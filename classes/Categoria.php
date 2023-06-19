@@ -34,12 +34,12 @@ class Categoria
 
     /**
      * Método que lista las categorías de la base de datos
-     * @return array
+     * @return Categoria[] Un array de objetos Categoria
      */
     public function listar_categorias(): array 
     {
         $conexion = Conexion::getConexion();
-        $query = "SELECT DISTINCT categoria.id, categoria.nombre FROM productos JOIN categoria ON productos.id = categoria.id;";
+        $query = "SELECT DISTINCT categoria.id, categoria.nombre, categoria.descripcion, categoria.fecha_lanzamiento FROM productos JOIN categoria ON productos.id = categoria.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -49,6 +49,36 @@ class Categoria
 
         return $listaCategorias;
     }
+
+
+    //CRUD
+
+    /**
+     * Método que crea / inserta una categoría en la base de datos
+     * @param string $nombre
+     * @param string $descripcion
+     * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @return bool
+     */
+    public function crear(string $nombre, string $descripcion, string $fecha_lanzamiento)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `fecha_lanzamiento`) VALUES (NULL, :nombre, :descripcion, :fecha_lanzamiento)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
+                'fecha_lanzamiento' => $fecha_lanzamiento
+            ]
+        );
+        
+    }
+
+
+
+
 
 
     /**
