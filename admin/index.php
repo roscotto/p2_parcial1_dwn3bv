@@ -18,6 +18,18 @@ $seccionesValidas = [
     "delete_categoria_form" => [
         "titulo" => "Eliminar Categoría"
     ],
+    "admin_origen" => [
+        "titulo" => "Administración de Categorías"
+    ],
+    "add_origen_form" => [
+        "titulo" => "Agregar nuevo País de Origen"
+    ],
+    "edit_origen_form" => [
+        "titulo" => "Editar País de Origen existente"
+    ],
+    "delete_origen_form" => [
+        "titulo" => "Eliminar País de Origen"
+    ],
 ];
     
 $seccion = $_GET['sec'] ?? "dashboard";
@@ -73,6 +85,9 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_categorias">Categorías</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_origen">Origen</a>
                             </li>
                             
                         </div>

@@ -32,6 +32,93 @@ class Origen
     }
 
 
+    
+    /**
+     * Método que lista los país de origen de la base de datos
+     * @return Origen[] Un array de objetos Origen
+     */
+    public function listar_origen(): array 
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT DISTINCT origen.id, origen.nombre, origen.continente FROM productos JOIN origen ON productos.id = origen.id;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+
+        $listaOrigen = $PDOStatement->fetchAll();
+
+        return $listaOrigen;
+    }
+
+
+    //CRUD
+
+    /**
+     * Método que crea / inserta un país en la base de datos
+     * @param string $nombre
+     * @param string $continente
+     */
+    public function crear(string $nombre, string $continente)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `origen` (`id`, `nombre`, `continente`) VALUES (NULL, :nombre, :continente)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre' => $nombre,
+                'continente' => $continente
+            ]
+        );
+        
+    }
+    
+
+    /**
+     * Método que actualiza los datos de una categoría en la base de datos
+     * @param int $id
+     * @param string $nombre
+     * @param string $continente
+     */
+    public function editar( int $id, string $nombre, string $continente)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `origen` SET nombre = :nombre, continente = :continente WHERE origen.id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $id,
+                'nombre' => $nombre,
+                'continente' => $continente
+            ]
+        );
+        
+    }
+
+
+    /**
+     * Método que elimina instancia de la base de datos
+     */
+    public function eliminar($id)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM `origen` WHERE `origen`.`id` = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                $id
+            ]
+        );
+        
+    }
+
+
+
+
+
 
     /**
      * Get the value of id
