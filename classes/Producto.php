@@ -217,15 +217,19 @@ class Producto
      public function buscador(string $palabraBusqueda): array
      {
         $conexion = Conexion::getConexion();
-         $query = "SELECT * FROM productos WHERE nombre_prod LIKE CONCAT('%', ?, '%') OR descripcion LIKE CONCAT('%', ?, '%')";
+         $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
  
          $PDOStatement = $conexion->prepare($query);
-         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
          $PDOStatement->execute(
-                [$palabraBusqueda, $palabraBusqueda]
+                [
+                    'palabraBusqueda' => "%$palabraBusqueda%"
+                ]
          );
  
-         $catalogo = $PDOStatement->fetchAll();
+         while ($result = $PDOStatement->fetch()) {
+            $catalogo[] = $this->crear_producto($result);
+        }
  
          return $catalogo;
      }

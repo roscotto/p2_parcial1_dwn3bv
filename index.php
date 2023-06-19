@@ -35,6 +35,9 @@ $seccionesValidas = [
     ],
     "testeos" => [
         "titulo" => "Página de pruebas"
+    ],
+    "resultado_busqueda" => [
+        "titulo" => "Resultado de búsqueda"
     ]
 ];
 

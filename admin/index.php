@@ -9,6 +9,9 @@ $seccionesValidas = [
     "admin_categorias" => [
         "titulo" => "Administración de Categorías"
     ],
+    "add_categoria_form" => [
+        "titulo" => "Agregar nueva Categoría"
+    ],
 ];
     
 $seccion = $_GET['sec'] ?? "dashboard";
