@@ -76,6 +76,30 @@ class Categoria
         
     }
 
+    /**
+     * Método que actualiza los datos de una categoría en la base de datos
+     * @param string $nombre
+     * @param string $descripcion
+     * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @return bool
+     */
+    public function editar( int $id, string $nombre, string $descripcion, string $fecha_lanzamiento)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `categoria` SET nombre = :nombre, descripcion = :descripcion, fecha_lanzamiento = :fecha_lanzamiento WHERE categoria.id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $id,
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
+                'fecha_lanzamiento' => $fecha_lanzamiento
+            ]
+        );
+        
+    }
+
 
 
 

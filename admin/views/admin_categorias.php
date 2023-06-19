@@ -38,7 +38,7 @@ $listaCategorias = (new Categoria())->listar_categorias();
                         <td><?=$c->getDescripcion()?></td>
                         <td><?=$c->getFecha_lanzamiento()?></td>
                         <td class="flex-column align-items-stretch">
-                            <div class="p-2"><a href="#" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
+                            <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?=$c->getId()?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
                             <div class="p-2"><a href="#" class="ps-3"><img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
                         </td>
                         

@@ -92,7 +92,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                 <div class="pe-3">
                     <form class="d-flex" role="search" action="actions/procesar_busqueda.php" method="get">
                         <input class="form-control me-2" type="search" aria-label="Search" name="q" placeholder="Buscar productos">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <button class="btn btn-light" type="submit">Buscar</button>
                     </form>
                 </div>
                 <div class="mt-3 mt-md-4 mt-lg-2 ">
