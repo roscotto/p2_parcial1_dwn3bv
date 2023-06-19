@@ -39,7 +39,7 @@ class Categoria
     public function listar_categorias(): array 
     {
         $conexion = Conexion::getConexion();
-        $query = "SELECT DISTINCT categoria.id, categoria.nombre, categoria.descripcion, categoria.fecha_lanzamiento FROM productos JOIN categoria ON productos.id = categoria.id;";
+        $query = "SELECT DISTINCT categoria.id, categoria.nombre, categoria.descripcion, categoria.fecha_lanzamiento FROM productos RIGHT JOIN categoria ON productos.id = categoria.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

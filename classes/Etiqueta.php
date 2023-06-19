@@ -29,6 +29,85 @@ class Etiqueta
     }
 
 
+    /**
+     * Método que lista las etiquetas de la base de datos
+     * @return Etiqueta[] Un array de objetos Etiqueta
+     */
+    public function listar_etiquetas(): array 
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM etiquetas;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+
+        $listaEtiquetas = $PDOStatement->fetchAll();
+
+        return $listaEtiquetas;
+    }
+
+
+    //CRUD
+
+    /**
+     * Método que crea / inserta una etiqueta en la base de datos
+     * @param string $nombre_etiqueta
+     */
+    public function crear(string $nombre_etiqueta)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `etiquetas` (`id`, `nombre_etiqueta`) VALUES (NULL, :nombre_etiqueta)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre_etiqueta' => $nombre_etiqueta,
+            ]
+        );
+        
+    }
+    
+
+    /**
+     * Método que actualiza los datos de una etiqueta en la base de datos
+     * @param int $id
+     * @param string $nombre_etiqueta
+     * @param string $icono_etiq
+     */
+    public function editar( int $id, string $nombre_etiqueta, string $icono_etiq)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `etiquetas` SET nombre_etiqueta = :nombre_etiqueta, icono_etiq = :icono_etiq WHERE etiquetas.id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $id,
+                'nombre_etiqueta' => $nombre_etiqueta,
+                'icono_etiq' => $icono_etiq
+            ]
+        );
+        
+    }
+    
+
+    /**
+     * Método que elimina instancia de la base de datos
+     */
+    public function eliminar($id)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM `etiquetas` WHERE `etiquetas`.`id` = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                $id
+            ]
+        );
+        
+    }
 
 
 

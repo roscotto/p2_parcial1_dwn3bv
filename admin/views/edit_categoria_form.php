@@ -32,10 +32,7 @@ $categoria = (new Categoria())->get_x_id($idCategoria);
                                 <div class="form-text">Seleccionar fecha y hora del momento de la carga.</div>
                             </div>
                         </div>
-                    <!-- </div class="col-4">
-                        <label for="imagen" class="form-label">Reemplazar imagen</label>
-                        <input type="file" class="form-control" id="imagen" name="imagen">
-                    <div> -->
+                    
 
                     </div>
                     <div class="col-12">

@@ -30,6 +30,18 @@ $seccionesValidas = [
     "delete_origen_form" => [
         "titulo" => "Eliminar País de Origen"
     ],
+    "admin_etiquetas" => [
+        "titulo" => "Administración de Etiquetas"
+    ],
+    "add_etiqueta_form" => [
+        "titulo" => "Agregar nueva Etiqueta"
+    ],
+    "edit_etiqueta_form" => [
+        "titulo" => "Editar Etiqueta existente"
+    ],
+    "delete_etiqueta_form" => [
+        "titulo" => "Eliminar Etiqueta"
+    ],
 ];
     
 $seccion = $_GET['sec'] ?? "dashboard";
@@ -89,6 +101,9 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             <li class="nav-item">
                                 <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_origen">Origen</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_etiquetas">Etiquetas</a>
+                            </li>
                             
                         </div>
                     </div>
@@ -120,7 +135,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
 
     <footer class="bg-grey py-lg-3 mt-5">
         <ul>
-            <li><b>Comisión:</b> DWN3BV - Parcial 1</li>
+            <li><b>Comisión:</b> DWN3BV - Parcial 2</li>
             <li><b>Materia:</b> Programación II</li>
             <li><b>Prof:</b> Jorge Pérez</li>
         </ul>
