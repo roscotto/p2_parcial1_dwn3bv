@@ -78,10 +78,10 @@ class Categoria
 
     /**
      * Método que actualiza los datos de una categoría en la base de datos
+     * @param int $id
      * @param string $nombre
      * @param string $descripcion
      * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
-     * @return bool
      */
     public function editar( int $id, string $nombre, string $descripcion, string $fecha_lanzamiento)
     {
@@ -100,6 +100,23 @@ class Categoria
         
     }
 
+
+    /**
+     * Método que elimina instancia de la base de datos
+     */
+    public function eliminar($id)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM `categoria` WHERE `categoria`.`id` = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                $id
+            ]
+        );
+        
+    }
 
 
 

@@ -15,6 +15,9 @@ $seccionesValidas = [
     "edit_categoria_form" => [
         "titulo" => "Editar Categoría existente"
     ],
+    "delete_categoria_form" => [
+        "titulo" => "Eliminar Categoría"
+    ],
 ];
     
 $seccion = $_GET['sec'] ?? "dashboard";
