@@ -1,6 +1,8 @@
 <?PHP
 $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
-
+// echo "<pre>";
+// print_r($listaEtiquetas);
+// echo "</pre>";
 ?>
 
 
@@ -23,22 +25,23 @@ $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th scope="col" width="10%">ID</th>
-                        <th scope="col">Nombre</th>
                         <th scope="col">Icono</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?PHP foreach ($listaEtiquetas as $c) { ?>
                         <tr class="align-middle">
-                            <td><?= $c->getId() ?></td>
+                            <td width="15%">
+                                <img src="../img/etiquetas/<?= $c->getIcono_etiq() ?>" alt="ícono que representa a la etiqueta <?= $c->getNombre_etiqueta() ?>" class="img-fluid ps-4">
+                            </td>
                             <td><?= $c->getNombre_etiqueta() ?></td>
-                            <td><?= $c->getIcono_etiq() ?></td>
                             <td class="flex-column align-items-stretch">
-                                <div class="p-2"><a href="index.php?sec=edit_etiqueta_form&id=<?= $c->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
+                                <div class="p-2"><a href="index.php?sec=edit_etiqueta_form&id=<?= $c->getId() ?>" class="ps-3"><img src="../img/iconos/icon-edit.png" alt="editar"></a></div>
                                 <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                                <img src="../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                                
                             </td>
 
                         </tr>
