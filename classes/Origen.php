@@ -77,11 +77,10 @@ class Origen
 
     /**
      * Método que actualiza los datos de una categoría en la base de datos
-     * @param int $id
      * @param string $nombre
      * @param string $continente
      */
-    public function editar( int $id, string $nombre, string $continente)
+    public function editar(string $nombre, string $continente)
     {
         $conexion = Conexion::getConexion();
         $query = "UPDATE `origen` SET nombre = :nombre, continente = :continente WHERE origen.id = :id";
@@ -89,7 +88,7 @@ class Origen
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
-                'id' => $id,
+                'id' => $this->id,
                 'nombre' => $nombre,
                 'continente' => $continente
             ]

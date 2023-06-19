@@ -76,14 +76,38 @@ class Categoria
         
     }
 
+    // /**
+    //  * Método que actualiza los datos de una categoría en la base de datos
+    //  * @param int $id
+    //  * @param string $nombre
+    //  * @param string $descripcion
+    //  * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
+    //  */
+    // public function editar( int $id, string $nombre, string $descripcion, string $fecha_lanzamiento)
+    // {
+    //     $conexion = Conexion::getConexion();
+    //     $query = "UPDATE `categoria` SET nombre = :nombre, descripcion = :descripcion, fecha_lanzamiento = :fecha_lanzamiento WHERE categoria.id = :id";
+
+    //     $PDOStatement = $conexion->prepare($query);
+    //     $PDOStatement->execute(
+    //         [
+    //             'id' => $id,
+    //             'nombre' => $nombre,
+    //             'descripcion' => $descripcion,
+    //             'fecha_lanzamiento' => $fecha_lanzamiento
+    //         ]
+    //     );
+        
+    // }
+
+
     /**
      * Método que actualiza los datos de una categoría en la base de datos
-     * @param int $id
      * @param string $nombre
      * @param string $descripcion
      * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
      */
-    public function editar( int $id, string $nombre, string $descripcion, string $fecha_lanzamiento)
+    public function editar( string $nombre, string $descripcion, string $fecha_lanzamiento)
     {
         $conexion = Conexion::getConexion();
         $query = "UPDATE `categoria` SET nombre = :nombre, descripcion = :descripcion, fecha_lanzamiento = :fecha_lanzamiento WHERE categoria.id = :id";
@@ -91,7 +115,7 @@ class Categoria
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
-                'id' => $id,
+                'id' => $this->id,
                 'nombre' => $nombre,
                 'descripcion' => $descripcion,
                 'fecha_lanzamiento' => $fecha_lanzamiento
@@ -99,7 +123,6 @@ class Categoria
         );
         
     }
-
 
     /**
      * Método que elimina instancia de la base de datos

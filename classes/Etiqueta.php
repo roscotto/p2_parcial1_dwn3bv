@@ -71,11 +71,10 @@ class Etiqueta
 
     /**
      * Método que actualiza los datos de una etiqueta en la base de datos
-     * @param int $id
      * @param string $nombre_etiqueta
      * @param string $icono_etiq
      */
-    public function editar( int $id, string $nombre_etiqueta, string $icono_etiq)
+    public function editar(string $nombre_etiqueta, string $icono_etiq)
     {
         $conexion = Conexion::getConexion();
         $query = "UPDATE `etiquetas` SET nombre_etiqueta = :nombre_etiqueta, icono_etiq = :icono_etiq WHERE etiquetas.id = :id";
@@ -83,7 +82,7 @@ class Etiqueta
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
-                'id' => $id,
+                'id' => $this->id,
                 'nombre_etiqueta' => $nombre_etiqueta,
                 'icono_etiq' => $icono_etiq
             ]

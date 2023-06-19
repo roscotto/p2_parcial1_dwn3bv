@@ -3,12 +3,11 @@ require_once '../../functions/autoload.php';
 
 $idEtiqueta = $_GET['id'] ?? FALSE;
 
-$etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
-
 
 
 try {
-    (new Etiqueta())->eliminar($idEtiqueta);
+    $etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
+    $etiqueta->eliminar($idEtiqueta);
     
     header('Location: ../index.php?sec=admin_etiquetas');
  } catch (\Exception $e) {

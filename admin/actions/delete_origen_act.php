@@ -3,12 +3,10 @@ require_once '../../functions/autoload.php';
 
 $idPaisOrigen = $_GET['id'] ?? FALSE;
 
-$origen = (new Origen())->get_x_id($idPaisOrigen);
-
-
 
 try {
-    (new Origen())->eliminar($idPaisOrigen);
+     $origen = (new Origen())->get_x_id($idPaisOrigen);
+     $origen->eliminar($idPaisOrigen);
     
     header('Location: ../index.php?sec=admin_origen');
  } catch (\Exception $e) {
