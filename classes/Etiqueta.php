@@ -53,16 +53,18 @@ class Etiqueta
     /**
      * Método que crea / inserta una etiqueta en la base de datos
      * @param string $nombre_etiqueta
+     * @param string $icono_etiq Ruta a un archivo .png 
      */
-    public function crear(string $nombre_etiqueta)
+    public function crear(string $nombre_etiqueta, string $icono_etiq)
     {
         $conexion = Conexion::getConexion();
-        $query = "INSERT INTO `etiquetas` (`id`, `nombre_etiqueta`) VALUES (NULL, :nombre_etiqueta)";
+        $query = "INSERT INTO `etiquetas` (`id`, `nombre_etiqueta`, `icono_etiq`) VALUES (NULL, :nombre_etiqueta, :icono_etiq)";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
                 'nombre_etiqueta' => $nombre_etiqueta,
+                'icono_etiq' => $icono_etiq
             ]
         );
         
