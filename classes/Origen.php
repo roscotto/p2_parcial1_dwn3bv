@@ -40,7 +40,7 @@ class Origen
     public function listar_origen(): array 
     {
         $conexion = Conexion::getConexion();
-        $query = "SELECT DISTINCT origen.id, origen.nombre, origen.continente FROM productos JOIN origen ON productos.id = origen.id;";
+        $query = "SELECT DISTINCT origen.id, origen.nombre, origen.continente FROM productos RIGHT JOIN origen ON productos.id = origen.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

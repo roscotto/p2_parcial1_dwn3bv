@@ -12,7 +12,7 @@ $listaPaisesOrigen = (new Origen())->listar_origen();
             </div>
             <div class="col-3">
                 <div class="d-flex text-center p-3 mt-4 align-items-center justify-content-center">
-                    <a href="index.php?sec=add_categoria_form">
+                    <a href="index.php?sec=add_origen_form">
                         <div class="p-2 "><img src="./../img/iconos/icon-create.png" alt="agregar"></div>
                         <p style="color: #000;"><strong>Agregar nuevo <br> País de Origen</strong></p>
                     </a>
