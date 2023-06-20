@@ -16,7 +16,7 @@
                                 <input type="text" class="form-control" id="nombre_etiqueta" name="nombre_etiqueta" placeholder="Nombre de la etiqueta" required>
                             </div>
                             <div class="col-6">
-                                <label for="icono_etiq" class="form-label">Reemplazar ícono</label>
+                                <label for="icono_etiq" class="form-label">Subir ícono</label>
                                 <input type="file" class="form-control" id="icono_etiq" name="icono_etiq">
                                 <div class="form-text">Subir archivos en formato.png. de hasta 200 KB</div>
                             </div>

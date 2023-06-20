@@ -32,7 +32,39 @@ class Imagen
                 return $imgNombreNuevo;
             }
         }
+
+     
     }
+
+    /**
+     * Método que borra una imagen del servidor
+     * @param string $rutaImagen ruta de la imagen a borrar
+     * @return bool TRUE si se borró la imagen, FALSE si no se borró
+     */
+    public function borrarImagen($rutaImagen): bool
+    {
+        if (file_exists(($rutaImagen))) {
+
+            $imagenBorrada =  unlink($rutaImagen);
+
+            if (!$imagenBorrada) {
+                throw new Exception("Error al borrar la imagen");
+            } else {
+                return TRUE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+
+
+
+
+
+
+
+
+
 
     /**
      * Get the value of error
