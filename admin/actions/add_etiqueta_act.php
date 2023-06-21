@@ -8,6 +8,7 @@ $fileData = $_FILES['icono_etiq']; //cuando necesitamos recuperar imagenes
 try {
 
     $imagen = (new Imagen())->subirImagen(__DIR__ . "/../../img/etiquetas", $fileData);
+    
     (new Etiqueta())->crear(
         $postData['nombre_etiqueta'],
         $imagen);

@@ -1,9 +1,14 @@
 <?PHP 
 
 $idEtiqueta = $_GET['id'] ?? FALSE;
-
+echo "<pre>";
+print_r($idEtiqueta);
+echo "</pre>";
 $etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
 
+echo "<pre>";
+print_r($etiqueta);
+echo "</pre>";
 ?>
 
 <section>
@@ -16,14 +21,15 @@ $etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
 
             </div>
             <div class="col-12 ">
-                <form action="actions/edit_etiqueta_act.php" class="row g-4" method="POST" enctype="multipart/form-data">
+                <form action="actions/edit_etiqueta_act.php?id=<?= $idEtiqueta ?>" class="row g-4" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row">
                           
                             <div class="col-4">
-                                <label for="icono_actual" class="form-label"> Ícono actual</label>
+                                <label for="icono-actual" class="form-label"> Ícono actual</label>
                                 <br>
-                                <img src="../img/etiquetas/<?= $etiqueta->getIcono_etiq()?>" alt="icono de la etiqueta" class="img-fluid">
+                                <img src="../img/etiquetas/<?= $etiqueta->getIcono_etiq()?>" alt="icono de la etiqueta <?= $etiqueta->getNombre_etiqueta()?>" class="img-fluid">
+                                <input type="hidden" class="form-control" id="icono-actual" name="icono-actual" value="<?= $etiqueta->getIcono_etiq()?>">
                             </div>
                             <div class="col-4">
                                 <label for="icono_etiq" class="form-label">Reemplazar ícono</label>
