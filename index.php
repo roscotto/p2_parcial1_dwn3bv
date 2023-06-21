@@ -124,11 +124,11 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                                 <ul class="dropdown-menu bg-orange">
                                     <li><a class="dropdown-item text-light" href="index.php?sec=catalogo_completo">Catálogo completo</a></li>
-                                    
+
                                     <?PHP foreach ($botonesCategorias as $categoria) { ?>
                                         <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></a></li>
                                     <?PHP } ?>
-</ul>
+                                </ul>
                             </li>
 
                             <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>

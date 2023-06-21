@@ -40,8 +40,8 @@ $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
                             <td class="flex-column align-items-stretch">
                                 <div class="p-2"><a href="index.php?sec=edit_etiqueta_form&id=<?= $c->getId() ?>" class="ps-3"><img src="../img/iconos/icon-edit.png" alt="editar"></a></div>
                                 <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="../img/iconos/icon-delete.png" alt="eliminar"></a></div>
-                                
+                                        <img src="../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+
                             </td>
 
                         </tr>

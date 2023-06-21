@@ -1,4 +1,4 @@
-<?PHP 
+<?PHP
 require_once '../../functions/autoload.php';
 
 $postData = $_POST;
@@ -27,15 +27,13 @@ try {
         $imagen = (new Imagen())->subirImagen(__DIR__ . "/../../img/etiquetas", $fileData);
 
         (new Imagen())->borrarImagen(__DIR__ . "/../../img/etiquetas/" . $postData['icono-actual']);
-
-    }else{
+    } else {
         $imagen = $postData['icono-actual'];
     }
 
     $etiqueta->editar($postData['nombre_etiqueta'], $imagen);
 
     header('Location: ../index.php?sec=admin_etiquetas');
-
 } catch (Exception $e) {
-     die("No se pudo editar la etiqueta.");   
- }
+    die("No se pudo editar la etiqueta.");
+}

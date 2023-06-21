@@ -16,14 +16,14 @@ class Conexion
      * Propiedad de tipo PDO
      */
     private static ?PDO $db = null;
-   
+
     private static function conectar()
     {
 
         try {
             //se hace referencia la definición de la clase y no a la instancia
             self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); //configuramos el modo de error para que lance excepciones en versiones viejas de PHP <=7.0
-          
+
         } catch (Exception $e) {
 
             //bloque con detalle de error

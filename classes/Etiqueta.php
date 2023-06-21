@@ -33,7 +33,7 @@ class Etiqueta
      * Método que lista las etiquetas de la base de datos
      * @return Etiqueta[] Un array de objetos Etiqueta
      */
-    public function listar_etiquetas(): array 
+    public function listar_etiquetas(): array
     {
         $conexion = Conexion::getConexion();
         $query = "SELECT * FROM etiquetas;";
@@ -67,9 +67,8 @@ class Etiqueta
                 'icono_etiq' => $icono_etiq
             ]
         );
-        
     }
-    
+
 
     /**
      * Método que actualiza los datos de una etiqueta en la base de datos
@@ -89,9 +88,8 @@ class Etiqueta
                 'icono_etiq' => $icono_etiq
             ]
         );
-        
     }
-    
+
 
     /**
      * Método que elimina instancia de la base de datos
@@ -107,7 +105,6 @@ class Etiqueta
                 $id
             ]
         );
-        
     }
 
 

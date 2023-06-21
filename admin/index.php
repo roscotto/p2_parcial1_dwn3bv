@@ -43,7 +43,7 @@ $seccionesValidas = [
         "titulo" => "Eliminar Etiqueta"
     ],
 ];
-    
+
 $seccion = $_GET['sec'] ?? "dashboard";
 
 //Busca que la seccion se encuentre dentro de las secciones válidas - especif. en la key
@@ -80,7 +80,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
         <div class="container-xl container-fluid ">
             <div class="align-self-start ">
                 <a class="navbar-brand mt-2 p-2 d-flex" href="index.php?sec=home">
-                    
+
                     <h1 class="h3 text-light">Panel de Administración</h1>
                 </a>
             </div>
@@ -96,15 +96,15 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                 <a class="nav-link active text-light" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_categorias">Categorías</a>
+                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_categorias">Administrar Categorías</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_origen">Origen</a>
+                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_origen">Administrar Origen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_etiquetas">Etiquetas</a>
+                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_etiquetas">Administrar Etiquetas</a>
                             </li>
-                            
+
                         </div>
                     </div>
                 </div>

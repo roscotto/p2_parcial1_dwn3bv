@@ -36,7 +36,7 @@ class Categoria
      * Método que lista las categorías de la base de datos
      * @return Categoria[] Un array de objetos Categoria
      */
-    public function listar_categorias(): array 
+    public function listar_categorias(): array
     {
         $conexion = Conexion::getConexion();
         $query = "SELECT DISTINCT categoria.id, categoria.nombre, categoria.descripcion, categoria.fecha_lanzamiento FROM productos RIGHT JOIN categoria ON productos.id = categoria.id;";
@@ -73,41 +73,16 @@ class Categoria
                 'fecha_lanzamiento' => $fecha_lanzamiento
             ]
         );
-        
     }
 
-    // /**
-    //  * Método que actualiza los datos de una categoría en la base de datos
-    //  * @param int $id
-    //  * @param string $nombre
-    //  * @param string $descripcion
-    //  * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
-    //  */
-    // public function editar( int $id, string $nombre, string $descripcion, string $fecha_lanzamiento)
-    // {
-    //     $conexion = Conexion::getConexion();
-    //     $query = "UPDATE `categoria` SET nombre = :nombre, descripcion = :descripcion, fecha_lanzamiento = :fecha_lanzamiento WHERE categoria.id = :id";
-
-    //     $PDOStatement = $conexion->prepare($query);
-    //     $PDOStatement->execute(
-    //         [
-    //             'id' => $id,
-    //             'nombre' => $nombre,
-    //             'descripcion' => $descripcion,
-    //             'fecha_lanzamiento' => $fecha_lanzamiento
-    //         ]
-    //     );
-        
-    // }
-
-
+    
     /**
      * Método que actualiza los datos de una categoría en la base de datos
      * @param string $nombre
      * @param string $descripcion
      * @param int $fecha_lanzamiento en formato YYYY-MM-DD HH:MM:SS (timestamp)
      */
-    public function editar( string $nombre, string $descripcion, string $fecha_lanzamiento)
+    public function editar(string $nombre, string $descripcion, string $fecha_lanzamiento)
     {
         $conexion = Conexion::getConexion();
         $query = "UPDATE `categoria` SET nombre = :nombre, descripcion = :descripcion, fecha_lanzamiento = :fecha_lanzamiento WHERE categoria.id = :id";
@@ -121,7 +96,6 @@ class Categoria
                 'fecha_lanzamiento' => $fecha_lanzamiento
             ]
         );
-        
     }
 
     /**
@@ -138,7 +112,6 @@ class Categoria
                 $id
             ]
         );
-        
     }
 
 

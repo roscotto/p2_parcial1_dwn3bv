@@ -4,7 +4,7 @@ class Imagen
 {
     private $error;
 
-    
+
     /**
      * Método que sube una imagen al servidor
      * @param string $rutaGuardado ruta donde se guardará la imagen
@@ -33,8 +33,6 @@ class Imagen
                 return $imgNombreNuevo;
             }
         }
-
-     
     }
 
     /**

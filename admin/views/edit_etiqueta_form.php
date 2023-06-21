@@ -1,4 +1,4 @@
-<?PHP 
+<?PHP
 
 $idEtiqueta = $_GET['id'] ?? FALSE;
 echo "<pre>";
@@ -24,12 +24,12 @@ echo "</pre>";
                 <form action="actions/edit_etiqueta_act.php?id=<?= $idEtiqueta ?>" class="row g-4" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row">
-                          
+
                             <div class="col-4">
                                 <label for="icono-actual" class="form-label"> Ícono actual</label>
                                 <br>
-                                <img src="../img/etiquetas/<?= $etiqueta->getIcono_etiq()?>" alt="icono de la etiqueta <?= $etiqueta->getNombre_etiqueta()?>" class="img-fluid">
-                                <input type="hidden" class="form-control" id="icono-actual" name="icono-actual" value="<?= $etiqueta->getIcono_etiq()?>">
+                                <img src="../img/etiquetas/<?= $etiqueta->getIcono_etiq() ?>" alt="icono de la etiqueta <?= $etiqueta->getNombre_etiqueta() ?>" class="img-fluid">
+                                <input type="hidden" class="form-control" id="icono-actual" name="icono-actual" value="<?= $etiqueta->getIcono_etiq() ?>">
                             </div>
                             <div class="col-4">
                                 <label for="icono_etiq" class="form-label">Reemplazar ícono</label>
@@ -38,11 +38,11 @@ echo "</pre>";
                             </div>
                             <div class="col-4">
                                 <label for="nombre_etiqueta" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre_etiqueta" name="nombre_etiqueta" placeholder="Nombre de la etiqueta" value="<?= $etiqueta->getNombre_etiqueta()?>" required >
+                                <input type="text" class="form-control" id="nombre_etiqueta" name="nombre_etiqueta" placeholder="Nombre de la etiqueta" value="<?= $etiqueta->getNombre_etiqueta() ?>" required>
                             </div>
                         </div>
                     </div>
-                    
+
 
                     <button type="submit" class="btn btn-grey-white">Editar</button>
 

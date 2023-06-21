@@ -31,22 +31,22 @@ $listaCategorias = (new Categoria())->listar_categorias();
                     </tr>
                 </thead>
                 <tbody>
-                   <?PHP foreach ($listaCategorias as $c) { ?>
-                    <tr class="align-middle">
-                        <td ><?=$c->getId()?></td>
-                        <td><?=$c->getNombre()?></td>
-                        <td><?=$c->getDescripcion()?></td>
-                        <td><?=$c->getFecha_lanzamiento()?></td>
-                        <td class="flex-column align-items-stretch">
-                            <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?=$c->getId()?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
-                            <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
- <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
-                        </td>
-                        
-                    </tr>
+                    <?PHP foreach ($listaCategorias as $c) { ?>
+                        <tr class="align-middle">
+                            <td><?= $c->getId() ?></td>
+                            <td><?= $c->getNombre() ?></td>
+                            <td><?= $c->getDescripcion() ?></td>
+                            <td><?= $c->getFecha_lanzamiento() ?></td>
+                            <td class="flex-column align-items-stretch">
+                                <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?= $c->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
+                                <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                            </td>
+
+                        </tr>
 
 
-                   <?PHP } ?>
+                    <?PHP } ?>
                 </tbody>
             </table>
         </div>
@@ -56,19 +56,19 @@ $listaCategorias = (new Categoria())->listar_categorias();
 
 <!-- Modal de confirmación (acción de eliminar)-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="h5 modal-title">Eliminar Categoría</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>¿Estás seguro de que querés eliminar esta categoría?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <a href="actions/delete_categoria_act.php?id=<?=$c->getId()?>" class="btn btn-primary">Eliminar</a>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="h5 modal-title">Eliminar Categoría</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que querés eliminar esta categoría?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="actions/delete_categoria_act.php?id=<?= $c->getId() ?>" class="btn btn-primary">Eliminar</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
