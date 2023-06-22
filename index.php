@@ -131,9 +131,19 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                 </ul>
                             </li>
 
-                            <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>
-                            <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
-                            <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
+                            <li>
+                                <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark bg-light rounded" href="admin">Admin</a>
+                            </li>
+                            
                         </div>
                     </div>
                 </div>
