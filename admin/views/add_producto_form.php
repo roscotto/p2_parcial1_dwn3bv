@@ -17,7 +17,7 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
 
             </div>
             <div class="col-12 ">
-                <form action="actions/add_categoria_act.php" class="row g-4" method="POST" enctype="multipart/form-data">
+                <form action="actions/add_producto_act.php" class="row g-4" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row pt-3">
                             <div class="col-4">
@@ -75,7 +75,7 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
 
                                 <label for="peso" class="form-label">Peso</label>
                                 <input type="text" class="form-control" id="peso" name="peso" placeholder="peso" required>
-                                <div class="form-text">Expresado con dos decimales.</div>
+                                <div class="form-text">Expresado en gramos.</div>
 
                             </div>
                             <div class="col-3">
@@ -86,6 +86,7 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
                             <div class="col-3">
                                 <label for="precio" class="form-label">Precio</label>
                                 <input type="number" class="form-control" id="precio" name="precio" required>
+                                <div class="form-text">Expresado con dos decimales.</div>
                             </div>
                         </div>
 

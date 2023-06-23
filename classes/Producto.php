@@ -22,6 +22,101 @@ class Producto
 
     private static $createValues = ['id', 'nombre_prod', 'imagen', 'alt', 'descripcion', 'material', 'medidas', 'peso', 'cuidado', 'stock', 'precio', 'inicio_promocion', 'fin_promocion'];
     
+
+
+
+    //CRUD
+
+    /**
+     * Inserta un nuevo producto en la base de datos
+     * @param string $nombre_prod 
+     * @param int $categoria
+     * @param string $imagen la ruta a un archivo .jpg o .png
+     * @param string $alt
+     * @param string $descripcion
+     * @param int $origen
+     * @param string $material
+     * @param string $medidas
+     * @param string $peso
+     * @param string $cuidado
+     * @param int $stock
+     * @param float $precio
+     * @param string $inicio_promocion en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @param string $fin_promocion en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @return bool true si se creó correctamente, false si no.
+     */
+    public function crear($nombre_prod, $categoria, $imagen, $alt, $descripcion, $origen, $material, $medidas, $peso, $cuidado, $stock, $precio, $inicio_promocion, $fin_promocion): int
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `productos` VALUES (NULL, :nombre_prod, :categoria, :imagen, :alt, :descripcion, :origen, :material, :medidas, :peso, :cuidado, :stock, :precio, :inicio_promocion, :fin_promocion)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre_prod' => $nombre_prod,
+                'categoria_id' => $categoria,
+                'imagen' => $imagen,
+                'alt' => $alt,
+                'descripcion' => $descripcion,
+                'origen_id' => $origen,
+                'material' => $material,
+                'medidas' => $medidas,
+                'peso' => $peso,
+                'cuidado' => $cuidado,
+                'stock' => $stock,
+                'precio' => $precio,
+                'inicio_promocion' => $inicio_promocion,
+                'fin_promocion' => $fin_promocion
+            ]
+        );
+
+        return $conexion->lastInsertId(); //devuelve el id del ultimo registro insertado
+    }
+
+    /**
+     * Crea una relacion entre un producto y una etiqueta
+     * @param int $producto_id
+     * @param int $etiqueta_id
+     */
+    public function add_etiquetas_relacion(int $producto_id, int $etiqueta_id)
+    {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO etiquetas_x_producto VALUES (NULL, :producto_id, :etiqueta_id)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'producto_id' => $producto_id,
+                'etiqueta_id' => $etiqueta_id
+            ]
+        );
+
+    }
+
+
+
+
+
+
+
+    /**
+     * Actualiza un producto en la base de datos
+     */
+    public function editar(array $datos) {
+
+
+    }
+    /**
+    * Elimina un producto de la base de datos
+    *
+    */
+    public function eliminar(int $id){
+
+    }
+
+
+
     /**
      * Devuelve el catálogo completo
      * 
@@ -256,52 +351,9 @@ class Producto
      }
 
 
-     /**
-      * Inserta un nuevo producto en la base de datos
-      * @param string $nombre_prod El nombre del producto
-      * @param int $categoria_id El ID de la categoría del producto
-      * @param string $imagen ruta a un archivo .jpg o .png
-      * @param string $alt El texto alternativo de la imagen
-      * @param string $descripcion La descripción del producto
-      * @param int $origen_id El ID del origen del producto
-      * @param string $material El material del producto
-      * @param string $medidas Las medidas del producto
-      * @param string $peso El peso del producto
-      * @param string $cuidado Las instrucciones de cuidado del producto
-      * @param int $stock La cantidad de stock del producto
-      * @param float $precio El precio del producto en formato 9999.99
-      * @param int $etiqueta_id El ID de la/s etiqueta del producto
-      * @param int $inicio_promocion La fecha de inicio de la promoción del producto en formato YYYY-MM-DD HH:MM:SS (ej 2001-03-10 17:16:18) / sino se provee se asumirá NULL
-      * @param int $fin_promocion La fecha de fin de la promoción del producto en formato YYYY-MM-DD HH:MM:SS (ej 2001-03-10 17:16:18) / sino se provee se asumirá NULL
-      */
-        public function insertar(string $nombre_prod, int $categoria_id,string $imagen, string $alt, string $descripcion, int $origen_id ,string $material, string $medidas, string $peso, string $cuidado, int $stock, float $precio, int $etiqueta_id, string $inicio_promocion, string $fin_promocion)
-        {
-            $conexion = Conexion::getConexion();
-            $query = "INSERT INTO `productos` VALUES (NULL, :nombre_prod, :categoria_id, :imagen, :alt, :descripcion, :origen_id, :material, :medidas, :peso, :cuidado, :stock, :precio, :etiqueta_id, :inicio_promocion, :fin_promocion)";
 
-            $PDOStatement = $conexion->prepare($query);
-            $PDOStatement->execute(
-                [
-                    ':nombre_prod' => $nombre_prod,
-                    ':categoria_id' => $categoria_id,
-                    ':imagen' => $imagen,
-                    ':alt' => $alt,
-                    ':descripcion' => $descripcion,
-                    ':origen_id' => $origen_id,
-                    ':material' => $material,
-                    ':medidas' => $medidas,
-                    ':peso' => $peso,
-                    ':cuidado' => $cuidado,
-                    ':stock' => $stock,
-                    ':precio' => $precio,
-                    ':etiqueta_id' => $etiqueta_id,
-                    ':inicio_promocion' => $inicio_promocion,
-                    ':fin_promocion' => $fin_promocion
-                ]
-            );
-
-            return $conexion->lastInsertId();
-        }
+            
+        
 
 
         
@@ -462,3 +514,5 @@ class Producto
         return $this->etiquetas;
     }
 }
+
+
