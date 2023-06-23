@@ -14,9 +14,9 @@ class Imagen
     public function subirImagen($rutaGuardado, $fileData): string
     {
 
-        echo "<pre>";
-        print_r($fileData);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($fileData);
+        // echo "</pre>";
 
         if (!empty($fileData['tmp_name'])) {
             $imgNombreOriginal = explode(".", $fileData['name']); //separo el nombre de la imagen de su extensión

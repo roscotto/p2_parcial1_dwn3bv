@@ -25,7 +25,9 @@ class Etiqueta
 
         $etiqueta = $PDOStatement->fetch();
 
-        return $etiqueta ?? null; //si no lo encuentra, retorna null
+
+       return $etiqueta ? $etiqueta : null; //si no lo encuentra, retorna null
+       
     }
 
 

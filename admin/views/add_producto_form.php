@@ -21,12 +21,12 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
                     <div class="col-12">
                         <div class="row pt-3">
                             <div class="col-4">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" required>
+                                <label for="nombre_prod" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre_prod" name="nombre_prod" placeholder="Nombre del producto" required>
                             </div>
                             <div class="col-4">
-                                <label for="foto_prod" class="form-label">Subir foto</label>
-                                <input type="file" class="form-control" id="foto_prod" name="foto_prod">
+                                <label for="imagen" class="form-label">Subir foto</label>
+                                <input type="file" class="form-control" id="imagen" name="imagen">
                                 <div class="form-text">En formato .jpg o .png. de hasta 250 KB y 500x500px</div>
                             </div>
                             <div class="col-4">
@@ -98,12 +98,12 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="inicio-promocion" class="form-label">Inicio Promoción</label>
-                                <input type="datetime-local" class="form-control" id="inicio-promocion" name="inicio-promocion" placeholder="Fecha de inicio de promoción" required>
+                                <label for="inicio_promocion" class="form-label">Inicio Promoción</label>
+                                <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" required>
                                 <div class="form-text">Seleccionar fecha y hora del inicio de la promoción.
                                 </div>
-                                <label for="fin-promocion" class="form-label">Fin Promoción</label>
-                                <input type="datetime-local" class="form-control" id="fin-promocion" name="fin-promocion" placeholder="Fecha de fin de la promoción" required>
+                                <label for="fin_promocion" class="form-label">Fin Promoción</label>
+                                <input type="datetime-local" class="form_control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" required>
                                 <div class="form-text">Seleccionar fecha y hora del fin de la promoción.
                                 </div>
                             </div>
