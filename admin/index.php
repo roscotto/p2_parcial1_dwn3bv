@@ -1,47 +1,69 @@
 <?PHP
+session_start();
 require_once "../functions/autoload.php";
 
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 $seccionesValidas = [
     "dashboard" => [
-        "titulo" => "Panel de Administración"
+        "titulo" => "Panel de Administración",
+        "restringido" => true
     ],
     "admin_categorias" => [
-        "titulo" => "Administración de Categorías"
+        "titulo" => "Administración de Categorías",
+        "restringido" => true
     ],
     "add_categoria_form" => [
-        "titulo" => "Agregar nueva Categoría"
+        "titulo" => "Agregar nueva Categoría",
+        "restringido" => true
     ],
     "edit_categoria_form" => [
-        "titulo" => "Editar Categoría existente"
+        "titulo" => "Editar Categoría existente",
+        "restringido" => true
     ],
     "delete_categoria_form" => [
-        "titulo" => "Eliminar Categoría"
+        "titulo" => "Eliminar Categoría",
+        "restringido" => true
     ],
     "admin_origen" => [
-        "titulo" => "Administración de Categorías"
+        "titulo" => "Administración de Categorías",
+        "restringido" => true
     ],
     "add_origen_form" => [
-        "titulo" => "Agregar nuevo País de Origen"
+        "titulo" => "Agregar nuevo País de Origen",
+        "restringido" => true
     ],
     "edit_origen_form" => [
-        "titulo" => "Editar País de Origen existente"
+        "titulo" => "Editar País de Origen existente",
+        "restringido" => true
     ],
     "delete_origen_form" => [
-        "titulo" => "Eliminar País de Origen"
+        "titulo" => "Eliminar País de Origen",
+        "restringido" => true
     ],
     "admin_etiquetas" => [
-        "titulo" => "Administración de Etiquetas"
+        "titulo" => "Administración de Etiquetas",
+        "restringido" => true
     ],
     "add_etiqueta_form" => [
-        "titulo" => "Agregar nueva Etiqueta"
+        "titulo" => "Agregar nueva Etiqueta",
+        "restringido" => true
     ],
     "edit_etiqueta_form" => [
-        "titulo" => "Editar Etiqueta existente"
+        "titulo" => "Editar Etiqueta existente",
+        "restringido" => true
     ],
     "delete_etiqueta_form" => [
-        "titulo" => "Eliminar Etiqueta"
+        "titulo" => "Eliminar Etiqueta",
+        "restringido" => true
     ],
+    "login" => [
+        "titulo" => "Iniciar Sesión",
+        "restringido" => false
+    ],
+    
 ];
 
 $seccion = $_GET['sec'] ?? "dashboard";
@@ -52,8 +74,15 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     $titulo = "404 - Página no encontrada";
 } else {
     $vista = $seccion;
+
+    if ($seccionesValidas[$seccion]['restringido']) {
+        (new Autenticacion())->check_login();
+    }
+
     $titulo = $seccionesValidas[$seccion]['titulo'];
 }
+
+$datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 ?>
 
@@ -79,8 +108,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     <nav class="navbar navbar-expand-lg bg-grey text-light ">
         <div class="container-xl container-fluid ">
             <div class="align-self-start ">
-                <a class="navbar-brand mt-2 p-2 d-flex" href="index.php?sec=home">
-
+                <a class="navbar-brand mt-2 p-2 d-flex" href="index.php?sec=dashboard">
                     <h1 class="h3 text-light">Panel de Administración</h1>
                 </a>
             </div>
@@ -92,17 +120,27 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                     </button>
                     <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
                         <div class="navbar-nav ">
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
+                            <li class="nav-item mt-1 ms-2">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_categorias">Administrar Categorías</a>
+                            <li class="nav-item mt-1 ms-2">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_categorias">Administrar Categorías</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_origen">Administrar Origen</a>
+                            <li class="nav-item mt-1 ms-2">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_origen">Administrar Origen</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=admin_etiquetas">Administrar Etiquetas</a>
+                            <li class="nav-item mt-1">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_etiquetas">Administrar Etiquetas</a>
+                            </li>
+
+                            <li class="nav-item p-3">
+                                <a class="nav-link text-dark bg-light rounded <?= $datosUsuarioLogueado ? "d-none" : "" ?>" href="../index.php">Volver al sitio web</a>
+                            </li>
+                            <li class="nav-item p-3">
+                                <a class="nav-link text-dark bg-light rounded <?= $datosUsuarioLogueado ? "d-none" : "" ?>" href="index.php?sec=login">Login</a>
+                            </li>
+                            <li  class="nav-item">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="actions/auth_logout.php"><img src="../img/iconos/icono-logout.png" alt="cerrar sesión"></a>
                             </li>
 
                         </div>

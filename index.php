@@ -141,7 +141,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                                 <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
                             </li>
                             <li>
-                                <a class="nav-link text-dark bg-light rounded" href="admin">Admin</a>
+                                <a class="nav-link text-dark bg-light rounded" href="./admin/index.php?sec=login">Admin</a>
                             </li>
                             
                         </div>
