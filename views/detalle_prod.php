@@ -24,28 +24,40 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
 
                         <div>
                             <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->getNombre_prod() ?></h3>
-                            <h4 class="card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen() ?></h4>
-                            <p><?= $producto->getDescripcion() ?>
-                                <br>
-                                <?= $producto->en_promocion() ?>
+                            <p class="h4 card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen() ?></p>
+                            <div class="row">
+                                <div class="col-6 ">
+                                    <div class="mt-4">
+                                        <p ><?= $producto->getDescripcion() ?>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex row justify-content-end">
+
+                                        <?PHP foreach ($producto->getEtiquetas() as $e) { ?>
+
+                                            <div class="col-4">
+                                                <img src="img/etiquetas/<?= $e->getIcono_etiq() ?>" alt="Imágen Illustrativa de <?= $e->getNombre_etiqueta() ?>" class="img-fluid rounded">
+                                                <p class="text-center pt-2"><b><?= $e->getNombre_etiqueta(); ?></b></p>
+                                            </div>
+
+
+                                        <?PHP  } ?>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <?= $producto->en_promocion() ?>
                             </p>
                             <p class=""><small><b>Cuidados:</b> <?= $producto->getCuidado() ?></small></p>
                             <p class=""><small><b>Material:</b> <?= $producto->getMaterial() ?></small></p>
                             <p class=""><small><b>Peso:</b> <?= $producto->getPeso() ?></small></p>
                             <p class=""><small><b>Medidas:</b> <?= $producto->getMedidas() ?></small></p>
                             <p class="fs-3 fw-bold my-3"><?= $producto->precio_formateado() ?></p>
-                            <div class="d-flex row">
-                                <?PHP
-                                foreach ($producto->getEtiquetas() as $e) { ?>
-                                    <div class="col-3">
-                                        <div><img src="../img/etiquetas/<?= $e->getIcono_etiq() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm"></div>
-                                        <div>
-                                            <p><?= $e->getNombre_etiqueta() ?></p>
-                                        </div>
-                                    </div>
-                                <?PHP } ?>
-
-                            </div>
 
                         </div>
 

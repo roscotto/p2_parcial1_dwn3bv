@@ -127,7 +127,12 @@ class Producto
     {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM productos WHERE id = ?";
+        //$query = "SELECT * FROM productos WHERE id = ?";
+        $query = "SELECT productos.*,
+                GROUP_CONCAT(etiquetas_x_producto.etiqueta_id) AS etiquetas 
+                FROM productos 
+                LEFT JOIN etiquetas_x_producto ON etiquetas_x_producto.producto_id = productos.id
+                WHERE productos.id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
