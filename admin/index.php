@@ -58,10 +58,27 @@ $seccionesValidas = [
         "titulo" => "Eliminar Etiqueta",
         "restringido" => true
     ],
+    "admin_productos" => [
+        "titulo" => "Administración de Productos",
+        "restringido" => true
+    ],
+    "add_producto_form" => [
+        "titulo" => "Agregar nuevo Producto",
+        "restringido" => true
+    ],
+    "edit_producto_form" => [
+        "titulo" => "Editar Producto existente",
+        "restringido" => true
+    ],
+    "delete_producto_form" => [
+        "titulo" => "Eliminar Producto",
+        "restringido" => true
+    ],
     "login" => [
         "titulo" => "Iniciar Sesión",
         "restringido" => false
     ],
+
     
 ];
 
@@ -121,6 +138,9 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
                         <div class="navbar-nav ">
                             <li class="nav-item mt-1 ms-2">
                                 <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item mt-1 ms-2">
+                                <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_productos">Administrar Productos</a>
                             </li>
                             <li class="nav-item mt-1 ms-2">
                                 <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_categorias">Administrar Categorías</a>
