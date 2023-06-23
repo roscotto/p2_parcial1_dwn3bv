@@ -15,6 +15,7 @@ class Producto
     private $peso;
     private $cuidado;
     private $stock;
+    private $etiquetas;
     private $precio;
     private $inicio_promocion;
     private $fin_promocion;
@@ -28,9 +29,13 @@ class Producto
      */
     public function catalogo_completo(): array
     {
-
+        $catalogo = [];
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM productos";
+        //$query = "SELECT * FROM productos";
+        $query = "SELECT productos.*, GROUP_CONCAT(etiquetas_x_producto.id) AS etiquetas
+                  FROM `productos` 
+                  LEFT JOIN etiquetas_x_producto ON productos.id = etiquetas_x_producto.producto_id
+                  GROUP BY productos.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -92,7 +97,18 @@ class Producto
 
         $producto->categoria = (new Categoria())->get_x_id($productoData['categoria']);
         $producto->origen = (new Origen())->get_x_id($productoData['origen']);
+
         
+        $etiquetas_ids = !empty($productoData['etiquetas']) ? explode(',', $productoData['etiquetas']) : []; //si no hay etiquetas, asigno un array vacio (para evitar errores)
+        $etiquetas = [];
+
+        if (!empty($etiquetas_ids)) { //si hay etiquetas, las busco y las asigno
+            foreach ($etiquetas_ids as $id) {
+                $etiquetas[] = (new Etiqueta())->get_x_id(intval($id));
+            }
+        }
+
+        $producto->etiquetas = $etiquetas;
 
 
 
@@ -432,4 +448,12 @@ class Producto
    
 
     
+
+    /**
+     * Get the value of etiquetas
+     */ 
+    public function getEtiquetas()
+    {
+        return $this->etiquetas;
+    }
 }

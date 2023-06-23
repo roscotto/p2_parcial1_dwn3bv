@@ -35,11 +35,11 @@ $listaProductos = (new Producto())->catalogo_completo();
                                 <p class="h6"><b>Foto:</b></p>
                                 <img src="../img/productos/<?= $p->getImagen() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm">
                             </div>
-                            
+
 
                         </div>
                         <div class="col-2 border border-2">
-                        <div class="p-1">
+                            <div class="p-1">
                                 <p><b>Texto alternativo:</b></p>
                                 <p><?= $p->getAlt() ?></p>
                             </div>
@@ -55,14 +55,15 @@ $listaProductos = (new Producto())->catalogo_completo();
                                 <p class="h6"><b>Material:</b></p>
                                 <p><?= $p->getMaterial() ?></p>
                             </div>
-                            
-
-                        </div>
-                        <div class="col-4 border border-2">
-                        <div class="p-1">
+                            <div class="p-1">
                                 <p class="h6"><b>Medidas:</b></p>
                                 <p><?= $p->getMedidas() ?></p>
                             </div>
+
+
+                        </div>
+                        <div class="col-4 border border-2">
+
                             <div class="p-1">
                                 <p class="h6"><b>Peso:</b></p>
                                 <p><?= $p->getPeso() ?></p>
@@ -71,11 +72,25 @@ $listaProductos = (new Producto())->catalogo_completo();
                                 <p class="h6"><b>Descripción:</b></p>
                                 <p><?= $p->getDescripcion() ?></p>
                             </div>
-                            
+                            <div class="p-1">
+                                <p class="h6"><b>Etiquetas:</b></p>
+                                <?PHP
+                                foreach ($p->getEtiquetas() as $e) { ?>
+                                    <div class="d-flex row">
+                                        <div class="col-2"><img src="../img/etiquetas/<?= $e->getIcono_etiq() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm"></div>
+                                        <div class="col-10">
+                                            <p><?= $e->getNombre_etiqueta() ?></p>
+                                        </div>
+                                    </div>
+
+                                <?PHP } ?>
+
+                            </div>
+
 
                         </div>
                         <div class="col-3 border border-2">
-                        <div class=" p-1">
+                            <div class=" p-1">
                                 <p class="h6"><b>Cuidado:</b></p>
                                 <p><?= $p->getCuidado() ?></p>
                             </div>
@@ -95,10 +110,10 @@ $listaProductos = (new Producto())->catalogo_completo();
 
                         </div>
                         <div class="col-1 flex-column align-items-stretch border border-2">
-                        <p><b>Acciones:</b></p>
-                        <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?= $p->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
-                    <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                            <p><b>Acciones:</b></p>
+                            <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?= $p->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
+                            <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
                         </div>
                     </div>
 
@@ -114,7 +129,7 @@ $listaProductos = (new Producto())->catalogo_completo();
 
 
                 <td class="flex-column align-items-stretch">
-                    
+
                 </td>
 
 
@@ -122,55 +137,6 @@ $listaProductos = (new Producto())->catalogo_completo();
 
             </div>
 
-
-            <table class="table text-center">
-                <thead>
-                    <tr>
-
-                        <th scope="col">Origen</th>
-                        <th scope="col">Material</th>
-                        <th scope="col">Medidas</th>
-                        <th scope="col">Peso</th>
-                        <th scope="col">Cuidado</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Fecha inicio Prom.</th>
-                        <th scope="col">Fecha fin Prom.</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?PHP foreach ($listaProductos as $p) { ?>
-                        <?PHP
-                        // echo "<pre>";
-                        // print_r($p);
-                        // echo "</pre>";
-
-                        // echo "<pre>";
-                        // print_r($p->getCategoria());
-                        // echo "</pre>";
-
-
-                        ?>
-
-                        <td class="align-middle">
-                            <img src="../img/productos/<?= $p->getImagen() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm">
-                        </td>
-                        <td><?= $p->getAlt() ?></td>
-
-                        <td><?= $p->getNombre_prod() ?></td>
-
-                        <td><?= $p->getCategoria() ?></td>
-                        <td><?= $p->getDescripcion() ?></td>
-
-
-
-                        </tr>
-
-
-                    <?PHP } ?>
-                </tbody>
-            </table>
         </div>
 
     </div>
@@ -194,3 +160,4 @@ $listaProductos = (new Producto())->catalogo_completo();
         </div>
     </div>
 </div>
+<!-- Fin Modal de confirmación (acción de eliminar)-->
