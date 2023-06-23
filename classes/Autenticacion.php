@@ -8,9 +8,9 @@ class Autenticacion
      * Método que verifica las credenciales de un usuario y devuelve TRUE si las credenciales son correctas (los guarda en la sesión)
      * @param string $usuario El nombre de usuario
      * @param string $contrasena La contraseña
-     * @return bool TRUE si las credenciales son correctas, FALSE si no lo son
+     * @return ?bool TRUE si las credenciales son correctas, FALSE si no lo son, o NULL si el usuario no existe en la base de datos
      */
-    public function log_in(string $usuario, string $contrasena): bool
+    public function log_in(string $usuario, string $contrasena): ?bool
     {
 
         // echo "<p>Vamos a intentar autenticar al usuario $usuario</p>";
@@ -18,27 +18,36 @@ class Autenticacion
 
         $usuarioDB = (new Usuario())->encontrar_x_usuario($usuario); //busca el usuario en la base de datos
 
-        if (password_verify($contrasena, $usuarioDB->getContrasena())) { //compara la contraseña que se está ingresando con la que está en la base de datos
-
-            $datosLogin['id'] = $usuarioDB->getId();
-            $datosLogin['usuario'] = $usuarioDB->getUsuario();
-            $datosLogin['nombre'] = $usuarioDB->getNombre();
-            $datosLogin['apellido'] = $usuarioDB->getApellido();
-            $datosLogin['email'] = $usuarioDB->getEmail();
-            $datosLogin['rol'] = $usuarioDB->getRol();
-            $_SESSION['usuarioLogueado'] = $datosLogin;
-
-            // echo "<pre>";
-            // print_r($_SESSION['usuarioLogueado']);
-            // echo "</pre>";
-
-            echo "Contraseña correcta";
-            return true;
-        } else {
-            //echo "Contraseña incorrecta. Intentá nuevamente";
-            (new Alerta())->registrar_alerta( "danger", "Contraseña incorrecta. Intentá nuevamente");
+        //primero chequeamos que los datos del usuario existan en la base de datos
+        if (!$usuarioDB) {
+            (new Alerta())->registrar_alerta( "danger", "El usuario $usuario no existe en la base de datos");
             return false;
+        }else {
+
+            if (password_verify($contrasena, $usuarioDB->getContrasena())) { //compara la contraseña que se está ingresando con la que está en la base de datos
+
+                $datosLogin['id'] = $usuarioDB->getId();
+                $datosLogin['usuario'] = $usuarioDB->getUsuario();
+                $datosLogin['nombre'] = $usuarioDB->getNombre();
+                $datosLogin['apellido'] = $usuarioDB->getApellido();
+                $datosLogin['email'] = $usuarioDB->getEmail();
+                $datosLogin['rol'] = $usuarioDB->getRol();
+                $_SESSION['usuarioLogueado'] = $datosLogin;
+    
+                // echo "<pre>";
+                // print_r($_SESSION['usuarioLogueado']);
+                // echo "</pre>";
+    
+                echo "Contraseña correcta";
+                return true;
+            } else {
+                //echo "Contraseña incorrecta. Intentá nuevamente";
+                (new Alerta())->registrar_alerta( "danger", "Contraseña incorrecta. Intentá nuevamente");
+                return false;
+            }
         }
+
+        
     }
 
 
