@@ -18,14 +18,6 @@ class Autenticacion
 
         $usuarioDB = (new Usuario())->encontrar_x_usuario($usuario); //busca el usuario en la base de datos
 
-        // echo "<pre>";
-        // print_r($usuarioDB);
-        // echo "</pre>";
-
-        // $password =  $usuarioDB->getContrasena();
-        // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        // echo "<p>La contraseña en la base de datos es $passwordHash</p>";
-
         if (password_verify($contrasena, $usuarioDB->getContrasena())) { //compara la contraseña que se está ingresando con la que está en la base de datos
 
             $datosLogin['id'] = $usuarioDB->getId();
@@ -43,7 +35,8 @@ class Autenticacion
             echo "Contraseña correcta";
             return true;
         } else {
-            echo "Contraseña incorrecta. Intentá nuevamente";
+            //echo "Contraseña incorrecta. Intentá nuevamente";
+            (new Alerta())->registrar_alerta( "danger", "Contraseña incorrecta. Intentá nuevamente");
             return false;
         }
     }
@@ -73,4 +66,9 @@ class Autenticacion
             header("Location: index.php?sec=login");
         }
     }
+
+
+    // en caso de implementar un método para la carga de nuevos usuarios, se puede usar el siguiente código para generar el hash de la contraseña
+    // $password =  $usuarioDB->getContrasena();
+    // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 }

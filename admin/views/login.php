@@ -18,6 +18,9 @@
                                 <label for="contrasena" class="form-label">Contraseña</label>
                                 <input type="text" class="form-control" id="contrasena" name="contrasena" required>
                             </div>
+                            <div>
+                                <?= (new Alerta())->mostrar_alertas() ?>
+                            </div>
                             
                         </div>
                     </div>
