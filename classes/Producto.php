@@ -61,17 +61,17 @@ class Producto
      * @return Producto[] Un array con todos los productos de la categoria en stock.
      */
 
-    public function catalogo_x_categoria(int $categoria_id): array
+    public function catalogo_x_categoria(int $categoria): array
     {
         $catalogo = [];
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM productos WHERE categoria_id = ?";
-
+        $query = "SELECT * FROM productos WHERE categoria = ?";
+       
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(
-            [$categoria_id]
+            [$categoria]
         );
 
         while ($result = $PDOStatement->fetch()) {
@@ -98,7 +98,7 @@ class Producto
         $producto->categoria = (new Categoria())->get_x_id($productoData['categoria']);
         $producto->origen = (new Origen())->get_x_id($productoData['origen']);
 
-        
+
         $etiquetas_ids = !empty($productoData['etiquetas']) ? explode(',', $productoData['etiquetas']) : []; //si no hay etiquetas, asigno un array vacio (para evitar errores)
         $etiquetas = [];
 
