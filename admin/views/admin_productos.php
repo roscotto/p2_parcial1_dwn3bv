@@ -1,6 +1,9 @@
 <?PHP
 $listaProductos = (new Producto())->catalogo_completo();
 
+// echo "<pre>";
+// print_r($listaProductos);
+// echo "</pre>";
 ?>
 
 
@@ -20,14 +23,110 @@ $listaProductos = (new Producto())->catalogo_completo();
             </div>
         </div>
         <div class="col-12 ">
+            <div class="tarjeta-prod-admin col-12 ">
+                <?PHP foreach ($listaProductos as $p) { ?>
+                    <div class="row d-flex m-3 rounded p-3">
+                        <div class="col-2 border border-2">
+                            <div class="p-1">
+                                <p class="h6"><b>Nombre:</b></p>
+                                <p><?= $p->getNombre_prod() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Foto:</b></p>
+                                <img src="../img/productos/<?= $p->getImagen() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm">
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-2 border border-2">
+                        <div class="p-1">
+                                <p><b>Texto alternativo:</b></p>
+                                <p><?= $p->getAlt() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Categoría:</b></p>
+                                <p><?= $p->getCategoria() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Orígen:</b></p>
+                                <p><?= $p->getOrigen() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Material:</b></p>
+                                <p><?= $p->getMaterial() ?></p>
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-4 border border-2">
+                        <div class="p-1">
+                                <p class="h6"><b>Medidas:</b></p>
+                                <p><?= $p->getMedidas() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Peso:</b></p>
+                                <p><?= $p->getPeso() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p class="h6"><b>Descripción:</b></p>
+                                <p><?= $p->getDescripcion() ?></p>
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-3 border border-2">
+                        <div class=" p-1">
+                                <p class="h6"><b>Cuidado:</b></p>
+                                <p><?= $p->getCuidado() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p><b>Precio:</b></p>
+                                <p><?= $p->getPrecio() ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p><b>Stock:</b></p>
+                                <p><?= $p->getStock()  ?></p>
+                            </div>
+                            <div class="p-1">
+                                <p><b>Producto en promoción:</b></p>
+                                <p>Desde: <?= $p->getInicio_promocion() ?></p>
+                                <p>Hasta: <?= $p->getFin_promocion() ?></p>
+                            </div>
+
+                        </div>
+                        <div class="col-1 flex-column align-items-stretch border border-2">
+                        <p><b>Acciones:</b></p>
+                        <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?= $p->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
+                    <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                        </div>
+                    </div>
+
+
+                <?PHP } ?>
+
+
+
+
+
+
+
+
+
+                <td class="flex-column align-items-stretch">
+                    
+                </td>
+
+
+
+
+            </div>
+
+
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th scope="col" width="10%">Foto</th>
-                        <th scope="col">Texto alternativo</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col" width="40%">Descripción</th>
+
                         <th scope="col">Origen</th>
                         <th scope="col">Material</th>
                         <th scope="col">Medidas</th>
@@ -42,17 +141,29 @@ $listaProductos = (new Producto())->catalogo_completo();
                 </thead>
                 <tbody>
                     <?PHP foreach ($listaProductos as $p) { ?>
-                        <tr class="align-middle">
-                            <td><?= $p->getImagen() ?></td>
-                            <td><?= $p->getAlt() ?></td>
-                            <td><?= $p->getNombre_prod() ?></td>
-                            <td><?= $p->getCategoria() ?></td>
-                            <td><?= $p->getDescripcion() ?></td>
-                            <td class="flex-column align-items-stretch">
-                                <div class="p-2"><a href="index.php?sec=edit_categoria_form&id=<?= $p->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
-                                <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
-                            </td>
+                        <?PHP
+                        // echo "<pre>";
+                        // print_r($p);
+                        // echo "</pre>";
+
+                        // echo "<pre>";
+                        // print_r($p->getCategoria());
+                        // echo "</pre>";
+
+
+                        ?>
+
+                        <td class="align-middle">
+                            <img src="../img/productos/<?= $p->getImagen() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm">
+                        </td>
+                        <td><?= $p->getAlt() ?></td>
+
+                        <td><?= $p->getNombre_prod() ?></td>
+
+                        <td><?= $p->getCategoria() ?></td>
+                        <td><?= $p->getDescripcion() ?></td>
+
+
 
                         </tr>
 

@@ -33,10 +33,13 @@ class Producto
         $query = "SELECT * FROM productos";
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(); //ejecuto la query
 
-        $catalogo = $PDOStatement->fetchAll(); //guardo el resultado en un array
+        //$catalogo = $PDOStatement->fetchAll(); //guardo el resultado en un array
+        while ($result = $PDOStatement->fetch()) {
+            $catalogo[] = $this->crear_producto($result);
+        }
 
         // echo "<pre>";
         // print_r($catalogo);
@@ -87,8 +90,8 @@ class Producto
             $producto->{$value} = $productoData[$value];
         }
 
-        $producto->categoria = (new Categoria())->get_x_id($productoData['categoria_id']);
-        $producto->origen = (new Origen())->get_x_id($productoData['origen_id']);
+        $producto->categoria = (new Categoria())->get_x_id($productoData['categoria']);
+        $producto->origen = (new Origen())->get_x_id($productoData['origen']);
         
 
 
@@ -96,9 +99,6 @@ class Producto
         return $producto;
 
     }
-
-
-
 
 
     /**
