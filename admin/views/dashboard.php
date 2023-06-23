@@ -2,9 +2,9 @@
 
 $datosUsuario = $_SESSION['usuarioLogueado'];
 
-echo "<pre>";
-print_r($datosUsuario);
-echo "</pre>";
+// echo "<pre>";
+// print_r($datosUsuario);
+// echo "</pre>";
 ?>
 
 <section id="dashboard_admin">

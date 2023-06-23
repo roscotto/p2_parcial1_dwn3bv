@@ -1,6 +1,6 @@
-<?PHP 
+<?PHP
 
-class Autenticacion 
+class Autenticacion
 {
 
 
@@ -13,22 +13,21 @@ class Autenticacion
     public function log_in(string $usuario, string $contrasena): bool
     {
 
-        echo "<p>Vamos a intentar autenticar al usuario $usuario</p>";
-        echo "<p>La contraseña es $contrasena</p>";
-
+        // echo "<p>Vamos a intentar autenticar al usuario $usuario</p>";
+        // echo "<p>La contraseña es $contrasena</p>";
 
         $usuarioDB = (new Usuario())->encontrar_x_usuario($usuario); //busca el usuario en la base de datos
 
-        echo "<pre>";
-        print_r($usuarioDB);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($usuarioDB);
+        // echo "</pre>";
 
         // $password =  $usuarioDB->getContrasena();
         // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         // echo "<p>La contraseña en la base de datos es $passwordHash</p>";
 
         if (password_verify($contrasena, $usuarioDB->getContrasena())) { //compara la contraseña que se está ingresando con la que está en la base de datos
-            
+
             $datosLogin['id'] = $usuarioDB->getId();
             $datosLogin['usuario'] = $usuarioDB->getUsuario();
             $datosLogin['nombre'] = $usuarioDB->getNombre();
@@ -36,10 +35,10 @@ class Autenticacion
             $datosLogin['email'] = $usuarioDB->getEmail();
             $datosLogin['rol'] = $usuarioDB->getRol();
             $_SESSION['usuarioLogueado'] = $datosLogin;
-            
-            echo "<pre>";
-            print_r($_SESSION['usuarioLogueado']);
-            echo "</pre>";
+
+            // echo "<pre>";
+            // print_r($_SESSION['usuarioLogueado']);
+            // echo "</pre>";
 
             echo "Contraseña correcta";
             return true;
@@ -47,7 +46,6 @@ class Autenticacion
             echo "Contraseña incorrecta. Intentá nuevamente";
             return false;
         }
-   
     }
 
 
@@ -56,9 +54,9 @@ class Autenticacion
      */
     public function log_out()
     {
-       if (isset($_SESSION['usuarioLogueado'])) {
-           unset($_SESSION['usuarioLogueado']);
-       }
+        if (isset($_SESSION['usuarioLogueado'])) {
+            unset($_SESSION['usuarioLogueado']);
+        }
     }
 
 
@@ -72,9 +70,7 @@ class Autenticacion
         if (isset($_SESSION['usuarioLogueado'])) {
             return true;
         } else {
-            header ("Location: index.php?sec=login");
+            header("Location: index.php?sec=login");
         }
-
     }
-
 }

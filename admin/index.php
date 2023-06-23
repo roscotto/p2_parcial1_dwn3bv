@@ -1,10 +1,9 @@
 <?PHP
-session_start();
 require_once "../functions/autoload.php";
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
 
 $seccionesValidas = [
     "dashboard" => [

@@ -1,6 +1,5 @@
 <?PHP 
 require_once "../../functions/autoload.php";
-session_start();
 
 $postData = $_POST;
 

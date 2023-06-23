@@ -1,4 +1,6 @@
 <?PHP 
+session_start();
+
 /**
  * Realiza una carga automática de las clases que necesita el proyecto
  * @param string $nombreClase El nombre de la clase a cargar
