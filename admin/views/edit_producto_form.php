@@ -5,16 +5,17 @@ $paisesOrigen = (new Origen)->listar_origen();
 $etiquetas = (new Etiqueta)->listar_etiquetas();
 
 $idProducto = $_GET['id'] ?? FALSE;
-
 $producto = (new Producto())->producto_x_id($idProducto);
 
-echo "<pre>";
-print_r($idProducto);
-echo "</pre>";
+$etiquetasSeleccionadas = $producto->getEtiquetas();
 
-echo "<pre>";
-print_r($producto);
-echo "</pre>";
+// echo "<pre>";
+// print_r($idProducto);
+// echo "</pre>";
+
+// echo "<pre>";
+// print_r($producto);
+// echo "</pre>";
 ?>
 
 
@@ -26,11 +27,11 @@ echo "</pre>";
                     <h2 class="p3 text-center mt-5">Editar Producto existente</h2>
                 </div>
                 <div class="col-2">
-                   <label for="imagen_actual" class="form-label"> Imagen actual</label>
-                    
+                    <label for="imagen_actual" class="form-label"> Imagen actual</label>
+
                     <img src="../img/productos/<?= $producto->getImagen() ?>" alt="foto de <?= $producto->getNombre_prod() ?>" class="img-fluid">
                     <input type="hidden" class="form-control" id="imagen_actual" name="imagen_actual" value="<?= $producto->getImagen() ?>">
-                            
+
                 </div>
 
             </div>
@@ -60,7 +61,7 @@ echo "</pre>";
                                 <select class="form-select" name="categoria_id" id="categoria_id" required>
                                     <option value="" selected disabled>Elegí una opción</option>
                                     <?PHP foreach ($categorias as $c) { ?>
-                                        <option value="<?= $c->getId() ?>"><?= $c->getNombre() ?></option>
+                                        <option value="<?= $c->getId() ?>" <?= $c->getId() == $producto->getIdCategoria() ? "selected" : "" ?>><?= $c->getNombre() ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
@@ -69,42 +70,42 @@ echo "</pre>";
                                 <select class="form-select" name="origen_id" id="origen_id" required>
                                     <option value="" selected disabled>Elegí una opción</option>
                                     <?PHP foreach ($paisesOrigen as $p) { ?>
-                                        <option value="<?= $p->getId() ?>"><?= $p->getNombre() ?></option>
+                                        <option value="<?= $p->getId() ?>" <?= $p->getId() == $producto->getIdOrigen() ? "selected" : "" ?>><?= $p->getNombre() ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
                             <div class="col-3">
                                 <label for="material" class="form-label">Material</label>
-                                <input type="text" class="form-control" id="material" name="material" placeholder="Tipo de material" required>
+                                <input type="text" class="form-control" id="material" name="material" placeholder="Tipo de material" value="<?= $producto->getMaterial() ?>" required>
                                 <div class="form-text">Si posee más de uno, separarlos por comas.</div>
                             </div>
                             <div class="col-3">
                                 <label for="stock" class="form-label">Stock</label>
-                                <input type="number" class="form-control" id="stock" name="stock" required>
+                                <input type="number" class="form-control" id="stock" name="stock" value="<?= $producto->getStock() ?>" required>
                             </div>
                         </div>
                         <div class="row pt-3">
                             <div class="col-3">
                                 <label for="medidas" class="form-label">Medidas</label>
-                                <input type="text" class="form-control" id="medidas" name="medidas" placeholder="Medidas" required>
+                                <input type="text" class="form-control" id="medidas" name="medidas" placeholder="Medidas" value="<?= $producto->getMedidas() ?>" required>
                                 <div class="form-text">Expresadas en centímetros.</div>
                             </div>
                             <div class="col-3">
 
                                 <label for="peso" class="form-label">Peso</label>
-                                <input type="text" class="form-control" id="peso" name="peso" placeholder="peso" required>
+                                <input type="text" class="form-control" id="peso" name="peso" placeholder="peso" value="<?= $producto->getPeso() ?>" required>
                                 <div class="form-text">Expresado en gramos.</div>
 
                             </div>
                             <div class="col-3">
                                 <label for="cuidado" class="form-label">Cuidado</label>
-                                <input type="text" class="form-control" id="cuidado" name="cuidado" placeholder="Cuidado del producto" required>
+                                <input type="text" class="form-control" id="cuidado" name="cuidado" placeholder="Cuidado del producto" value="<?= $producto->getCuidado() ?>" required>
 
                             </div>
                             <div class="col-3">
                                 <label for="precio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" required>
-                                <div class="form-text">Expresado con dos decimales.</div>
+                                <input type="number" class="form-control" id="precio" name="precio" value="<?= $producto->getPrecio() ?>" required>
+
                             </div>
                         </div>
 
@@ -112,18 +113,21 @@ echo "</pre>";
                             <div class="col-8">
                                 <div>
                                     <label for="descripcion" class="form-label">Descripción del producto</label>
-                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del producto"></textarea>
+                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del producto">value="<?= $producto->getDescripcion() ?>"</textarea>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label for="inicio_promocion" class="form-label">Inicio Promoción</label>
-                                <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" required>
+                                <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" value="<?= $producto->getInicio_promocion() ?>" required>
                                 <div class="form-text">Seleccionar fecha y hora del inicio de la promoción.
                                 </div>
+
                                 <label for="fin_promocion" class="form-label">Fin Promoción</label>
-                                <input type="datetime-local" class="form_control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" required>
+                                <input type="datetime-local" class="form-control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" value="<?= $producto->getFin_promocion() ?>" required>
                                 <div class="form-text">Seleccionar fecha y hora del fin de la promoción.
                                 </div>
+
+                                
                             </div>
                         </div>
                         <div class="row">

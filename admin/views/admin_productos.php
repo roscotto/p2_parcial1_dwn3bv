@@ -23,6 +23,9 @@ $listaProductos = (new Producto())->catalogo_completo();
             </div>
         </div>
         <div class="col-12 ">
+            <div>
+                <?= (new Alerta())->mostrar_alertas() ?>
+            </div>
             <div class="tarjeta-prod-admin col-12 ">
                 <?PHP foreach ($listaProductos as $p) { ?>
                     <div class="row d-flex m-3 rounded p-3">
@@ -74,12 +77,12 @@ $listaProductos = (new Producto())->catalogo_completo();
                             </div>
                             <div class="p-1">
                                 <p class="h6"><b>Etiquetas:</b></p>
-                                <?PHP 
-                                 
-                                foreach ($p->getEtiquetas() as $e) { 
-                                                                   
-                                    ?>
-                                
+                                <?PHP
+
+                                foreach ($p->getEtiquetas() as $e) {
+
+                                ?>
+
                                     <div class="d-flex row">
                                         <div class="col-2"><img src="../img/etiquetas/<?= $e->getIcono_etiq() ?>" alt="Foto de<?= $p->getAlt() ?>" class="img-fluid rounded shadow-sm"></div>
                                         <div class="col-10">

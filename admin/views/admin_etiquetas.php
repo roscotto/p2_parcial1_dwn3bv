@@ -22,6 +22,9 @@ $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
             </div>
         </div>
         <div class="col-12 ">
+            <div>
+                <?= (new Alerta())->mostrar_alertas() ?>
+            </div>
             <table class="table text-center">
                 <thead>
                     <tr>

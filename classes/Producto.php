@@ -469,6 +469,15 @@ class Producto
     }
 
     /**
+     * Get ID the value of categoria
+     */
+    public function getIdCategoria()
+    {
+
+        return $this->categoria->getId();
+    }
+
+    /**
      * Get the value of nombre_producto
      */
     public function getNombre_prod()
@@ -509,6 +518,14 @@ class Producto
 
 
         return $this->origen->getNombre();
+    }
+
+    /**
+     * Get ID the value of origen
+     */
+    public function getIdOrigen()
+    {
+        return $this->origen->getId();
     }
 
     /**

@@ -102,10 +102,12 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
                                 <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" required>
                                 <div class="form-text">Seleccionar fecha y hora del inicio de la promoción.
                                 </div>
+
                                 <label for="fin_promocion" class="form-label">Fin Promoción</label>
-                                <input type="datetime-local" class="form_control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" required>
+                                <input type="datetime-local" class="form-control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" required>
                                 <div class="form-text">Seleccionar fecha y hora del fin de la promoción.
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="row">

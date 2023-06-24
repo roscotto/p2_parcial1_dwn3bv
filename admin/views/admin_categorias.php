@@ -20,6 +20,9 @@ $listaCategorias = (new Categoria())->listar_categorias();
             </div>
         </div>
         <div class="col-12 ">
+            <div>
+                <?= (new Alerta())->mostrar_alertas() ?>
+            </div>
             <table class="table text-center">
                 <thead>
                     <tr>
