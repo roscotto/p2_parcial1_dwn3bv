@@ -21,7 +21,7 @@ class Producto
     private $fin_promocion;
 
     private static $createValues = ['id', 'nombre_prod', 'imagen', 'alt', 'descripcion', 'material', 'medidas', 'peso', 'cuidado', 'stock', 'precio', 'inicio_promocion', 'fin_promocion'];
-    
+
 
 
 
@@ -73,6 +73,8 @@ class Producto
         return $conexion->lastInsertId(); //devuelve el id del ultimo registro insertado
     }
 
+
+
     /**
      * Crea una relacion entre un producto y una etiqueta
      * @param int $producto_id
@@ -91,7 +93,6 @@ class Producto
                 'etiqueta_id' => $etiqueta_id
             ]
         );
-
     }
 
     /**
@@ -112,29 +113,74 @@ class Producto
         );
     }
 
-
-
-
-
-
-
     /**
      * Actualiza un producto en la base de datos
+     * * @param string $nombre_prod 
+     * @param int $categoria
+     * @param string $imagen la ruta a un archivo .jpg o .png
+     * @param string $alt
+     * @param string $descripcion
+     * @param int $origen
+     * @param string $material
+     * @param string $medidas
+     * @param string $peso
+     * @param string $cuidado
+     * @param int $stock
+     * @param float $precio
+     * @param string $inicio_promocion en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @param string $fin_promocion en formato YYYY-MM-DD HH:MM:SS (timestamp)
+     * @return bool true si se creó correctamente, false si no.
      */
-    public function editar(array $datos) {
+    public function editar($nombre_prod, $categoria, $imagen, $alt, $descripcion, $origen, $material, $medidas, $peso, $cuidado, $stock, $precio, $inicio_promocion, $fin_promocion)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `productos` SET
+         nombre_prod = :nombre_prod,
+         categoria = :categoria,
+         imagen =:imagen,
+         alt = :alt,
+         descripcion = :descripcion,
+         origen = :origen,
+         material = :material,
+         medidas = :medidas,
+         peso = :peso,
+         cuidado = :cuidado, 
+         stock = :stock, 
+         precio = :precio, 
+         inicio_promocion = :inicio_promocion, 
+         fin_promocion = :fin_promocion
+         WHERE id = :id";
 
-
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre_prod' => $nombre_prod,
+                'categoria' => $categoria,
+                'imagen' => $imagen,
+                'alt' => $alt,
+                'descripcion' => $descripcion,
+                'origen' => $origen,
+                'material' => $material,
+                'medidas' => $medidas,
+                'peso' => $peso,
+                'cuidado' => $cuidado,
+                'stock' => $stock,
+                'precio' => $precio,
+                'inicio_promocion' => $inicio_promocion,
+                'fin_promocion' => $fin_promocion,
+                'id' => $this->id
+            ]
+        );
     }
 
 
 
-
-    
     /**
-    * Elimina un producto de la base de datos
-    *
-    */
-    public function eliminar(){
+     * Elimina un producto de la base de datos
+     *
+     */
+    public function eliminar()
+    {
 
         $conexion = Conexion::getConexion();
         $query = "DELETE FROM `productos` WHERE id = ?";
@@ -191,7 +237,7 @@ class Producto
 
         $conexion = Conexion::getConexion();
         $query = "SELECT * FROM productos WHERE categoria = ?";
-       
+
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(
@@ -237,7 +283,6 @@ class Producto
 
 
         return $producto;
-
     }
 
 
@@ -359,34 +404,34 @@ class Producto
      * @return Producto[] Un array con todos los productos que coincidan con la búsqueda.
      */
 
-     public function buscador(string $palabraBusqueda): array
-     {
+    public function buscador(string $palabraBusqueda): array
+    {
         $conexion = Conexion::getConexion();
-         $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
- 
-         $PDOStatement = $conexion->prepare($query);
-         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-         $PDOStatement->execute(
-                [
-                    'palabraBusqueda' => "%$palabraBusqueda%"
-                ]
-         );
- 
-         while ($result = $PDOStatement->fetch()) {
+        $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute(
+            [
+                'palabraBusqueda' => "%$palabraBusqueda%"
+            ]
+        );
+
+        while ($result = $PDOStatement->fetch()) {
             $catalogo[] = $this->crear_producto($result);
         }
- 
-         return $catalogo;
-     }
+
+        return $catalogo;
+    }
 
 
 
-            
-        
 
 
-        
-    
+
+
+
+
 
 
 
@@ -412,14 +457,14 @@ class Producto
         return $this->id;
     }
 
-    
+
 
     /**
      * Get the value of categoria
      */
     public function getCategoria()
     {
-   
+
         return $this->categoria->getNombre();
     }
 
@@ -461,10 +506,9 @@ class Producto
      */
     public function getOrigen()
     {
-    
-        
+
+
         return $this->origen->getNombre();
-    
     }
 
     /**
@@ -531,17 +575,15 @@ class Producto
         return $this->fin_promocion;
     }
 
-   
 
-    
+
+
 
     /**
      * Get the value of etiquetas
-     */ 
+     */
     public function getEtiquetas()
     {
         return $this->etiquetas;
     }
 }
-
-
