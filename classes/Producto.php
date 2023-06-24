@@ -94,6 +94,24 @@ class Producto
 
     }
 
+    /**
+     * Método que vacía la lista de etiquetas de un producto
+     * @param int $producto_id
+     *
+     */
+    public function vaciar_etiquetas()
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM etiquetas_x_producto WHERE producto_id = :producto_id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'producto_id' => $this->id
+            ]
+        );
+    }
+
 
 
 
@@ -107,12 +125,23 @@ class Producto
 
 
     }
+
+
+
+
+    
     /**
     * Elimina un producto de la base de datos
     *
     */
-    public function eliminar(int $id){
+    public function eliminar(){
 
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM `productos` WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [$this->id]
+        );
     }
 
 
