@@ -7,15 +7,16 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
 $idProducto = $_GET['id'] ?? FALSE;
 $producto = (new Producto())->producto_x_id($idProducto);
 
-$etiquetasSeleccionadas = $producto->getEtiquetas();
+$etiquetasSeleccionadas = $producto->getEtiquetasIds();
+
 
 // echo "<pre>";
-// print_r($idProducto);
+// print_r($etiquetasSeleccionadas);
 // echo "</pre>";
 
-// echo "<pre>";
-// print_r($producto);
-// echo "</pre>";
+//  echo "<pre>";
+//  print_r($producto);
+//  echo "</pre>";
 ?>
 
 
@@ -36,7 +37,7 @@ $etiquetasSeleccionadas = $producto->getEtiquetas();
 
             </div>
             <div class="col-12 ">
-                <form action="actions/add_producto_act.php" class="row g-4" method="POST" enctype="multipart/form-data">
+                <form action="actions/edit_producto_act.php?id=<?= $producto->getId() ?>" class="row g-4" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row pt-3">
                             <div class="col-4">
@@ -134,9 +135,13 @@ $etiquetasSeleccionadas = $producto->getEtiquetas();
                             <div class="col-12 pb-3 pt-3">
 
                                 <label class="form-label d-block">Etiquetas</label>
-                                <?PHP foreach ($etiquetas as $e) {    ?>
+                                <?PHP foreach ($etiquetas as $e) {  
+                                    
+                                    ?>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="etiquetas[]" id="etiquetas_<?= $e->getId() ?>" value="<?= $e->getId() ?>">
+                                        <input class="form-check-input" type="checkbox" name="etiquetas[]" id="etiquetas_<?= $e->getId() ?>" value="<?= $e->getId() ?>"
+                                        <?= in_array($e->getId(), $etiquetasSeleccionadas) ? "checked" : "" ?>
+                                        >
                                         <label class="form-check-label mb-2" for="etiquetas_<?= $e->getId() ?>"><?= $e->getNombre_etiqueta() ?></label>
                                     </div>
                                 <?PHP } ?>
@@ -147,7 +152,7 @@ $etiquetasSeleccionadas = $producto->getEtiquetas();
             </div>
 
 
-            <button type="submit" class="btn btn-grey-white">Agregar</button>
+            <button type="submit" class="btn btn-grey-white">Editar</button>
 
             </form>
         </div>

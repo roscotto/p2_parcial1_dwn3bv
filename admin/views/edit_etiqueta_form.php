@@ -1,14 +1,10 @@
 <?PHP
 
 $idEtiqueta = $_GET['id'] ?? FALSE;
-echo "<pre>";
-print_r($idEtiqueta);
-echo "</pre>";
+
 $etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
 
-echo "<pre>";
-print_r($etiqueta);
-echo "</pre>";
+
 ?>
 
 <section>

@@ -603,4 +603,21 @@ class Producto
     {
         return $this->etiquetas;
     }
+
+    /**
+     * Devuelve un array con los IDs de las etiquetas
+     */
+    public function getEtiquetasIds(): array
+    {
+        $arrayEtiquetas = [];
+        foreach ($this->etiquetas as $e) {
+            $arrayEtiquetas[] = intval($e->getId());
+        }
+
+        return $arrayEtiquetas;
+    }
+
+
+
+
 }
