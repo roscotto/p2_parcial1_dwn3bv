@@ -21,6 +21,7 @@ class Carrito
                 "imagen" => $productoInfo->getImagen(),
                 "alt" => $productoInfo->getAlt(),
                 "nombre" => $productoInfo->getNombre_prod(),
+                "stock" => $productoInfo->getStock(),
                 "precio" => $productoInfo->getPrecio(),
                 "cantidad" => $cantidad
             ];

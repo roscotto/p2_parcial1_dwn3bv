@@ -28,7 +28,7 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
                             <div class="row">
                                 <div class="col-6 ">
                                     <div class="mt-4">
-                                        <p ><?= $producto->getDescripcion() ?>
+                                        <p><?= $producto->getDescripcion() ?>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -95,13 +95,21 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
                 </div>
 
             </div>
-            <div class="col-12 modal-footer d-none">
+            <div class="col-12">
+
 
                 <div>
-                    <button type="button" class="btn shadow-sm btn-violet-gradient w-100">Agregar al carrito</button>
-                </div>
-                <div>
-                    <button type="button" class="btn  shadow-sm btn-violet-gradient w-100 mx-2">Comprar</button>
+                    <form action="actions/add_prod_carrito_act.php" method="GET" class="row justify-content-end align-items-end">
+                        <div class="col-1">
+                            <label for="cantidad" class="form-label">Cantidad: </label>
+                            <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" min="1" max="<?= $producto->getStock()?>">
+                            <input type="hidden" name="id" id="id" value="<?= $producto->getId() ?>">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn shadow-sm btn-grey-white w-100" value="Agregar al carrito"></input>
+                            <input type="hidden" value="<?= $id?>" name="id" id="id">
+                        </div>
+                    </form>
                 </div>
             </div>
     </div>
