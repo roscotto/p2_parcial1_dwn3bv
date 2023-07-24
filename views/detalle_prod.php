@@ -107,7 +107,7 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
                         </div>
                         <div class="col-2">
                             <input type="submit" class="btn shadow-sm btn-grey-white w-100" value="Agregar al carrito"></input>
-                            <input type="hidden" value="<?= $id?>" name="id" id="id">
+                            <input type="hidden" value="<?= $producto->getId()?>" name="id" id="id">
                         </div>
                     </form>
                 </div>

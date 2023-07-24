@@ -38,6 +38,9 @@ $seccionesValidas = [
     ],
     "resultado_busqueda" => [
         "titulo" => "Resultado de búsqueda"
+    ],
+    "carrito" => [
+        "titulo" => "Carrito"
     ]
 ];
 
