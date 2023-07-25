@@ -1,4 +1,8 @@
+<?PHP 
+$carrito = new Carrito();
+$productosCarrito = $carrito->listar_productos();
 
+?>
 
 
 
@@ -8,9 +12,13 @@
 <div>
 <?PHP 
 
-echo "<pre>";
-print_r($_SESSION['carrito']);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION['carrito']);
+// echo "</pre>";
+
+
+
+
 
 ?>
 </div>

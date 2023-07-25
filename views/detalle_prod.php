@@ -100,21 +100,23 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
 
                 <div>
                     <form action="actions/add_prod_carrito_act.php" method="GET" class="row justify-content-end align-items-end">
-                        <p>En tu carrito ya agregaste <?PHP 
-                            if((isset($_SESSION['id'])) == $producto->getId()){
+                        <p>En tu carrito ya agregaste
+                            <!-- Este fragmento no funciona -->
+                            <?PHP
+                            if ((isset($_SESSION['id'])) == $producto->getId()) {
                                 echo $_SESSION[$producto->getId()]['cantidad'];
                             } else {
                                 echo "0";
                             }
-                        ?> unidades de este producto.</p>
+                            ?> unidades de este producto.</p>
                         <div class="col-1">
                             <label for="cantidad" class="form-label">Cantidad: </label>
-                            <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" >
+                            <input type="number" name="cantidad" id="cantidad" class="form-control" value="1">
                             <input type="hidden" name="id" id="id" value="<?= $producto->getId() ?>">
                         </div>
                         <div class="col-2">
                             <input type="submit" class="btn shadow-sm btn-grey-white w-100" value="Agregar al carrito"></input>
-                            <input type="hidden" value="<?= $producto->getId()?>" name="id" id="id">
+                            <input type="hidden" value="<?= $producto->getId() ?>" name="id" id="id">
                         </div>
                     </form>
                 </div>

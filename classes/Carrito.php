@@ -27,12 +27,22 @@ class Carrito
             ];
         
         }
-
-
-
-
     }
 
+
+    /**
+     * Método que lista los productos del carrito
+     * @return array $productosCarrito Array con los productos del carrito o array vacío si no hay productos
+    */
+    public function listar_productos() :array
+    {
+        if(!empty($_SESSION['carrito'])) {
+            return $_SESSION['carrito'];
+        } else {
+            return [];
+        }
+
+    }
 
 
 
