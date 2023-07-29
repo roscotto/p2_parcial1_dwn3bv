@@ -56,7 +56,7 @@ $productosCarrito = $carrito->listar_productos();
                         <a href="index.php?sec=tienda" class="btn btn-grey-white w-100">Seguir comprando</a>
                     </div>
                     <div class="col-3">
-                        <a href="../actions/empty_carrito_act.php" class="btn btn-danger w-100">Vaciar carrito</a>
+                        <a href="actions/empty_carrito_act.php" class="btn btn-danger w-100">Vaciar carrito</a>
                     </div>
                     <div class="col-3">
                         <a href="#" class="btn btn-grey-white w-100">Finalizar compra</a>
@@ -65,7 +65,7 @@ $productosCarrito = $carrito->listar_productos();
             </form>
         <?PHP } else { ?>
             <h3 class="text-center">No hay productos en el carrito</h3>
-            <a href="index.php?sec=tienda" class="btn btn-grey-white">Volver a la tienda</a>
+            <a href="index.php?sec=catalogo_completo" class="btn btn-grey-white">Volver a la tienda</a>
         <?PHP } ?>
 
 

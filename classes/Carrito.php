@@ -48,7 +48,7 @@ class Carrito
      * Método que borra un producto del carrito
      * @param int $idProducto ID del producto a borrar
      */
-    public function borrar_producto($idProducto)
+    public function borrar_producto(int $idProducto)
     {
         if (isset($_SESSION['carrito'][$idProducto])) { //si está seteado, lo deseteo
             unset($_SESSION['carrito'][$idProducto]);
@@ -57,5 +57,13 @@ class Carrito
     }
 
 
+    /**
+     * Método que vacía el carrito
+     */
+    public function vaciar_carrito()
+    {
+       $_SESSION['carrito'] = [];
+    
+    }
 
 }
