@@ -79,4 +79,19 @@ class Carrito
             }
         }
     }
+
+    /**
+     * Método que devuelve el precio total actual del carrito de compras
+     */
+    public function precio_total()
+    {
+        $total = 0;
+        if (!empty($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $producto) {
+                $total += $producto['precio'] * $producto['cantidad'];
+            }
+            return $total;
+        }
+    }
+
 }

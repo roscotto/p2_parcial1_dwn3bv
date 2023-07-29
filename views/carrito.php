@@ -25,10 +25,9 @@ $productosCarrito = $carrito->listar_productos();
                     </thead>
                     <tbody>
                         <?PHP
-                        $total = 0;
                         foreach ($productosCarrito as $key => $producto) {
-                            $subtotal = $producto['precio'] * $producto['cantidad'];
-                            $total += $subtotal;
+                        $subtotal = $producto['precio'] * $producto['cantidad'];
+  
                         ?>
                             <tr>
                                 <td class="align-middle"><img src="./img/productos/<?= $producto['imagen'] ?>" alt="<?= $producto['alt'] ?>" class="img-fluid shadow-sm" width="100"></td>
@@ -44,7 +43,7 @@ $productosCarrito = $carrito->listar_productos();
                         <?PHP } ?>
                         <tr>
                             <td colspan="4" class="text-end">Total</td>
-                            <td>$<?= number_format($total, 2, ",", ".") ?></td>
+                            <td>$<?= number_format($carrito->precio_total(), 2, ",", ".") ?></td>
                             <td></td>
                         </tr>
                 </table>
