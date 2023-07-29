@@ -44,6 +44,9 @@ $seccionesValidas = [
     ],
     "carrito" => [
         "titulo" => "Carrito"
+    ],
+    "checkout" => [
+        "titulo" => "Checkout"
     ]
 ];
 

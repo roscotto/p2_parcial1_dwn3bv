@@ -61,7 +61,7 @@ $productosCarrito = $carrito->listar_productos();
                         <a href="actions/empty_carrito_act.php" class="btn btn-danger w-100">Vaciar carrito</a>
                     </div>
                     <div class="col-3">
-                        <a href="#" class="btn btn-grey-white w-100">Finalizar compra</a>
+                        <a href="index.php?sec=checkout" class="btn btn-grey-white w-100">Finalizar compra</a>
 
 
             </form>
