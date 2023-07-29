@@ -13,40 +13,52 @@ $totalProductos = $carrito->cantidad_total_productos();
 
 $seccionesValidas = [
     "home" => [
-        "titulo" => "Bienvenidos"
+        "titulo" => "Bienvenidos",
+        "restringido" => false
     ],
     "nosotros" => [
-        "titulo" => "Nosotros"
+        "titulo" => "Nosotros",
+        "restringido" => false
     ],
     "tienda" => [
-        "titulo" => "Nuestro catálogo"
+        "titulo" => "Nuestro catálogo",
+        "restringido" => false
     ],
     "preg_frecuentes" => [
-        "titulo" => "Preguntas frecuentes"
+        "titulo" => "Preguntas frecuentes",
+        "restringido" => false
     ],
     "contacto" => [
-        "titulo" => "Contacto"
+        "titulo" => "Contacto",
+        "restringido" => false
     ],
     "detalle_prod" => [
-        "titulo" => "Detalle de producto"
+        "titulo" => "Detalle de producto",
+        "restringido" => false
     ],
     "datos_alumnos" => [
-        "titulo" => "Alumnos"
+        "titulo" => "Alumnos",
+        "restringido" => false
     ],
     "catalogo_completo" => [
-        "titulo" => "Catálogo completo"
+        "titulo" => "Catálogo completo",
+        "restringido" => false
     ],
     "testeos" => [
-        "titulo" => "Página de pruebas"
+        "titulo" => "Página de pruebas",
+        "restringido" => false
     ],
     "resultado_busqueda" => [
-        "titulo" => "Resultado de búsqueda"
+        "titulo" => "Resultado de búsqueda",
+        "restringido" => false
     ],
     "carrito" => [
-        "titulo" => "Carrito"
+        "titulo" => "Carrito",
+        "restringido" => false
     ],
     "checkout" => [
-        "titulo" => "Checkout"
+        "titulo" => "Checkout",
+        "restringido" => true
     ]
 ];
 
