@@ -101,20 +101,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                         <button class="btn btn-light" type="submit">Buscar</button>
                     </form>
                 </div>
-                <div class="mt-3 mt-md-4 mt-lg-2 ">
-
-                    <button type="button" class="btn text-light position-relative ">
-                        <a href="index.php?sec=carrito">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </svg>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-dark">
-                                <?= $totalProductos ?>
-                                <span class="visually-hidden">Productos en el carrito</span>
-                            </span>
-                        </a>
-                    </button>
-                </div>
+                
 
                 <div>
                     <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,7 +127,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             </li>
 
                             <li>
-                                <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">Preguntas frecuentes</a>
+                                <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">FAQ's</a>
                             </li>
                             <li>
                                 <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
@@ -153,7 +140,22 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
                             </li>
                             
                         </div>
-                    </div>
+                    
+                    <div class="mt-3 mt-md-4 mt-lg-2 ">
+
+                    <button type="button" class="btn text-light position-relative ">
+                        <a href="index.php?sec=carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-dark">
+                                <?= $totalProductos ?>
+                                <span class="visually-hidden">Productos en el carrito</span>
+                            </span>
+                        </a>
+                    </button>
+                </div>
+                </div>
                 </div>
 
             </div>
