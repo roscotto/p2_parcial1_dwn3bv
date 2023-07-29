@@ -137,6 +137,12 @@ h2 {
 
 a {
     text-decoration: none;
+    color: whitesmoke;
+}
+
+a:hover {
+    color: whitesmoke!important;
+
 }
 
 #container-formulario {

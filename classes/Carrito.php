@@ -94,4 +94,19 @@ class Carrito
         }
     }
 
+
+    /**
+     * Método que devuelve la cantidad total de productos en el carrito
+     */
+    public function cantidad_total_productos()
+    {
+        $totalProductos = 0;
+        if (!empty($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $producto) {
+                $totalProductos += $producto['cantidad'];
+            }
+            return $totalProductos;
+        }
+    }
+
 }
