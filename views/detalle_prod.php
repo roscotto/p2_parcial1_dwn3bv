@@ -4,6 +4,7 @@ $idSeleccionado = $_GET['id'] ?? FALSE;
 $producto = (new Producto())->producto_x_id($idSeleccionado);
 $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria()));
 
+
 ?>
 
 
@@ -103,8 +104,9 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
                         <p>En tu carrito ya agregaste
                             <!-- Este fragmento no funciona -->
                             <?PHP
-                            if ((isset($_SESSION['id'])) == $producto->getId()) {
-                                echo $_SESSION[$producto->getId()]['cantidad'];
+                          
+                            if ((isset($_SESSION['carrito']['id'])) == $producto->getId()) {
+                                echo $_SESSION['carrito'][$key]['cantidad'] = $value;
                             } else {
                                 echo "0";
                             }

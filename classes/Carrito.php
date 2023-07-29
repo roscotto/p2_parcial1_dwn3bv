@@ -66,4 +66,17 @@ class Carrito
     
     }
 
+
+    /**
+     * Método que actualiza las cantidades de los productos en el carrito
+     * @param array $cantidades Array asociativo con los id de producto y las cantidades
+     */
+    public function actualizar_carrito(array $cantidades)
+    {
+        foreach($cantidades as $key => $value) {
+            if (isset($_SESSION['carrito'][$key])) {
+                $_SESSION['carrito'][$key]['cantidad'] = $value;
+            }
+        }
+    }
 }

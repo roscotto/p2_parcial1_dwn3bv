@@ -11,7 +11,7 @@ $productosCarrito = $carrito->listar_productos();
 
     <div>
         <?PHP if (count($productosCarrito)) { ?>
-            <form action="../actions/update_prod_carrito_act.php" method="POST">
+            <form action="actions/update_prod_carrito_act.php" method="POST">
                 <table class="table">
                     <thead>
                         <tr>
@@ -35,8 +35,8 @@ $productosCarrito = $carrito->listar_productos();
                                 <td class="align-middle"><?= $producto['nombre'] ?></td>
                                 <td class="align-middle">$<?= number_format($producto['precio'], 2, ",", ".") ?></td>
                                 <td class="align-middle" width="10%">
-                                    <label for="cantidad_<?= $key ?>" class="vissually-hidden">Cantidad</label>
-                                    <input type="number" name="<?= $producto['id'] ?>" id="<?= $producto['id'] ?>" value="<?= $producto['cantidad'] ?>" class="form-control">
+                                    <label for="cantidad_<?= $key ?>" class="visually-hidden">Cantidad</label>
+                                    <input type="number" name="cantidad[<?= $key ?>]" id="cantidad_<?= $key ?>" value="<?= $producto['cantidad'] ?>" class="form-control">
                                 </td>
                                 <td class="align-middle">$<?= number_format($subtotal, 2, ",", ".") ?></td>
                                 <td class="align-middle"><a href="actions/delete_prod_carrito_act.php?id=<?= $producto['id'] ?>" class="btn btn-danger">Eliminar</a></td>
