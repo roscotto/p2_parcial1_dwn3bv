@@ -7,7 +7,7 @@ $productosCarrito = $carrito->listar_productos();
 
 
 <div class="row container mx-auto mt-4">
-    <h2 class="text-center">Carrito</h2>
+    <h2 class="text-center mt-5 mb-4">Carrito</h2>
 
     <div>
         <?PHP if (count($productosCarrito)) { ?>
@@ -53,7 +53,7 @@ $productosCarrito = $carrito->listar_productos();
                         <input type="submit" value="Actualizar carrito" class="btn btn-grey-white w-100">
                     </div>
                     <div class="col-3">
-                        <a href="index.php?sec=tienda" class="btn btn-grey-white w-100">Seguir comprando</a>
+                        <a href="index.php?sec=catalogo_completo" class="btn btn-grey-white w-100">Seguir comprando</a>
                     </div>
                     <div class="col-3">
                         <a href="actions/empty_carrito_act.php" class="btn btn-danger w-100">Vaciar carrito</a>
@@ -64,8 +64,13 @@ $productosCarrito = $carrito->listar_productos();
 
             </form>
         <?PHP } else { ?>
-            <h3 class="text-center">No hay productos en el carrito</h3>
-            <a href="index.php?sec=catalogo_completo" class="btn btn-grey-white">Volver a la tienda</a>
+            <div class="d-flex flex-column row align-items-center">
+                <div class="col-6 d-flex flex-column justify-content-center">
+                    <h3 class="text-center">¡No hay productos en el carrito!</h3>
+                    <img class="img-fluid d-block" src="./img/carrito-vacio.jpg" alt="ilustración de un carrito vacío y una mujer con cara triste">
+                    <a href="index.php?sec=catalogo_completo" class="btn btn-grey-white mx-auto mt-5 mb-5">Volver a la tienda</a>
+                </div>
+            </div>
         <?PHP } ?>
 
 
