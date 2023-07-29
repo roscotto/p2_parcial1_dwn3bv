@@ -3,7 +3,7 @@
     <div class="row"></div>
 
     <div class="col-12 p-4 mx-auto">
-        <h2>Panel de Usuario</h2>
+        <h2 class="text-center mt-5 mb-4">Panel de Usuario</h2>
 
       
 
