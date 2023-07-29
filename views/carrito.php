@@ -39,7 +39,7 @@ $productosCarrito = $carrito->listar_productos();
                                     <input type="number" name="<?= $producto['id'] ?>" id="<?= $producto['id'] ?>" value="<?= $producto['cantidad'] ?>" class="form-control">
                                 </td>
                                 <td class="align-middle">$<?= number_format($subtotal, 2, ",", ".") ?></td>
-                                <td class="align-middle"><a href="../actions/delete_prod_carrito_act.php?id=<?= $producto['id'] ?>" class="btn btn-danger">Eliminar</a></td>
+                                <td class="align-middle"><a href="actions/delete_prod_carrito_act.php?id=<?= $producto['id'] ?>" class="btn btn-danger">Eliminar</a></td>
                             </tr>
                         <?PHP } ?>
                         <tr>

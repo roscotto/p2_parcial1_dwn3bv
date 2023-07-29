@@ -50,7 +50,7 @@ class Carrito
      */
     public function borrar_producto($idProducto)
     {
-        if (isset($_SESSION['carrito'][$idProducto])) {
+        if (isset($_SESSION['carrito'][$idProducto])) { //si está seteado, lo deseteo
             unset($_SESSION['carrito'][$idProducto]);
         }
 
