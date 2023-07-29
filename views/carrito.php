@@ -30,7 +30,7 @@ $productosCarrito = $carrito->listar_productos();
   
                         ?>
                             <tr>
-                                <td class="align-middle"><img src="./img/productos/<?= $producto['imagen'] ?>" alt="<?= $producto['alt'] ?>" class="img-fluid shadow-sm" width="100"></td>
+                                <td class="align-middle"><a href="index.php?sec=detalle_prod&id=<?= $key ?>"><img src="./img/productos/<?= $producto['imagen'] ?>" alt="<?= $producto['alt'] ?>" class="img-fluid shadow-sm" width="100"></a></td>
                                 <td class="align-middle"><?= $producto['nombre'] ?></td>
                                 <td class="align-middle">$<?= number_format($producto['precio'], 2, ",", ".") ?></td>
                                 <td class="align-middle" width="10%">
@@ -47,7 +47,7 @@ $productosCarrito = $carrito->listar_productos();
                             <td></td>
                         </tr>
                 </table>
-                <div class="row justify-content-end">
+                <div class="row justify-content-end mt-5 mb-5">
                     <div class="col-3">
                         <input type="submit" value="Actualizar carrito" class="btn btn-grey-white w-100">
                     </div>
