@@ -86,7 +86,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     $vista = $seccion;
 
     if ($seccionesValidas[$seccion]['restringido']) {
-        (new Autenticacion())->check_login();
+        (new Autenticacion())->check_login(FALSE);
     }
 
     $titulo = $seccionesValidas[$seccion]['titulo'];

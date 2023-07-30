@@ -67,10 +67,20 @@ class Autenticacion
     /**
      * Método que verifica si el usuario está logueado
      */
-    public function check_login(): bool
+    public function check_login($admin = TRUE): bool
     {
         if (isset($_SESSION['usuarioLogueado'])) {
-            return true;
+            if ($admin){
+                if (isset($_SESSION['usuarioLogueado']['rol']) != "usuario"){
+                     return true;
+                } else {
+                    (new Alerta())->registrar_alerta( "danger", "No tenés permisos para acceder a esta sección");
+                    header("Location: index.php?sec=login");
+                }
+            }else {
+                return true;
+            }
+           
         } else {
             header("Location: index.php?sec=login");
         }
