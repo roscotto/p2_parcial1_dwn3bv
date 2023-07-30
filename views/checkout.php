@@ -1,3 +1,11 @@
+<?PHP
+$carrito = new Carrito();
+$productosCarrito = $carrito->listar_productos();
+
+$cantidadProductos = $carrito->cantidad_total_productos();
+$precioTotal = $carrito->precio_total();
+?>
+
 <div class="container">
 
     <div class="row"></div>
@@ -154,17 +162,29 @@
                             <div class="container py-5">
                                 <div>
                                     <h2>Resúmen de tu compra</h2>
-                                    <ul id="listaCarrito">
+                                    <div id="listaCarrito" class="row d-flex">
+                                        <?PHP
+                                        foreach ($productosCarrito as $producto) {
+                                        $subtotal = $producto['precio'] * $producto['cantidad'];
+                
+                                        ?>
+                            
+                                            <div class="col-3 text-center"><a href="index.php?sec=detalle_prod&id=<?= $key ?>">
+                                                <img src="./img/productos/<?= $producto['imagen'] ?>" alt="<?= $producto['alt'] ?>" class="img-fluid shadow-sm" width="100"></a>
+                                                <p><?= $producto['nombre'] ?></p>
+                                            </div>
+                                        <?PHP } ?>
+                                    </div>
 
-                                    </ul>
-                                    <p class="h6"><b>Cantidad de productos: </b><span id="tuTotalCantidad"></span>
+
+                                    <p class="h6"><b>Cantidad de productos: </b> <?= $cantidadProductos ?></span>
                                     </p>
                                     <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
                                     <p class="h6"><b>Sub Total:</b> $ <span id="valorSubtotalCompra"></span></p>
                                     <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
                                     <p class="h6"><b>Costo de Envío:</b> $ <span id="valorEnvio"></span> </p>
                                     <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
-                                    <p class="h6"><b>Total: </b>$ <span id="valorTotalCompra"></span></p>
+                                    <p class="h6"><b>Total: </b>$ <?= $precioTotal ?></span></p>
                                 </div>
 
                             </div>
