@@ -86,6 +86,21 @@ class Autenticacion
         }
     }
 
+    /**
+     * Método que devuelve true si el usuario no tiene permisos de administrador
+     * @return bool
+     */
+    public function check_admin(): bool 
+    {
+        if (isset($_SESSION['usuarioLogueado'])) {
+            if (isset($_SESSION['usuarioLogueado']['rol']) == "admin" || isset($_SESSION['usuarioLogueado']['rol']) == "superadmin"){
+                return true;
+            } else {
+                return false;
+            }
+        } 
+    }
+
 
     // en caso de implementar un método para la carga de nuevos usuarios, se puede usar el siguiente código para generar el hash de la contraseña
     // $password =  $usuarioDB->getContrasena();
