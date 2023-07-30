@@ -17,18 +17,18 @@ $cantidadProductos = count($productosCargados);
                 </div>
             </div>
             <div class="col-8 p-2  pb-md-0">
-                <p class=" text-center pb-5"> Acá podrás administrar todos los productos de tu tienda online. Tendrás la posibilidad de cargar nuevos productos, editar o borrar productos existentes y, de igual manera, gestionar las categorías, países de origen y etiquetas disponibles.</p>
+                <p class=" text-center pb-5 lead"> <strong>Acá podrás administrar todos los productos de tu tienda online. </strong>Tendrás la posibilidad de cargar nuevos productos, editar o borrar productos existentes y, de igual manera, gestionar las categorías, países de origen y etiquetas disponibles.</p>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-4 bg-lavanda text-center align-middle px-4 py-5  rounded-3 btn m-2">
+            <div class="col-4 bg-light-orange text-center align-middle px-4 py-5  rounded-3 btn m-2 shadow-sm">
                 <a href="index.php?sec=admin_productos">
                     <div class="">
                         <h3>Productos</h3>
                     </div>
                 </a>
             </div>
-            <div class="col-4 bg-verde text-center align-middle px-4 py-5  rounded-3 btn m-2">
+            <div class="col-4 bg-light-orange text-center align-middle px-4 py-5  rounded-3 btn m-2 shadow-sm">
                 <a href="index.php?sec=admin_categorias">
                     <div class="">
                         <h3>Categorías</h3>
@@ -36,14 +36,14 @@ $cantidadProductos = count($productosCargados);
                 </a>
             </div>
 
-            <div class="col-4 bg-rosa text-center align-middle px-4 py-5  rounded-3 btn m-2">
+            <div class="col-4 bg-light-orange text-center align-middle px-4 py-5  rounded-3 btn m-2 shadow-sm">
                 <a href="index.php?sec=admin_origen">
                     <div class="">
                         <h3>Países de Origen</h3>
                     </div>
                 </a>
             </div>
-            <div class="col-4 bg-amarillo text-center align-middle px-4 py-5  rounded-3 btn m-2">
+            <div class="col-4 bg-light-orange text-center align-middle px-4 py-5  rounded-3 btn m-2 shadow-sm">
                 <a href="index.php?sec=admin_etiquetas">
                     <div class="">
                         <h3>Etiquetas</h3>

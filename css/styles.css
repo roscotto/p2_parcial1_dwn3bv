@@ -51,6 +51,10 @@ table {
     
     background-color: #e6896a;
 }
+.bg-light-orange {
+    
+    background-color: #e6896a3d;
+}
 
 .bg-grey {
     background-color: #8ea3a6;
@@ -76,16 +80,16 @@ table {
 /*PALETA UI ADMIN*/
 
 .bg-lavanda {
-    background-color: #B7C5FE;
+    background-color: #b7c5fe90;
 }
 .bg-verde {
-    background-color: #a3f2ce;
+    background-color: #a3f2ce9d;
 }
 .bg-rosa {
-    background-color: #ff9cc8;
+    background-color: #ff9cc984;
 }
 .bg-amarillo {
-    background-color: #fee265;
+    background-color: #fee2658d;
 }
 
 .border-brown {
