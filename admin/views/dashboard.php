@@ -1,7 +1,8 @@
 <?PHP
-
 $datosUsuario = $_SESSION['usuarioLogueado'];
 
+$productosCargados = (new Producto())->catalogo_completo();
+$cantidadProductos = count($productosCargados);
 // echo "<pre>";
 // print_r($datosUsuario);
 // echo "</pre>";
@@ -50,6 +51,11 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                 </a>
             </div>
 
+        </div>
+        <div class="row justify-content-center">
+        <div class="col-12">
+            <p class="h2 text-center mt-5 mb-5">Actualmente tenés <?= $cantidadProductos?> productos cargados.</p>
+        </div>
         </div>
 
     </div>
