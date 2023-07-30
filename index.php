@@ -116,7 +116,7 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-orange text-light ">
+    <div class="navbar navbar-expand-lg bg-orange text-light ">
         <div class="container-xl container-fluid ">
             <div class="align-self-start ">
                 <a class="navbar-brand mt-2 p-2 " href="index.php?sec=home">
@@ -124,84 +124,98 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
                     <h1 class="d-none">Dhara</h1>
                 </a>
             </div>
-
-            <div class="align-self-end d-flex ">
-                <div class="pe-3">
+            <div>
+            <div class="pe-3">
                     <form class="d-flex" role="search" action="actions/procesar_busqueda.php" method="get">
                         <input class="form-control me-2" type="search" aria-label="Search" name="q" placeholder="Buscar productos">
                         <button class="btn btn-light" type="submit">Buscar</button>
                     </form>
                 </div>
-
-
-                <div>
-                    <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon navbar-dark"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ">
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.php?sec=home">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="index.php?sec=nosotros">Nosotros</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                                <ul class="dropdown-menu bg-orange">
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=catalogo_completo">Catálogo completo</a></li>
-
-                                    <?PHP foreach ($botonesCategorias as $categoria) { ?>
-                                        <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></a></li>
-                                    <?PHP } ?>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">FAQ's</a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
-                            </li>
-                            <li class="nav-item dropdown <?= $datosUsuarioLogueado ? "" : "d-none" ?>">
-                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $datosUsuarioLogueado['nombre'] ?></a>
-                                <ul class="dropdown-menu bg-orange">
-                                    <li><a class="dropdown-item text-light" href="index.php?sec=panel_usuario">Panel de Usuario</a></li>
-                                  <li><a class="dropdown-item text-light" href="admin/actions/auth_logout.php">Cerrar sesión</a></li>
-                                  
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="nav-link text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
-                            </li>
-
-                        </div>
-
-                        <div class="mt-3 mt-md-4 mt-lg-2 ">
-
-                            <button type="button" class="btn text-light position-relative ">
-                                <a href="index.php?sec=carrito">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                                    </svg>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-dark">
-                                        <?= $totalProductos ?>
-                                        <span class="visually-hidden">Productos en el carrito</span>
-                                    </span>
-                                </a>
-                            </button>
-                        </div>
-                        
+            </div>
+            <div class="align-self-center d-flex ">
+                <div class="navbar-nav ">
+                    <div>
+                        <a class="nav-link text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
                     </div>
+                    <div>
+                        <a class="nav-link text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
+                    </div>
+
+
+                </div>
+
+                <div class="mt-3 mt-md-4 mt-lg-2 ">
+
+                    <button type="button" class="btn text-light position-relative ">
+                        <a href="index.php?sec=carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-dark">
+                                <?= $totalProductos ?>
+                                <span class="visually-hidden">Productos en el carrito</span>
+                            </span>
+                        </a>
+                    </button>
                 </div>
 
             </div>
+        </div>
+
+    </div>
+    </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-orange text-light ">
+        <div class="container-xl container-fluid justify-content-center">
+
+            <div class="row">
+                <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon navbar-dark"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ">
+                        <li class="nav-item px-2 ">
+                            <a class="nav-link active text-light" aria-current="page" href="index.php?sec=home">Inicio</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="index.php?sec=nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item px-2 dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                            <ul class="dropdown-menu bg-orange">
+                                <li><a class="dropdown-item text-light" href="index.php?sec=catalogo_completo">Catálogo completo</a></li>
+
+                                <?PHP foreach ($botonesCategorias as $categoria) { ?>
+                                    <li><a class="dropdown-item text-light" href="index.php?sec=tienda&cat=<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></a></li>
+                                <?PHP } ?>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="index.php?sec=preg_frecuentes">FAQ's</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="index.php?sec=datos_alumnos">Alumnos</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item px-2 dropdown <?= $datosUsuarioLogueado ? "" : "d-none" ?>">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $datosUsuarioLogueado['nombre'] ?></a>
+                            <ul class="dropdown-menu bg-orange">
+                                <li><a class="dropdown-item text-light" href="index.php?sec=panel_usuario">Panel de Usuario</a></li>
+                                <li><a class="dropdown-item text-light" href="admin/actions/auth_logout.php">Cerrar sesión</a></li>
+
+                            </ul>
+                        </li>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
         </div>
 
     </nav>
