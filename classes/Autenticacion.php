@@ -10,7 +10,7 @@ class Autenticacion
      * @param string $contrasena La contraseña
      * @return ?bool TRUE si las credenciales son correctas, FALSE si no lo son, o NULL si el usuario no existe en la base de datos
      */
-    public function log_in(string $usuario, string $contrasena): ?bool
+    public function log_in(string $usuario, string $contrasena): mixed
     {
 
         // echo "<p>Vamos a intentar autenticar al usuario $usuario</p>";
@@ -39,7 +39,7 @@ class Autenticacion
                 // echo "</pre>";
     
                 echo "Contraseña correcta";
-                return true;
+                return $datosLogin['rol']; //devuelve el rol del usuario
             } else {
                 //echo "Contraseña incorrecta. Intentá nuevamente";
                 (new Alerta())->registrar_alerta( "danger", "Contraseña incorrecta. Intentá nuevamente");
