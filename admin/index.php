@@ -100,11 +100,20 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
 
 $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
-$usuarioSinPermisos = (new Autenticacion())->check_admin();
+
+
+$rolUsuarioLogueado = $datosUsuarioLogueado['rol'] ?? FALSE;
+
 
 echo "<pre>";
-var_dump($usuarioSinPermisos);
+var_dump('usuario logueado', $datosUsuarioLogueado);
 echo "</pre>";
+
+echo "<pre>";
+print_r($rolUsuarioLogueado);
+echo "</pre>";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -142,29 +151,29 @@ echo "</pre>";
                     <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
                         <div class="navbar-nav ">
                             <li class="nav-item mt-1 ms-2">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : "" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
                             </li>
                             <li class="nav-item mt-1 ms-2">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : ""  ?>" aria-current="page" href="index.php?sec=admin_productos">Administrar Productos</a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_productos">Admin. Productos</a>
                             </li>
                             <li class="nav-item mt-1 ms-2">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : ""  ?>" aria-current="page" href="index.php?sec=admin_categorias">Administrar Categorías</a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_categorias">Admin. Categorías</a>
                             </li>
                             <li class="nav-item mt-1 ms-2">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : ""  ?>" aria-current="page" href="index.php?sec=admin_origen">Administrar Origen</a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_origen">Admin. Origen</a>
                             </li>
                             <li class="nav-item mt-1">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : ""  ?>" aria-current="page" href="index.php?sec=admin_etiquetas">Administrar Etiquetas</a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=admin_etiquetas">Admin. Etiquetas</a>
                             </li>
 
                             <li class="nav-item p-3">
                                 <a class="nav-link text-dark bg-light rounded " href="../index.php">Volver al sitio web</a>
                             </li>
                             <li class="nav-item p-3">
-                                <a class="nav-link text-dark bg-light rounded <?= $usuarioSinPermisos ? "d-none" : ""  ?>" href="index.php?sec=login">Login</a>
+                                <a class="nav-link text-dark bg-light rounded <?= $datosUsuarioLogueado ? "d-none" : ""  ?>" href="index.php?sec=login">Login</a>
                             </li>
                             <li  class="nav-item">
-                                <a class="nav-link active text-light <?= $usuarioSinPermisos ? "d-none" : ""  ?>" aria-current="page" href="actions/auth_logout.php"><img src="../img/iconos/icono-logout.png" alt="cerrar sesión"></a>
+                                <a class="nav-link active text-light <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="actions/auth_logout.php"><img src="../img/iconos/icono-logout.png" alt="cerrar sesión"></a>
                             </li>
 
                         </div>

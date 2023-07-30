@@ -66,19 +66,22 @@ class Autenticacion
 
     /**
      * Método que verifica si el usuario está logueado
+     * @return bool
      */
-    public function check_login($admin = TRUE): bool
+    public function check_login(): bool
     {
         if (isset($_SESSION['usuarioLogueado'])) {
-            if ($admin){
-                if (isset($_SESSION['usuarioLogueado']['rol']) != "usuario"){
-                     return true;
-                } else {
-                    (new Alerta())->registrar_alerta( "danger", "No tenés permisos para acceder a esta sección");
-                    header("Location: index.php?sec=login");
-                }
-            }else {
+
+            $datosUsuarioLogueado = $_SESSION['usuarioLogueado'];
+            $rolUsuarioLogueado = $datosUsuarioLogueado['rol'];
+
+            if ($rolUsuarioLogueado == "admin" || $rolUsuarioLogueado == "superadmin"){
                 return true;
+                header("Location: index.php?sec=dashboard");
+            
+            } else {
+                return false;
+                header("Location: index.php?sec=panel_usuario");
             }
            
         } else {
@@ -86,22 +89,7 @@ class Autenticacion
         }
     }
 
-    /**
-     * Método que devuelve true si el usuario no tiene permisos de administrador
-     * @return bool
-     */
-    public function check_admin(): bool 
-    {
-        if (isset($_SESSION['usuarioLogueado'])) {
-            if (isset($_SESSION['usuarioLogueado']['rol']) == "usuario"){
-                return true;
-            } else {
-                return false;
-            }
-        }  else {
-            return false;
-        }
-    }
+    
 
 
     // en caso de implementar un método para la carga de nuevos usuarios, se puede usar el siguiente código para generar el hash de la contraseña

@@ -92,7 +92,8 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     $titulo = $seccionesValidas[$seccion]['titulo'];
 }
 
-$usuarioSinPermisos = (new Autenticacion())->check_admin();
+
+$datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 ?>
 
@@ -165,7 +166,7 @@ $usuarioSinPermisos = (new Autenticacion())->check_admin();
                             <li>
                                 <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown <?= $datosUsuarioLogueado ? "" : "d-none" ?>">
                                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mi cuenta</a>
                                 <ul class="dropdown-menu bg-orange">
                                     <li><a class="dropdown-item text-light" href="index.php?sec=panel_usuario">Panel de Usuario</a></li>
@@ -174,7 +175,7 @@ $usuarioSinPermisos = (new Autenticacion())->check_admin();
                                 </ul>
                             </li>
                             <li>
-                                <a class="nav-link text-dark bg-light rounded mx-2 <?= $usuarioSinPermisos ? "d-none" : ""  ?>" href="./admin/index.php?sec=login">Admin</a>
+                                <a class="nav-link text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
                             </li>
 
                         </div>
