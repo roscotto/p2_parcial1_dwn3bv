@@ -72,6 +72,22 @@ table {
     background-color: #fff;
 }
 
+
+/*PALETA UI ADMIN*/
+
+.bg-lavanda {
+    background-color: #B7C5FE;
+}
+.bg-verde {
+    background-color: #a3f2ce;
+}
+.bg-rosa {
+    background-color: #ff9cc8;
+}
+.bg-amarillo {
+    background-color: #fee265;
+}
+
 .border-brown {
     border: #55392b solid 2px;
 }
@@ -137,7 +153,7 @@ h2 {
 
 a {
     text-decoration: none;
-    color: whitesmoke;
+    color: #101010;
 }
 
 a:hover {

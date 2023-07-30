@@ -206,7 +206,7 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
 
 
 
-    <footer class="bg-grey py-lg-3 mt-5">
+    <footer class="bg-grey py-lg-3 mt-5 pt-5">
         <ul>
             <li><b>Comisión:</b> DWN3BV - Parcial 2</li>
             <li><b>Materia:</b> Programación II</li>
