@@ -93,12 +93,14 @@ class Autenticacion
     public function check_admin(): bool 
     {
         if (isset($_SESSION['usuarioLogueado'])) {
-            if (isset($_SESSION['usuarioLogueado']['rol']) == "admin" || isset($_SESSION['usuarioLogueado']['rol']) == "superadmin"){
+            if (isset($_SESSION['usuarioLogueado']['rol']) == "usuario"){
                 return true;
             } else {
                 return false;
             }
-        } 
+        }  else {
+            return false;
+        }
     }
 
 

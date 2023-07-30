@@ -102,6 +102,9 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 $usuarioSinPermisos = (new Autenticacion())->check_admin();
 
+echo "<pre>";
+var_dump($usuarioSinPermisos);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
