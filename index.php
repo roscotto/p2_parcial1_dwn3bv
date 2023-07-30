@@ -167,12 +167,15 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
                                 <a class="nav-link text-light" href="index.php?sec=contacto">Contacto</a>
                             </li>
                             <li class="nav-item dropdown <?= $datosUsuarioLogueado ? "" : "d-none" ?>">
-                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mi cuenta</a>
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $datosUsuarioLogueado['nombre'] ?></a>
                                 <ul class="dropdown-menu bg-orange">
                                     <li><a class="dropdown-item text-light" href="index.php?sec=panel_usuario">Panel de Usuario</a></li>
                                   <li><a class="dropdown-item text-light" href="admin/actions/auth_logout.php">Cerrar sesión</a></li>
                                   
                                 </ul>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
                             </li>
                             <li>
                                 <a class="nav-link text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
