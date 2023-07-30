@@ -59,6 +59,10 @@ $seccionesValidas = [
     "checkout" => [
         "titulo" => "Checkout",
         "restringido" => true
+    ],
+    "login" => [
+        "titulo" => "Iniciar Sesión",
+        "restringido" => false
     ]
 ];
 
@@ -76,6 +80,11 @@ if (!array_key_exists($seccion, $seccionesValidas)) {
     $titulo = "404 - Página no encontrada";
 } else {
     $vista = $seccion;
+
+    if ($seccionesValidas[$seccion]['restringido']) {
+        (new Autenticacion())->check_login();
+    }
+
     $titulo = $seccionesValidas[$seccion]['titulo'];
 }
 
