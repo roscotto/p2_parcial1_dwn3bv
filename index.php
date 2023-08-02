@@ -52,6 +52,10 @@ $seccionesValidas = [
         "titulo" => "Resultado de búsqueda",
         "restringido" => false
     ],
+    "form_process" => [
+        "titulo" => "Respuesta enviada",
+        "restringido" => false
+    ],
     "carrito" => [
         "titulo" => "Carrito",
         "restringido" => false
