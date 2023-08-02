@@ -401,12 +401,12 @@ class Producto
      * Método buscador de productos por string en el nombre del producto y en la descripción
      * @param string $palabraBusqueda Un string con la búsqueda del usuario
      *  
-     * @return ?Producto[] Un array con todos los productos que coincidan con la búsqueda.
+     * @return Producto[] Un array con todos los productos que coincidan con la búsqueda.
      */
 
-    public function buscador(string $palabraBusqueda): ?array
+    public function buscador(string $palabraBusqueda): array
     {
-        $catalogo = null;
+        $catalogo = [];
         try {
             $conexion = Conexion::getConexion();
             $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
@@ -425,7 +425,7 @@ class Producto
 
         
         } catch (\Throwable $th) {
-            $catalogo = null;
+            $catalogo = [];
         }
 
         return $catalogo;
