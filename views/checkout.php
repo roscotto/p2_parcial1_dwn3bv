@@ -88,7 +88,7 @@ $precioTotal = $carrito->precio_total();
                 </div>
 
                 <div class="col-12 col-lg-7 col-xxl-7">
-                    <form class="row g-3" action="#" method="post"  autocomplete="off">
+                    <form class="row g-3" action="actions/checkout_act.php" method="POST"  autocomplete="off">
                         <div class="col-sm-12 col-lg-7 d-flex mt-md-4">
                             <h2>Datos para facturación</h2>
                         </div>
