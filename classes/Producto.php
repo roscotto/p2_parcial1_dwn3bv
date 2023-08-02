@@ -401,27 +401,35 @@ class Producto
      * Método buscador de productos por string en el nombre del producto y en la descripción
      * @param string $palabraBusqueda Un string con la búsqueda del usuario
      *  
-     * @return Producto[] Un array con todos los productos que coincidan con la búsqueda.
+     * @return ?Producto[] Un array con todos los productos que coincidan con la búsqueda.
      */
 
-    public function buscador(string $palabraBusqueda): array
+    public function buscador(string $palabraBusqueda): ?array
     {
-        $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
+        $catalogo = null;
+        try {
+            $conexion = Conexion::getConexion();
+            $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
 
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute(
-            [
-                'palabraBusqueda' => "%$palabraBusqueda%"
-            ]
-        );
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+            $PDOStatement->execute(
+                [
+                    'palabraBusqueda' => "%$palabraBusqueda%"
+                ]
+            );
 
-        while ($result = $PDOStatement->fetch()) {
-            $catalogo[] = $this->crear_producto($result);
+            while ($result = $PDOStatement->fetch()) {
+                $catalogo[] = $this->crear_producto($result);
+            }
+
+        
+        } catch (\Throwable $th) {
+            $catalogo = null;
         }
 
         return $catalogo;
+        
     }
 
 
