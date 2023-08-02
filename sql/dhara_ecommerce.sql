@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2023 a las 16:49:50
+-- Tiempo de generación: 03-08-2023 a las 01:34:50
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -43,6 +43,19 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `fecha_lanzamiento`) VAL
 (4, 'Yoga', 'Te ofrecemos una amplia gama de productos para practicar esta antigua disciplina y alcanzar un mayor bienestar físico, flexibilidad, equilibrio y paz mental. Encontrarás MAT de yoga de alta calidad, bloques de apoyo, pelotas, correas de estiramiento, ropa cómoda para la práctica, y mucho más.', '2023-06-14 13:19:14'),
 (5, 'Meditación', 'En esta categoría podrás encontrar herramientas y accesorios que te ayudarán a practicar la meditación y lograr un estado de calma y claridad mental. Estos productos pueden incluir cojines de meditación ergonómicos, bancos de meditación, mantas suaves y confortables, inciensos relajantes, campanas tibetanas y música tranquila.  Los productos de meditación están diseñados para fomentar la relajación, reducir el estrés y promover un mayor bienestar emocional y espiritual.', '2023-06-14 13:19:14'),
 (8, 'Rebajas', 'En esta sección podrás encontrar una amplia variedad de productos con descuentos especiales, todos por debajo de $5000. No olvides que estas ofertas son por tiempo limitado, por lo que te recomendamos aprovecharlas mientras estén disponibles.', '2023-06-17 21:07:47');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_usuario` int(11) UNSIGNED NOT NULL,
+  `fecha_hora` datetime NOT NULL,
+  `importe` float(12,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,6 +186,19 @@ INSERT INTO `productos` (`id`, `nombre_prod`, `categoria`, `imagen`, `alt`, `des
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `productos_x_compra`
+--
+
+CREATE TABLE `productos_x_compra` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_compra` int(10) UNSIGNED NOT NULL,
+  `id_producto` int(10) UNSIGNED NOT NULL,
+  `cantidad_producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -195,6 +221,26 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `contrasena`, `em
 (2, 'ro_scotto', 'Rocio', 'Scotto', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'rocio.scotto@davinci.edu.ar', 'admin'),
 (3, 'pedro_gch', 'Pedro', 'Gonzalez Chavez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'pedro.gonzalez@davinci.edu.ar', 'superadmin');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios_info_adicional`
+--
+
+CREATE TABLE `usuarios_info_adicional` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ult_digitos_tarj` int(4) NOT NULL,
+  `vto_tarj` varchar(5) NOT NULL,
+  `nombre_tarj` int(11) NOT NULL,
+  `dni` varchar(256) NOT NULL,
+  `telefono` varchar(256) NOT NULL,
+  `calle` varchar(256) NOT NULL,
+  `altura` varchar(256) NOT NULL,
+  `cp` varchar(256) NOT NULL,
+  `localidad` varchar(256) NOT NULL,
+  `provincia` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -204,6 +250,13 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `contrasena`, `em
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `etiquetas`
@@ -234,9 +287,23 @@ ALTER TABLE `productos`
   ADD KEY `origen_id` (`origen`);
 
 --
+-- Indices de la tabla `productos_x_compra`
+--
+ALTER TABLE `productos_x_compra`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_compra` (`id_compra`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios_info_adicional`
+--
+ALTER TABLE `usuarios_info_adicional`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -248,6 +315,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `categoria`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -274,14 +347,32 @@ ALTER TABLE `productos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT de la tabla `productos_x_compra`
+--
+ALTER TABLE `productos_x_compra`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `usuarios_info_adicional`
+--
+ALTER TABLE `usuarios_info_adicional`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `etiquetas_x_producto`
@@ -296,6 +387,19 @@ ALTER TABLE `etiquetas_x_producto`
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`origen`) REFERENCES `origen` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `productos_x_compra`
+--
+ALTER TABLE `productos_x_compra`
+  ADD CONSTRAINT `productos_x_compra_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `productos_x_compra_ibfk_2` FOREIGN KEY (`id_compra`) REFERENCES `compras` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarios_info_adicional`
+--
+ALTER TABLE `usuarios_info_adicional`
+  ADD CONSTRAINT `usuarios_info_adicional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

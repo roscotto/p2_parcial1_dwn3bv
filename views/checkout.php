@@ -149,7 +149,7 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         </div>
 
                         <div class="col-12">
-                            <input type="submit"  class="btn shadow-sm btn-grey-white" value="Comprar">
+                            <input type="submit"  class="btn shadow-sm btn-grey-white w-50" value="Comprar">
                         </div>
                         </form>
                     </div>
