@@ -406,22 +406,30 @@ class Producto
 
     public function buscador(string $palabraBusqueda): array
     {
-        $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
+        $catalogo = [];
+        try {
+            $conexion = Conexion::getConexion();
+            $query = "SELECT * FROM `productos` WHERE nombre_prod LIKE :palabraBusqueda;";
 
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute(
-            [
-                'palabraBusqueda' => "%$palabraBusqueda%"
-            ]
-        );
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+            $PDOStatement->execute(
+                [
+                    'palabraBusqueda' => "%$palabraBusqueda%"
+                ]
+            );
 
-        while ($result = $PDOStatement->fetch()) {
-            $catalogo[] = $this->crear_producto($result);
+            while ($result = $PDOStatement->fetch()) {
+                $catalogo[] = $this->crear_producto($result);
+            }
+
+        
+        } catch (\Throwable $th) {
+            $catalogo = [];
         }
 
         return $catalogo;
+        
     }
 
 
