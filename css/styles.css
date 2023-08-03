@@ -280,7 +280,7 @@ textarea {
 
     }
 
-    #contacto {
+    .contacto {
         background-image: url("../img/background-form-lg.jpg");
         background-repeat: no-repeat;
         background-position: center;
@@ -290,7 +290,7 @@ textarea {
 /*XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {
 
-    #contacto {
+    .contacto {
         background-image: url("../img/background-form.jpg");
         background-repeat: no-repeat;
         background-position: right;
