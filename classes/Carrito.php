@@ -109,4 +109,39 @@ class Carrito
         }
     }
 
+
+    /**
+     * Método que inserta los datos de una compra en la base de datos, y el detalle de los productos adquiridos. 
+     * @param array $datosCompra Array con los datos de la compra}
+     * @param array $productosAdquiridos Array con los productos adquiridos
+     *
+     */
+    public function insertar_compra_DB(array $datosCompra, array $productosAdquiridos) 
+    {
+        //inserta la compra en la tabla compras
+        $conexion = (new Conexion())->getConexion();
+        $query = "INSERT INTO compras VALUES (NULL, :id_usuario, :fecha, :importe)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'id_usuario' => $datosCompra['id_usuario'],
+            'fecha' => $datosCompra['fecha'],
+            'importe' => $datosCompra['importe']
+        ]);
+
+        $idCompra = $conexion->lastInsertId();
+
+        //inserta los productos adquiridos en la tabla productos_x_compra
+        foreach($productosAdquiridos as $key => $value) {
+            $query = "INSERT INTO productos_x_compra VALUES (NULL, :id_compra, :id_producto, :cantidad)";
+            
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->execute([
+                'id_compra' => $idCompra,
+                'id_producto' => $key,
+                'cantidad' => $value
+            ]);
+        }
+        
+    }
 }
