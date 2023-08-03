@@ -2,7 +2,7 @@
 
 ?>
 <!--seccion contacto-->
-         <section id="contacto" class="py-5">
+         <section class="contacto" class="py-5">
              <div id="container-formulario" class="row container mx-auto py-5 d-flex">
                  <div class="col-sm-12 col-lg-7 d-flex">
                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#8EA3A6" class="bi bi-envelope-heart-fill" viewBox="0 0 16 16">
