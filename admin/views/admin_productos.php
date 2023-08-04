@@ -118,9 +118,16 @@ $listaProductos = (new Producto())->catalogo_completo();
                         </div>
                         <div class="col-1 flex-column align-items-stretch border border-2">
                             <p><b>Acciones:</b></p>
-                            <div class="p-2"><a href="index.php?sec=edit_producto_form&id=<?= $p->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
-                            <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
+                            <div class="p-2">
+                                <a href="index.php?sec=edit_producto_form&id=<?= $p->getId() ?>" class="ps-3">
+                                    <img src="./../img/iconos/icon-edit.png" alt="editar">
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <a href="#" class="ps-3" onclick="eliminarProducto(<?= $p->getId() ?>, event)">                                    
+                                    <img src="./../img/iconos/icon-delete.png" alt="eliminar">
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -162,9 +169,18 @@ $listaProductos = (new Producto())->catalogo_completo();
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a href="actions/delete_producto_act.php?id=<?= $p->getId() ?>" class="btn btn-primary">Eliminar</a>
+                <a id="btnEliminarProducto" href="#" class="btn btn-primary">Eliminar</a>
             </div>
         </div>
     </div>
 </div>
 <!-- Fin Modal de confirmación (acción de eliminar)-->
+<script>
+    function eliminarProducto(id,e){
+        e.preventDefault();
+        let cartelModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {backdrop: 'static', keyboard: false});
+        cartelModal.show();
+        let btnEliminarProducto = document.getElementById("btnEliminarProducto")
+        btnEliminarProducto.href = "actions/delete_producto_act.php?id="+id;
+    }
+</script>
