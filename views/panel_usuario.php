@@ -4,13 +4,14 @@ $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 
 
 
-echo "<pre>";
-print_r($idUsuario);
-echo "</pre>";
-
 
 
 $comprasUsuario = (new Compra())->compras_x_usuario($idUsuario);
+
+
+echo "<pre>";
+print_r($comprasUsuario);
+echo "</pre>";
 
 $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
 
@@ -30,10 +31,10 @@ $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
             <div class="row justify-content-center">
                 <div class="col-5 bg-light-orange px-4 py-3 rounded-3 m-2 shadow-sm">
                     <h3 class="py-3"">Tus datos personales:</h3>
-                <p><b>Usuario:</b> <?= $datosUsuario['usuario'] ?></p>
-                <p><b>Nombre completo:</b> <?= $datosUsuario['nombre'] . " " . $datosUsuario['apellido'] ?></p>
+                <p><b>Usuario:</b> <?= $usuarioDatosDB->getUsuario() ?></p>
+                <p><b>Nombre completo:</b> <?= $usuarioDatosDB->getNombre() . " " . $usuarioDatosDB->getApellido() ?></p>
                
-                <p><b>Email:</b> <?= $datosUsuario['email'] ?></p>
+                <p><b>Email:</b><?= $usuarioDatosDB->getEmail() ?></p>
              
 
             </div>
