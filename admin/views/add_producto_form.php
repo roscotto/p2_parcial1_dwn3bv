@@ -85,7 +85,7 @@ $etiquetas = (new Etiqueta)->listar_etiquetas();
                             </div>
                             <div class="col-3">
                                 <label for="precio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" required>
+                                <input type="number" step="0.01" pattern="^\d*(\.\d{0,2})?$"  class="form-control" id="precio" name="precio" required>
                                 <div class="form-text">Expresado con dos decimales.</div>
                             </div>
                         </div>
