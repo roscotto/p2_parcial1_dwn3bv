@@ -1,33 +1,223 @@
-<?PHP 
+<?PHP
 
-class Compra 
+class Compra
 {
-    private $id_compra;
-    private $id_producto;
+    private $id;
+    private $usuario;
+    private $fecha;
+    private $importe;
+    private $productos;
     private $cantidad;
 
+    private static $createValues = ['id', 'fecha', 'importe'];
 
-
-/**
- * Método que lista todas las compras cargadas en la base de datos
- * @return Compra[] Un array de objetos Compra
- */
-public function listar_compras() : array
-{
-    $conexion = (new Conexion())->getConexion();
-    $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
+    /**
+     * Método que lista todas las compras cargadas en la base de datos
+     * @return Compra[] Un array de objetos Compra
+     */
+    public function listar_compras(): array
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
     FROM compras
     LEFT JOIN productos_x_compra
     ON compras.id = productos_x_compra.id_compra GROUP BY compras.id;";
 
-    $PDOStatement = $conexion->prepare($query);
+        $PDOStatement = $conexion->prepare($query);
 
-    $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-    $PDOStatement->execute();
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
 
-    $listaCompras = $PDOStatement->fetchAll();
+        while ($result = $PDOStatement->fetch()) {
+            $listaCompras[] = $this->crear_compra($result);
+        }
 
-    return $listaCompras;
-}
+        return $listaCompras;
+    }
 
+
+
+    /**
+     * Devuelve un array de compras de un usuario en particular
+     * @param int $id_usuario ID del usuario a buscar
+     * 
+     * @return Compra[] Un array con todos las compras que el usuario realizó.
+     */
+
+    public function compras_x_usuario(int $id_usuario): array
+    {
+        $comprasRealizadas = [];
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM compras WHERE id_usuario = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute(
+            [$id_usuario]
+        );
+
+        while ($result = $PDOStatement->fetch()) {
+            $comprasRealizadas[] = $this->crear_compra($result);
+        }
+
+        return $comprasRealizadas;
+    }
+
+
+    /**
+     * Crea una instancia del objeto Compra a partir de un array asociativo, configurando sus propiedades
+     * @param array $compraData Un array asociativo con los datos de la compra
+     * @return Compra Un objeto Compra
+     */
+    private function crear_compra($compraData): Compra
+    {
+        $compra = new self();
+        //Configuracion de las propiedades del objeto
+        //por cada elemento del array asociativo, le asigno el valor a la propiedad correspondiente
+        foreach (self::$createValues as $value) {
+            $compra->{$value} = $compraData[$value];
+        }
+
+        $compra->usuario = (new Usuario())->get_x_id($compraData['id']);
+        
+
+
+        $productos_ids = !empty($compraData['productos']) ? explode(',', $compraData['productos']) : []; //si no hay productos, asigno un array vacio (para evitar errores)
+        $productos = [];
+
+        if (!empty($productos_ids)) { //si hay productos, los busco y los asigno
+            foreach ($productos_ids as $id) {
+                $productos[] = (new Producto())->producto_x_id(intval($id));
+            }
+        }
+
+        $compra->productos = $productos;
+
+
+
+        return $compra;
+    }
+
+
+    /**
+     * Devuelve los datos de una compra en particular
+     * @param int $id EL ID único de la compra a mostrar
+     * 
+     * @return ?Compra Devuelve un objeto Compra o, si no lo encuentra, null
+     */
+    public function compra_x_id(int $id): ?Compra
+    {
+
+        $conexion = Conexion::getConexion();
+        //$query = "SELECT * FROM compras WHERE id = ?";
+        $query = "SELECT compras.*,
+                GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos 
+                FROM compras 
+                LEFT JOIN productos_x_compra ON productos_x_compra.id_compra = compras.id
+                WHERE compras.id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute(
+            [$id]
+        );
+
+        $compra = $this->crear_compra($PDOStatement->fetch());
+
+        return $compra ?? null; //si no lo encuentra, retorna null
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Get the value of id_compra
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * Get the value of cantidad
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+    
+    /**
+     * Get the value of id_usuario
+     */
+    public function getId_usuario()
+    {
+        return $this->usuario->getId();
+    }
+    
+    /**
+     * Get the full name of usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario->getNombre() . " " . $this->usuario->getApellido();
+    }
+    
+    
+    
+    
+    /**
+     * Get the value of fecha
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+ 
+    
+    /**
+     * Get the value of productos
+     */ 
+    public function getProductos()
+    {
+        return $this->productos;
+    }
+
+    /**
+     * Devuelve un array con los IDs de los productos de la compra
+     */
+    public function getProductosIds(): array
+    {
+        $arrayProductos = [];
+        foreach ($this->productos as $e) {
+            $arrayProductos[] = intval($e->getId());
+        }
+
+        return $arrayProductos;
+    }
+
+
+    /**
+     * Get the value of importe
+     */ 
+    public function getImporte()
+    {
+        return $this->importe;
+    }
 }

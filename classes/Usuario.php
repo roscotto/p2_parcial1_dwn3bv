@@ -39,6 +39,27 @@ class Usuario
     }
 
 
+    /**
+     * Devuelve los datos de un usuario en particular
+     * @param int $id El ID del usuario
+     */
+    public function get_x_id(int $id): ?Usuario
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM usuarios WHERE id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute(
+            [$id]
+        );
+
+        $usuario = $PDOStatement->fetch();
+
+        return $usuario ?? null; //si no lo encuentra, retorna null
+
+    }
+
 
 
 
