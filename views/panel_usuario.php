@@ -1,7 +1,20 @@
 <?PHP
 $datosUsuario = $_SESSION['usuarioLogueado'];
+$idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 
-$compras = (new Compra())->listar_compras();
+
+
+
+
+$comprasUsuario = (new Compra())->compras_x_usuario($idUsuario);
+
+
+echo "<pre>";
+print_r($comprasUsuario);
+echo "</pre>";
+
+$usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
+
 ?>
 
 <div class="container pb-5">
@@ -18,30 +31,42 @@ $compras = (new Compra())->listar_compras();
             <div class="row justify-content-center">
                 <div class="col-5 bg-light-orange px-4 py-3 rounded-3 m-2 shadow-sm">
                     <h3 class="py-3"">Tus datos personales:</h3>
-                <p><b>Usuario:</b> <?= $datosUsuario['usuario'] ?></p>
-                <p><b>Nombre completo:</b> <?= $datosUsuario['nombre'] . " " . $datosUsuario['apellido'] ?></p>
+                <p><b>Usuario:</b> <?= $usuarioDatosDB->getUsuario() ?></p>
+                <p><b>Nombre completo:</b> <?= $usuarioDatosDB->getNombre() . " " . $usuarioDatosDB->getApellido() ?></p>
                
-                <p><b>Email:</b> <?= $datosUsuario['email'] ?></p>
+                <p><b>Email:</b><?= $usuarioDatosDB->getEmail() ?></p>
              
 
             </div>
             <div class=" col-5 bg-light-orange px-4 py-3 rounded-3 m-2 shadow-sm">
                         <h3 class="py-3"">Tus compras:</h3>
-                        <?PHP foreach ($compras as $c) { ?>
+                        <?PHP
+                        $vuelta = 0;
+                        foreach ($comprasUsuario as $c) { ?>
                 <div class=" accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Ver métodos de pago
+                                <h2 class="accordion-header" id="flush-heading<?= $vuelta ?>">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $vuelta ?>" aria-expanded="false" aria-controls="flush-collapse<?= $vuelta ?>">
+                                        Compra <?= $vuelta + 1 ?>
                                     </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div id="flush-collapse<?= $vuelta ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $vuelta ?>" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <img class="img-fluid" src="./img/pagos.jpg" alt="Mercado pago, mastercard, visa, american express, tarjeta naranja, pago facil, rapipago, transferencia bancaria, efectivo o acordar con el vendedor">
+                                        <p>Fecha: <?= (new Compra())->formatearFecha($c->getFecha()); ?></p>
+                                        <p>Importe: <?= (new Producto())->precio_formateado($c->getImporte()); ?> </p>
+                                        <p>Productos adquiridos: </p>
+                                        <ul>
+
+                                            <?PHP foreach ($c->getProductos() as $p) { ?></p>
+                                            <li><?= $p->getNombre_prod() ?></li>    
+                                                
+                                            <?PHP  } ?>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        <?PHP } ?>
+                        <?PHP $vuelta += 1;
+                        } ?>
                 </div>
 
 
