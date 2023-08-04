@@ -19,9 +19,9 @@ class Compra
     {
         $conexion = (new Conexion())->getConexion();
         $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
-    FROM compras
-    LEFT JOIN productos_x_compra
-    ON compras.id = productos_x_compra.id_compra GROUP BY compras.id;";
+        FROM compras
+        LEFT JOIN productos_x_compra
+        ON compras.id = productos_x_compra.id_compra GROUP BY compras.id;";
 
         $PDOStatement = $conexion->prepare($query);
 
@@ -79,7 +79,7 @@ class Compra
             $compra->{$value} = $compraData[$value];
         }
 
-        $compra->usuario = (new Usuario())->get_x_id($compraData['id']);
+        $compra->usuario = (new Usuario())->get_x_id($compraData['id_usuario']);
         
 
 

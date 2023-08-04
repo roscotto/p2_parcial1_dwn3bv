@@ -62,17 +62,6 @@ class Usuario
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Get the value of id
      */

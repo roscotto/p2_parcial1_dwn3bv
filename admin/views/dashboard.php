@@ -1,8 +1,13 @@
 <?PHP
 $datosUsuario = $_SESSION['usuarioLogueado'];
+//$datosUsuario = (new Usuario())->get_x_id($_SESSION['usuarioLogueado']['id']);
 
 $productosCargados = (new Producto())->catalogo_completo();
 $cantidadProductos = count($productosCargados);
+
+
+
+
 // echo "<pre>";
 // print_r($datosUsuario);
 // echo "</pre>";
@@ -55,6 +60,38 @@ $cantidadProductos = count($productosCargados);
         <div class="row justify-content-center">
         <div class="col-12">
             <p class="h2 text-center mt-5 mb-5">Actualmente tenés <?= $cantidadProductos?> productos cargados.</p>
+        </div>
+        <div class="col-12">
+            <h2>Historial de compras</h2>
+        <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">ID compra</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Productos</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Importe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?PHP foreach ($todasCompras as $tc) { ?>
+                        <tr class="align-middle">
+                            <td width="15%">
+                                
+                            </td>
+                            <td></td>
+                            <td class="flex-column align-items-stretch">
+                                
+
+                            </td>
+
+                        </tr>
+
+
+                    <?PHP } ?>
+                </tbody>
+            </table>
         </div>
         </div>
 
