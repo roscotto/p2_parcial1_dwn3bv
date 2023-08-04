@@ -54,6 +54,14 @@ $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
                                     <div class="accordion-body">
                                         <p>Fecha: <?= (new Compra())->formatearFecha($c->getFecha()); ?></p>
                                         <p>Importe: <?= (new Producto())->precio_formateado($c->getImporte()); ?> </p>
+                                        <p>Productos adquiridos: </p>
+                                        <ul>
+
+                                            <?PHP foreach ($c->getProductos() as $p) { ?></p>
+                                            <li><?= $p->getNombre_prod() ?></li>    
+                                                
+                                            <?PHP  } ?>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
