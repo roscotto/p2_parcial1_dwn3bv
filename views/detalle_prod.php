@@ -4,7 +4,9 @@ $idSeleccionado = $_GET['id'] ?? FALSE;
 $producto = (new Producto())->producto_x_id($idSeleccionado);
 $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria()));
 
-
+echo "<pre>";
+print_r($producto);
+echo "</pre>";
 ?>
 
 
