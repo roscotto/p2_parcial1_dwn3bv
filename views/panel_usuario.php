@@ -51,8 +51,8 @@ $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
                                 </h2>
                                 <div id="flush-collapse<?= $vuelta ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $vuelta ?>" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <p>Fecha: <?= $c->getFecha(); ?></p>
-                                        <p>Importe: <?= $c->getImporte(); ?> </p>
+                                        <p>Fecha: <?= (new Compra())->formatearFecha($c->getFecha()); ?></p>
+                                        <p>Importe: <?= (new Producto())->precio_formateado($c->getImporte()); ?> </p>
                                     </div>
                                 </div>
                             </div>

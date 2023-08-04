@@ -128,8 +128,24 @@ class Compra
         return $compra ?? null; //si no lo encuentra, retorna null
     }
 
-
-
+    
+    /**
+     * Método que formatea fecha
+     * @param string $fecha La fecha a formatear en formato "Y-m-d"
+     * @return string La fecha formateada en formato "d-m-Y"
+     */
+    function formatearFecha($fecha) {
+        // Convertir la fecha a un objeto DateTime
+        $dateObj = DateTime::createFromFormat('Y-m-d', $fecha);
+        
+        // Verificar si la fecha es válida
+        if (!$dateObj) {
+            return "Fecha inválida";
+        }
+        
+        // Formatear la fecha al formato deseado "04-08-2023"
+        return $dateObj->format('d-m-Y');
+    }
 
 
 
