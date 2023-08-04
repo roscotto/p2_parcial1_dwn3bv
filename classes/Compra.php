@@ -49,7 +49,12 @@ class Compra
         $comprasRealizadas = [];
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM compras WHERE id_usuario = ?";
+        $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
+        FROM compras
+        LEFT JOIN productos_x_compra
+        ON compras.id = productos_x_compra.id_compra
+        WHERE id_usuario = ?
+        GROUP BY compras.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -83,7 +88,7 @@ class Compra
         
 
 
-        $productos_ids = !empty($compraData['productos']) ? explode(',', $compraData['productos']) : []; //si no hay productos, asigno un array vacio (para evitar errores)
+        $productos_ids = !empty($compraData['productos_adquiridos']) ? explode(',', $compraData['productos_adquiridos']) : []; //si no hay productos, asigno un array vacio (para evitar errores)
         $productos = [];
 
         if (!empty($productos_ids)) { //si hay productos, los busco y los asigno

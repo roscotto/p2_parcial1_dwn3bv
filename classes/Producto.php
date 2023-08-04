@@ -202,7 +202,7 @@ class Producto
         $catalogo = [];
         $conexion = Conexion::getConexion();
         //$query = "SELECT * FROM productos";
-        $query = "SELECT productos.*, GROUP_CONCAT(etiquetas_x_producto.etiqueta_id) AS etiquetas
+        $query = "SELECT productos.*, GROUP_CONCAT(etiquetas_x_producto.        etiqueta_id) AS etiquetas
                   FROM `productos` 
                   LEFT JOIN etiquetas_x_producto ON productos.id = etiquetas_x_producto.producto_id
                   GROUP BY productos.id;";
