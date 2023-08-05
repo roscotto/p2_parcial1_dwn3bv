@@ -6,6 +6,7 @@ $cantidadProductos = $carrito->cantidad_total_productos();
 $precioTotal = $carrito->precio_total();
 
 $datosUsuario = $_SESSION['usuarioLogueado'];
+$usuarioDB = (new Usuario())->get_x_id($datosUsuario['id']);
 ?>
 
 <div class="container">
@@ -25,24 +26,24 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                             <div class="row">
                                 <div class="col-6">
                                     <label class="form-label" for="ult_digitos_tarj">Número *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="ult_digitos_tarj" id="ult_digitos_tarj" placeholder="XXXX XXXX XXXX XXXX" aria-describedby="d-tarjeta" maxlength="16" require>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="ult_digitos_tarj" id="ult_digitos_tarj" placeholder="XXXX XXXX XXXX <?= (isset($usuarioDatosDB)) ? $usuarioDatosDB->getUlt_digitos_tarj() : "XXXX" ?>" aria-describedby="d-tarjeta" maxlength="16" required>
                                     <span id="text"></span>
                                     <p class="form-text" id="d-tarjeta">Sin espacios</p>
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label" for="vto">Vencimiento *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="vto" id="vto" placeholder="XX/XX" aria-describedby="d-vencimiento" minlength="5" maxlength="5" require>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="vto" id="vto" placeholder="XX/XX" aria-describedby="d-vencimiento" minlength="5" maxlength="5" required>
                                     <span id="text"></span>
                                     <p class="form-text" id="d-vencimiento">Respetando el formato mes/año. Ej: 03/23</p>
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label" for="codigo">Cód. de Seguridad *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="codigo" id="codigo" placeholder="XXX" aria-describedby="d-codigo" minlength="3" maxlength="3" require>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="codigo" id="codigo" placeholder="XXX" aria-describedby="d-codigo" minlength="3" maxlength="3" required>
                                     <span id="text"></span>
                                 </div>
                                 <div class="col-6">
                                     <label for="inputNombreTarjeta" class="form-label">Nombre como figura en la tarjeta *</label>
-                                    <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombreTarjeta" name="inputNombreTarjeta" require>
+                                    <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombreTarjeta" name="inputNombreTarjeta" required>
                                     <span id="text"></span>
                                 </div>
                             </div>
@@ -67,7 +68,7 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         </div>
                         <div class="col-6">
                             <label class="form-label" for="dni">DNI *</label>
-                            <input class="form-control border-dark-violet" type="number" name="dni" id="dni" placeholder="12345678" aria-describedby="d-dni" minlength="8">
+                            <input class="form-control border-dark-violet" type="number" name="dni" id="dni" value="<?= $usuarioDB->getDni() ?>" aria-describedby="d-dni" minlength="8">
                             <span id="text"></span>
                             <p class="form-text" id="d-dni">Sin puntos ni espacios</p>
                         </div>
@@ -79,7 +80,7 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         </div>
                         <div class="col-6">
                             <label class="form-label" for="telefono">Teléfono *</label>
-                            <input class="form-control border-dark-violet" type="number" name="telefono" id="telefono" <?= isset($datosUsuario['telefono']) ? $datosUsuario['telefono'] : "" ?>>
+                            <input class="form-control border-dark-violet" type="number" name="telefono" id="telefono" value="<?= $usuarioDB->getTelefono() ?>">
                             <span id="text"></span>
                             <p class="form-text" id="d-telefono">Solo números, sin guiones.</p>
                         </div>
@@ -92,27 +93,27 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         <h3 class="h2">Datos de envío: </h3>
                         <div class="col-6">
                             <label for="calle" class="form-label">Calle:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="calle" name="calle" value="<?= isset($datosUsuario['calle']) ? $datosUsuario['calle'] : "" ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="calle" name="calle" value="<?= $usuarioDB->getCalle() ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-3">
                             <label for="altura" class="form-label">Altura:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="altura" name="altura" value="<?= isset($datosUsuario['altura']) ? $datosUsuario['altura'] : "" ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="altura" name="altura" value="<?= $usuarioDB->getAltura() ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-3">
                             <label for="cp" class="form-label">CP:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="cp" name="cp" value="<?= isset($datosUsuario['cp']) ? $datosUsuario['cp'] : "" ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="cp" name="cp" value="<?= $usuarioDB->getCp() ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-6 pt-3">
                             <label for="localidad" class="form-label">Localidad:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="localidad" name="localidad" value="<?= isset($datosUsuario['localidad']) ? $datosUsuario['localidad'] : "" ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="localidad" name="localidad" value="<?= $usuarioDB->getLocalidad() ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-6 pt-3">
                             <label for="provincia" class="form-label">Provincia:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="provincia" name="provincia" value="<?= isset($datosUsuario['provincia']) ? $datosUsuario['provincia'] : "" ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="provincia" name="provincia" value="<?= $usuarioDB->getProvincia() ?>">
                             <span id="text"></span>
                         </div>
                     </div>

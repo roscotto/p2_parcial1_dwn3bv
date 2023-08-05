@@ -28,7 +28,14 @@ echo    "</pre>";
             </div>
             <div class="row justify-content-center">
                 <div class="col-5 bg-light-orange px-4 py-3 rounded-3 m-2 shadow-sm">
-                    <h3 class="py-3"">Tus datos personales:</h3>
+                    <div class="row">
+                        <div class="col-10">
+                            <h3 class="py-3"">Tus datos personales:</h3>
+                        </div>
+                        <div class="col-2">
+                            <div class="p-2 align-self-end"><a href="index.php?sec=edit_datos_personales&id=<?= $idUsuario ?>" class="ps-3"><img src="./img/iconos/icon-edit.png" alt="editar"></a></div>
+                        </div>
+                    </div>
                 <p><b>Usuario:</b> <?= $usuarioDatosDB->getUsuario() ?></p>
                 <p><b>Nombre completo:</b> <?= $usuarioDatosDB->getNombre() . " " . $usuarioDatosDB->getApellido() ?></p>
                

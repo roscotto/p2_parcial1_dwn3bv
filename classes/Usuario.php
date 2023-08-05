@@ -114,7 +114,31 @@ class Usuario
         );
     }
 
+    /**
+     * Método que edita los datos principales de un usuario en la base de datos
+     * @param string $usuario
+     * @param string $nombre
+     * @param string $apellido
+     * @param string $email
+     */
+    public function editar_datos_principales(string $usuario, string $nombre, string $apellido, string $email)
+    {
+        $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE usuarios SET usuario = :usuario, nombre = :nombre, apellido = :apellido, email = :email WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $idUsuario,
+                'usuario' => $usuario,
+                'nombre' => $nombre,
+                'apellido' => $apellido,
+                'email' => $email
+            ]
+        );
+    }
 
     /**
      * Método que carga datos adicionales de un usuario (durante el checkout) en la base de datos
@@ -152,6 +176,39 @@ class Usuario
     }
 
 
+    /**
+     * Método que carga datos adicionales de un usuario (desde el panel de usuario) en la base de datos. NO MODIFICA LA TARJETA DE CREDITO
+     * @param int $dni DNI del usuario
+     * @param int $telefono Teléfono del usuario
+     * @param string $calle Calle del usuario
+     * @param int $altura Altura de la calle del usuario
+     * @param int $cp Código postal del usuario
+     * @param string $localidad Localidad del usuario
+     * @param string $provincia Provincia del usuario
+     */
+    public function editar_datos_adic_sin_tarjeta(int $dni, int $telefono, string $calle, int $altura, int $cp, string $localidad, string $provincia)
+    {
+        $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
+        $ult_digitos_tarj = substr($_POST['ult_digitos_tarj'], -4);
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE usuarios_info_adicional SET ult_digitos_tarj = :ult_digitos_tarj, dni = :dni, telefono = :telefono, calle = :calle, altura = :altura, cp = :cp, localidad = :localidad, provincia = :provincia WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $idUsuario,
+                'ult_digitos_tarj' => $ult_digitos_tarj,
+                'dni' => $dni,
+                'telefono' => $telefono,
+                'calle' => $calle,
+                'altura' => $altura,
+                'cp' => $cp,
+                'localidad' => $localidad,
+                'provincia' => $provincia
+            ]
+        );
+    }
   
 
 

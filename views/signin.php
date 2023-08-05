@@ -37,13 +37,15 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-grey-white">Aceptar</button>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-grey-white w-100">Aceptar</button>
+                    </div>
 
                 </form>
                     
                         <a href="index.php?sec=login">
                             <div>
-                            <button type="submit" class="btn btn-grey-white w-100 mt-3">Cancelar
+                            <button type="" class="btn btn-grey-white w-100 mt-3">Cancelar
 
                             </button>
                             </div>

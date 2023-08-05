@@ -75,6 +75,10 @@ $seccionesValidas = [
     "panel_usuario" => [
         "titulo" => "Panel de Usuario",
         "restringido" => true
+    ],
+    "edit_datos_personales" => [
+        "titulo" => "Editar datos personales",
+        "restringido" => true
     ]
 ];
 
