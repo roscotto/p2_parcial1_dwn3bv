@@ -26,8 +26,11 @@
                     </div>
 
                     <button type="submit" class="btn btn-grey-white">Login</button>
-
+                    
                 </form>
+                <p class="pt-5 text-center">¿No estás registrado? 
+                    <a href="index.php?sec=signin"><span class="btn"><b>Podés hacerlo acá</b></span></a>
+                </p>
             </div>
         </div>
     </div>

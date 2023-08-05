@@ -68,6 +68,10 @@ $seccionesValidas = [
         "titulo" => "Iniciar Sesión",
         "restringido" => false
     ],
+    "signin" => [
+        "titulo" => "Registrate",
+        "restringido" => false
+    ],
     "panel_usuario" => [
         "titulo" => "Panel de Usuario",
         "restringido" => true

@@ -92,7 +92,5 @@ class Autenticacion
     
 
 
-    // en caso de implementar un método para la carga de nuevos usuarios, se puede usar el siguiente código para generar el hash de la contraseña
-    // $password =  $usuarioDB->getContrasena();
-    // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    
 }

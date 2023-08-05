@@ -7,13 +7,20 @@ $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria
 $carrito = new Carrito();
 $productosCarrito = $carrito->listar_productos();
 
-foreach ($productosCarrito as $key => $value){
-    if($idSeleccionado == $value['id']){
-        $cantidad = $value['cantidad'];
-    } else {
-        $cantidad = 0;
+if (empty($productosCarrito)) {
+    $cantidad = 0;
+} else {
+    foreach ($productosCarrito as $key => $value){
+        if($idSeleccionado == $value['id']){
+            $cantidad = $value['cantidad'];
+        } else {
+            $cantidad = 0;
+        }
     }
+
 }
+
+
 
 ?>
 
