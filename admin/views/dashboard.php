@@ -5,12 +5,13 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
 $productosCargados = (new Producto())->catalogo_completo();
 $cantidadProductos = count($productosCargados);
 
+$totalCompras = (new Compra())->listar_compras();
 
 
 
-// echo "<pre>";
-// print_r($datosUsuario);
-// echo "</pre>";
+echo "<pre>";
+print_r($totalCompras);
+echo "</pre>";
 ?>
 
 <section id="dashboard_admin">
@@ -75,16 +76,34 @@ $cantidadProductos = count($productosCargados);
                     </tr>
                 </thead>
                 <tbody>
-                    <?PHP foreach ($todasCompras as $tc) { ?>
+                    <?PHP foreach ($totalCompras as $tc)  { ?>
                         <tr class="align-middle">
-                            <td width="15%">
-                                
+                            <td><?= $tc->getId() ?></td>
+                            <td><?= $tc->getUsuario() ?></td>
+                            <td><?= (new Compra())->formatearFecha($tc->getFecha()); ?></td>
+                            <td><ul class="lista-sin-estilos">
+                                            
+                                    <?PHP foreach ($tc->getProductos() as $p) { 
+                                    $producto = $p['producto']; ?>
+                                    <li>
+                                        <p><?= $producto->getNombre_prod() ?></p>
+                                    </li>    
+                                    <?PHP  } ?>
+                                </ul>
                             </td>
-                            <td></td>
-                            <td class="flex-column align-items-stretch">
-                                
-
+                            <td>
+                            <ul class="lista-sin-estilos">
+                                            
+                                    <?PHP foreach ($tc->getProductos() as $p) { 
+                                    $producto = $p['producto']; ?>
+                                    <li>
+                                        <p><?= $p['cantidad'] ?> unidad/es)
+                                        </p>
+                                    </li>    
+                                    <?PHP  } ?>
+                                    </ul>
                             </td>
+                            <td> $ <?= number_format($tc->getImporte(), 2, ",", ".") ?> </td>
 
                         </tr>
 

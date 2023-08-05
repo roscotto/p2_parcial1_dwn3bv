@@ -17,10 +17,12 @@ class Compra
     public function listar_compras(): array
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
-        FROM compras
-        LEFT JOIN productos_x_compra
-        ON compras.id = productos_x_compra.id_compra GROUP BY compras.id;";
+        $query = "SELECT compras.*, 
+        GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos,
+        GROUP_CONCAT(productos_x_compra.cantidad) AS cantidades
+                FROM compras
+                LEFT JOIN productos_x_compra
+                ON compras.id = productos_x_compra.id_compra GROUP BY compras.id;";
 
         $PDOStatement = $conexion->prepare($query);
 
