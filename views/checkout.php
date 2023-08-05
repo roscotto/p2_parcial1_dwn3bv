@@ -42,7 +42,7 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                                 </div>
                                 <div class="col-6">
                                     <label for="inputNombreTarjeta" class="form-label">Nombre como figura en la tarjeta *</label>
-                                    <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombreTarjeta" name="inputNombreTarjeta" placeholder="Juan" require>
+                                    <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombreTarjeta" name="inputNombreTarjeta" require>
                                     <span id="text"></span>
                                 </div>
                             </div>
@@ -57,12 +57,12 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         </div>
                         <div class="col-6">
                             <label for="inputNombre" class="form-label">Nombre *</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombre" name="inputNombre" value="<?= $datosUsuario['nombre'] ?>">
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombre" name="inputNombre" value="<?= $datosUsuario['nombre'] ?>" disabled readonly>
                             <span id="text"></span>
                         </div>
                         <div class="col-6">
                             <label for="inputApellido" class="form-label">Apellido *</label>
-                            <input type="text" class="form-control border-dark-violet" id="inputApellido" name="inputApellido" value="<?= $datosUsuario['apellido'] ?>">
+                            <input type="text" class="form-control border-dark-violet" id="inputApellido" name="inputApellido" value="<?= $datosUsuario['apellido'] ?>" disabled readonly>
                             <span id="text"></span>
                         </div>
                         <div class="col-6">
@@ -73,8 +73,8 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                         </div>
                         <div class="col-6">
                             <label for="inputEmail" class="form-label">Email *</label>
-                            <input type="email" class="form-control border-dark-violet" id="inputEmail" name="inputEmail" aria-describedby="d-email" value="<?= $datosUsuario['email'] ?>">
-                            <span id="text"></span>
+                            <input type="email" class="form-control border-dark-violet" id="inputEmail" name="inputEmail" aria-describedby="d-email" value="<?= $datosUsuario['email'] ?>" disabled readonly>
+                            <span id="text" ></span>
                             <p class="form-text" id="d-email">emaildeejemplo@hotmail.com</p>
                         </div>
                         <div class="col-6">
