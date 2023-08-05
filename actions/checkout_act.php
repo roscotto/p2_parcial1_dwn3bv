@@ -12,6 +12,9 @@ $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 // echo "</pre>";
 
 echo "<pre>";
+print_r($idUsuario);
+echo "</pre>";
+echo "<pre>";
 print_r($postData);
 echo "</pre>";
 
@@ -37,16 +40,11 @@ try {
       // echo "<pre>";
       // print_r($productosAdquiridos);
       // echo "</pre>";
+      // me quedo con los últimos 4 dígitos de la tarjeta de crédito
+      
+      (new Usuario())->editar_datos_adicionales($postData['ult_digitos_tarj'], $postData['dni'], $postData['telefono'], $postData['calle'], $postData['altura'], $postData['cp'], $postData['localidad'], $postData['provincia']);
 
       (new Carrito())->insertar_compra_DB($compraRealizada, $productosAdquiridos);
-
-      // me quedo con los últimos 4 dígitos de la tarjeta de crédito
-      $ult_digitos_tarj = substr($postData['ult_digitos_tarj'], -4);
-
-
-
-
-      // (new Usuario())->cargar_datos_adicionales($ult_digitos_tarj, $postData['dni'], $postData['telefono'],$postData['calle'], $postData['altura'], $postData['cp'], $postData['localidad'], $postData['provincia'])
 
       (new Carrito())->vaciar_carrito();
 
@@ -64,5 +62,8 @@ try {
    print_r($e);
    echo "</pre>";
    (new Alerta())->registrar_alerta('danger', "No se pudo procesar el pago.");
-   header('Location: ../index.php?sec=panel_usuario');
+   //header('Location: ../index.php?sec=panel_usuario');
+   echo "<pre>";
+   print_r($e);
+   echo "</pre>";
 }

@@ -24,20 +24,20 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                             <h3 class="h2" class="mt-5">Ingresá los datos de tu tarjeta</h3>
                             <div class="row">
                                 <div class="col-6">
-                                    <label class="form-label" for="inputNumeroTarjeta">Número *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="inputNumeroTarjeta" id="inputNumeroTarjeta" placeholder="XXXX XXXX XXXX XXXX" aria-describedby="d-tarjeta" maxlength="16" require>
+                                    <label class="form-label" for="ult_digitos_tarj">Número *</label>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="ult_digitos_tarj" id="ult_digitos_tarj" placeholder="XXXX XXXX XXXX XXXX" aria-describedby="d-tarjeta" maxlength="16" require>
                                     <span id="text"></span>
                                     <p class="form-text" id="d-tarjeta">Sin espacios</p>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label" for="inputVto">Vencimiento *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="inputVto" id="inputVto" placeholder="XX/XX" aria-describedby="d-vencimiento" minlength="5" maxlength="5" require>
+                                    <label class="form-label" for="vto">Vencimiento *</label>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="vto" id="vto" placeholder="XX/XX" aria-describedby="d-vencimiento" minlength="5" maxlength="5" require>
                                     <span id="text"></span>
                                     <p class="form-text" id="d-vencimiento">Respetando el formato mes/año. Ej: 03/23</p>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label" for="inputCodigo">Cód. de Seguridad *</label>
-                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="inputCodigo" id="inputCodigo" placeholder="XXX" aria-describedby="d-codigo" minlength="3" maxlength="3" require>
+                                    <label class="form-label" for="codigo">Cód. de Seguridad *</label>
+                                    <input autocomplete="off" class="form-control border-dark-violet" type="number" name="codigo" id="codigo" placeholder="XXX" aria-describedby="d-codigo" minlength="3" maxlength="3" require>
                                     <span id="text"></span>
                                 </div>
                                 <div class="col-6">
@@ -66,8 +66,8 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                             <span id="text"></span>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="inputdni">DNI *</label>
-                            <input class="form-control border-dark-violet" type="number" name="inputdni" id="inputdni" placeholder="12345678" aria-describedby="d-dni" minlength="8">
+                            <label class="form-label" for="dni">DNI *</label>
+                            <input class="form-control border-dark-violet" type="number" name="dni" id="dni" placeholder="12345678" aria-describedby="d-dni" minlength="8">
                             <span id="text"></span>
                             <p class="form-text" id="d-dni">Sin puntos ni espacios</p>
                         </div>
@@ -78,8 +78,8 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                             <p class="form-text" id="d-email">emaildeejemplo@hotmail.com</p>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="inputelefono">Teléfono *</label>
-                            <input class="form-control border-dark-violet" type="number" name="inputelefono" id="inputelefono" <?= isset($datosUsuario['telefono']) ? $datosUsuario['telefono'] : "" ?>>
+                            <label class="form-label" for="telefono">Teléfono *</label>
+                            <input class="form-control border-dark-violet" type="number" name="telefono" id="telefono" <?= isset($datosUsuario['telefono']) ? $datosUsuario['telefono'] : "" ?>>
                             <span id="text"></span>
                             <p class="form-text" id="d-telefono">Solo números, sin guiones.</p>
                         </div>
@@ -91,28 +91,28 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
                     <div class="row d-flex mt-md-4">
                         <h3 class="h2">Datos de envío: </h3>
                         <div class="col-6">
-                            <label for="inputCalle" class="form-label">Calle:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputCalle" name="inputCalle" value="<?= isset($datosUsuario['calle']) ? $datosUsuario['calle'] : "" ?>">
+                            <label for="calle" class="form-label">Calle:</label>
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="calle" name="calle" value="<?= isset($datosUsuario['calle']) ? $datosUsuario['calle'] : "" ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-3">
-                            <label for="inputAltura" class="form-label">Altura:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputAltura" name="inputAltura" value="<?= isset($datosUsuario['altura']) ? $datosUsuario['altura'] : "" ?>">
+                            <label for="altura" class="form-label">Altura:</label>
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="altura" name="altura" value="<?= isset($datosUsuario['altura']) ? $datosUsuario['altura'] : "" ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-3">
-                            <label for="inputCP" class="form-label">CP:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputCP" name="inputCP" value="<?= isset($datosUsuario['cp']) ? $datosUsuario['cp'] : "" ?>">
+                            <label for="cp" class="form-label">CP:</label>
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="cp" name="cp" value="<?= isset($datosUsuario['cp']) ? $datosUsuario['cp'] : "" ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-6 pt-3">
-                            <label for="inputLocalidad" class="form-label">Localidad:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputLocalidad" name="inputLocalidad" value="<?= isset($datosUsuario['localidad']) ? $datosUsuario['localidad'] : "" ?>">
+                            <label for="localidad" class="form-label">Localidad:</label>
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="localidad" name="localidad" value="<?= isset($datosUsuario['localidad']) ? $datosUsuario['localidad'] : "" ?>">
                             <span id="text"></span>
                         </div>
                         <div class="col-6 pt-3">
-                            <label for="inputProvincia" class="form-label">Provincia:</label>
-                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputProvincia" name="inputProvincia" value="<?= isset($datosUsuario['provincia']) ? $datosUsuario['provincia'] : "" ?>">
+                            <label for="provincia" class="form-label">Provincia:</label>
+                            <input autocomplete="off" type="text" class="form-control border-dark-violet" id="provincia" name="provincia" value="<?= isset($datosUsuario['provincia']) ? $datosUsuario['provincia'] : "" ?>">
                             <span id="text"></span>
                         </div>
                     </div>

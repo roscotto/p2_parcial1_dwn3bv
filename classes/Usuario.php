@@ -116,37 +116,40 @@ class Usuario
 
 
 
-    // /**
-    //  * Método que carga datos adicionales de un usuario (durante el checkout) en la base de datos
-    //  * @param int $ult_digitos_tarj Últimos 4 dígitos de la tarjeta de crédito
-    //  * @param int $dni DNI del usuario
-    //  * @param int $telefono Teléfono del usuario
-    //  * @param string $calle Calle del usuario
-    //  * @param int $altura Altura de la calle del usuario
-    //  * @param int $cp Código postal del usuario
-    //  * @param string $localidad Localidad del usuario
-    //  * @param string $provincia Provincia del usuario
-    //  */
-    // public function cargar_datos_adicionales(int $ult_digitos_tarj, int $dni, int $telefono, string $calle, int $altura, int $cp, string $localidad, string $provincia)
-    // {
-    //     $conexion = Conexion::getConexion();
-    //     $query = "INSERT INTO usuarios_info_adicional (id, ult_digitos_tarj, dni, telefono, calle, altura, cp, localidad, provincia) VALUES (:id, :ult_digitos_tarj, :dni, :telefono, :calle, :altura, :cp, :localidad, :provincia)";
+    /**
+     * Método que carga datos adicionales de un usuario (durante el checkout) en la base de datos
+     * @param int $ult_digitos_tarj Últimos 4 dígitos de la tarjeta de crédito
+     * @param int $dni DNI del usuario
+     * @param int $telefono Teléfono del usuario
+     * @param string $calle Calle del usuario
+     * @param int $altura Altura de la calle del usuario
+     * @param int $cp Código postal del usuario
+     * @param string $localidad Localidad del usuario
+     * @param string $provincia Provincia del usuario
+     */
+    public function editar_datos_adicionales(int $ult_digitos_tarj, int $dni, int $telefono, string $calle, int $altura, int $cp, string $localidad, string $provincia)
+    {
+        $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
+        $ult_digitos_tarj = substr($_POST['ult_digitos_tarj'], -4);
 
-    //     $PDOStatement = $conexion->prepare($query);
-    //     $PDOStatement->execute(
-    //         [
-    //             'id' => $_SESSION['id_usuario'],
-    //             'ult_digitos_tarj' => $ult_digitos_tarj,
-    //             'dni' => $dni,
-    //             'telefono' => $telefono,
-    //             'calle' => $calle,
-    //             'altura' => $altura,
-    //             'cp' => $cp,
-    //             'localidad' => $localidad,
-    //             'provincia' => $provincia
-    //         ]
-    //     );
-    // }
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE usuarios_info_adicional SET ult_digitos_tarj = :ult_digitos_tarj, dni = :dni, telefono = :telefono, calle = :calle, altura = :altura, cp = :cp, localidad = :localidad, provincia = :provincia WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $idUsuario,
+                'ult_digitos_tarj' => $ult_digitos_tarj,
+                'dni' => $dni,
+                'telefono' => $telefono,
+                'calle' => $calle,
+                'altura' => $altura,
+                'cp' => $cp,
+                'localidad' => $localidad,
+                'provincia' => $provincia
+            ]
+        );
+    }
 
 
   

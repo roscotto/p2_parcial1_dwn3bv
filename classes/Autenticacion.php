@@ -57,6 +57,7 @@ class Autenticacion
     public function log_out()
     {
         if (isset($_SESSION['usuarioLogueado'])) {
+            (new Carrito())->vaciar_carrito();
             unset($_SESSION['usuarioLogueado']);
         }
     }
