@@ -135,9 +135,9 @@ $rolUsuarioLogueado = $datosUsuarioLogueado['rol'] ?? FALSE;
 
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-grey text-light ">
+    <nav class="navbar navbar-expand-lg bg-grey text-light">
         <div class="container-xl container-fluid ">
-            <div class="align-self-start ">
+            <div class="align-self-start">
                 <a class="navbar-brand mt-2 p-2 d-flex" href="index.php?sec=dashboard">
                     <h1 class="h3 text-light">Panel de Administración</h1>
                 </a>
@@ -149,7 +149,7 @@ $rolUsuarioLogueado = $datosUsuarioLogueado['rol'] ?? FALSE;
                         <span class="navbar-toggler-icon navbar-dark"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ">
+                        <div class="navbar-nav align-items-center">
                             <li class="nav-item mt-1 ms-2">
                                 <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none"  ?> <?= $rolUsuarioLogueado != "usuario" ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
                             </li>

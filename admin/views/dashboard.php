@@ -8,10 +8,6 @@ $cantidadProductos = count($productosCargados);
 $totalCompras = (new Compra())->listar_compras();
 
 
-
-echo "<pre>";
-print_r($totalCompras);
-echo "</pre>";
 ?>
 
 <section id="dashboard_admin">
@@ -67,9 +63,9 @@ echo "</pre>";
         <table class="table text-center">
                 <thead>
                     <tr>
-                        <th scope="col">ID compra</th>
-                        <th scope="col">Usuario</th>
+                        <th scope="col">N° de Orden</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Usuario</th>
                         <th scope="col">Productos</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Importe</th>
@@ -79,8 +75,8 @@ echo "</pre>";
                     <?PHP foreach ($totalCompras as $tc)  { ?>
                         <tr class="align-middle">
                             <td><?= $tc->getId() ?></td>
-                            <td><?= $tc->getUsuario() ?></td>
                             <td><?= (new Compra())->formatearFecha($tc->getFecha()); ?></td>
+                            <td><?= $tc->getUsuario() ?></td>
                             <td><ul class="lista-sin-estilos">
                                             
                                     <?PHP foreach ($tc->getProductos() as $p) { 
@@ -97,7 +93,7 @@ echo "</pre>";
                                     <?PHP foreach ($tc->getProductos() as $p) { 
                                     $producto = $p['producto']; ?>
                                     <li>
-                                        <p><?= $p['cantidad'] ?> unidad/es)
+                                        <p><?= $p['cantidad'] ?> unidad/es
                                         </p>
                                     </li>    
                                     <?PHP  } ?>
@@ -106,9 +102,12 @@ echo "</pre>";
                             <td> $ <?= number_format($tc->getImporte(), 2, ",", ".") ?> </td>
 
                         </tr>
-
-
                     <?PHP } ?>
+                        <tr>
+                            <td colspan="5" class="text-end">Total</td>
+                            <td>$<?= number_format((new Compra())->precio_total(), 2, ",", ".") ?></td>
+                            <td></td>
+                        </tr>
                 </tbody>
             </table>
         </div>

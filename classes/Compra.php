@@ -36,6 +36,18 @@ class Compra
         return $listaCompras;
     }
 
+    /**
+     * Método que devuelve el precio total de la sumatoria de todas las compras
+     * @return float El precio total de todas las compras
+     */
+    public function precio_total() : float
+    {
+        $total = 0;
+        foreach ($this->listar_compras() as $c) {
+            $total += $c->getImporte();
+        }
+        return $total;
+    }
 
 
     /**
