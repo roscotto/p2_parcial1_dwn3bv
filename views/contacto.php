@@ -44,7 +44,7 @@
                          
                          
                          <div class="col-xxl-12">
-                             <button type="submit" class="btn  shadow-sm btn-violet-gradient">Enviar</button>
+                             <button type="submit" class="btn  shadow-sm btn-grey-white w-100">Enviar</button>
                          </div>
                      </form>
                  </div>
