@@ -135,4 +135,60 @@ class Usuario
     {
         return $this->ult_digitos_tarj;
     }
+
+    /**
+     * Get the value of dni
+     */ 
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
+     * Get the value of telefono
+     */ 
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Get the value of calle
+     */ 
+    public function getCalle()
+    {
+        return $this->calle;
+    }
+
+    /**
+     * Get the value of altura
+     */ 
+    public function getAltura()
+    {
+        return $this->altura;
+    }
+
+    /**
+     * Get the value of cp
+     */ 
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Get the value of localidad
+     */ 
+    public function getLocalidad()
+    {
+        return $this->localidad;
+    }
+
+    /**
+     * Get the value of provincia
+     */ 
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
 }
