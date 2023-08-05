@@ -52,16 +52,19 @@ $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
                                 </h2>
                                 <div id="flush-collapse<?= $vuelta ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $vuelta ?>" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <p>Fecha: <?= (new Compra())->formatearFecha($c->getFecha()); ?></p>
-                                        <p>Importe: <?= (new Producto())->precio_formateado($c->getImporte()); ?> </p>
-                                        <p>Productos adquiridos: </p>
+                                        <p><b>Fecha:</b> <?= (new Compra())->formatearFecha($c->getFecha()); ?></p>
+                                        <p><b>Productos adquiridos:</b> </p>
                                         <ul>
-
-                                            <?PHP foreach ($c->getProductos() as $p) { ?></p>
-                                            <li><?= $p->getNombre_prod() ?></li>    
+                                            
+                                            <?PHP foreach ($c->getProductos() as $p) { 
+                                                $producto = $p['producto'];    
+                                                ?></p>
+                                            <li>
+                                                <p><?= $producto->getNombre_prod() ?> - (<?= $p['cantidad'] ?> un)</p></li>    
                                                 
-                                            <?PHP  } ?>
-                                        </ul>
+                                                <?PHP  } ?>
+                                            </ul>
+                                        <p><b>Importe Total:</b> $ <?= number_format($c->getImporte(), 2, ",", ".") ?> </p>
                                     </div>
                                 </div>
                             </div>

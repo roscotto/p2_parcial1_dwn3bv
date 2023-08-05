@@ -7,7 +7,6 @@ class Compra
     private $fecha;
     private $importe;
     private $productos;
-    private $cantidad;
 
     private static $createValues = ['id', 'fecha', 'importe'];
 
@@ -49,12 +48,14 @@ class Compra
         $comprasRealizadas = [];
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT compras.*, GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos
-        FROM compras
-        LEFT JOIN productos_x_compra
-        ON compras.id = productos_x_compra.id_compra
-        WHERE id_usuario = ?
-        GROUP BY compras.id;";
+        $query = "SELECT compras.*, 
+        GROUP_CONCAT(productos_x_compra.id_producto) AS productos_adquiridos,
+        GROUP_CONCAT(productos_x_compra.cantidad) AS cantidades
+                FROM compras
+                LEFT JOIN productos_x_compra
+                ON compras.id = productos_x_compra.id_compra
+                WHERE id_usuario = ?
+                GROUP BY compras.id;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -89,18 +90,28 @@ class Compra
 
 
         $productos_ids = !empty($compraData['productos_adquiridos']) ? explode(',', $compraData['productos_adquiridos']) : []; //si no hay productos, asigno un array vacio (para evitar errores)
+        
         $productos = [];
-
         if (!empty($productos_ids)) { //si hay productos, los busco y los asigno
             foreach ($productos_ids as $id) {
+                //array de objetos Producto
                 $productos[] = (new Producto())->producto_x_id(intval($id));
             }
         }
+       
 
-        $compra->productos = $productos;
+        //array de cantidades
+        $cantidades = !empty($compraData['cantidades']) ? explode(',', $compraData['cantidades']) : []; //si no hay cantidade, asigno un array vacio (para evitar errores)
 
-
-
+        $productosConCantidades = [];
+        foreach ($productos as $key => $producto) {
+            $productosConCantidades[] = [
+                'producto' => $producto,
+                'cantidad' => $cantidades[$key]
+            ];
+        }
+        $compra->productos = $productosConCantidades;
+        
         return $compra;
     }
 
@@ -175,13 +186,6 @@ class Compra
     }
 
     
-    /**
-     * Get the value of cantidad
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
     
     /**
      * Get the value of id_usuario

@@ -15,9 +15,9 @@ if ($id_categoria == "8") {
 //corrijo la falta de tildes y agrego mayúscula en la categoría
 $titulo = ucwords(str_replace("cion", "ción", $nombre_categoria));
 
-// echo "<pre>";
-// print_r($catalogo);
-// echo "</pre>";
+echo "<pre>";
+print_r($catalogo);
+echo "</pre>";
 
 ?>
 
