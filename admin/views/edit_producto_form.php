@@ -111,25 +111,39 @@ $etiquetasSeleccionadas = $producto->getEtiquetasIds();
                         </div>
 
                         <div class="row pt-3">
-                            <div class="col-8">
+                            <div class="col-12">
                                 <div>
                                     <label for="descripcion" class="form-label">Descripción del producto</label>
                                     <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del producto">value="<?= $producto->getDescripcion() ?>"</textarea>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <label for="inicio_promocion" class="form-label">Inicio Promoción</label>
-                                <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" value="<?= $producto->getInicio_promocion() ?>" required>
-                                <div class="form-text">Seleccionar fecha y hora del inicio de la promoción.
-                                </div>
-
-                                <label for="fin_promocion" class="form-label">Fin Promoción</label>
-                                <input type="datetime-local" class="form-control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" value="<?= $producto->getFin_promocion() ?>" required>
-                                <div class="form-text">Seleccionar fecha y hora del fin de la promoción.
-                                </div>
-
-                                
+                            <div class="row pt-3">
+                            <div class="col-12 mb-3">
+                                <label for="promocion" class="mx-2">                                    
+                                    ¿Este producto se encuentra en promoción?
+                                </label>
+                                <input type="checkbox" id="promocion" name="promocion" onchange="ocultarMostrarTarjeta()">
                             </div>
+                            <div id="esConPromocion" class="col-12" style="display:none;">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="inicio_promocion" class="form-label">Inicio Promoción</label>
+                                        <input type="datetime-local" class="form-control" id="inicio_promocion" name="inicio_promocion" placeholder="Fecha de inicio de promoción" >
+                                        <div class="form-text">Seleccionar fecha y hora del inicio de la promoción.
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="fin_promocion" class="form-label">Fin Promoción</label>
+                                        <input type="datetime-local" class="form-control" id="fin_promocion" name="fin_promocion" placeholder="Fecha de fin de la promoción" >
+                                        <div class="form-text">Seleccionar fecha y hora del fin de la promoción.
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div> 
+
                         </div>
                         <div class="row">
                             <div class="col-12 pb-3 pt-3">
@@ -159,3 +173,16 @@ $etiquetasSeleccionadas = $producto->getEtiquetasIds();
     </div>
     </div>
 </section>
+
+<script>
+    function ocultarMostrarTarjeta(){
+        let divPromocion = document.getElementById("esConPromocion");
+        let checkPromocion = document.getElementById("promocion");
+        if (checkPromocion.checked) {
+            divPromocion.style.display = 'block';
+        } else {
+            divPromocion.style.display = 'none';
+        }
+        
+    }
+</script>
