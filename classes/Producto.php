@@ -382,8 +382,8 @@ class Producto
     {
         $cadena = "";
         $fecha_actual = date('Y-m-d H:i:s');
-        $inicio_f = date($this->inicio_promocion);
-        $fin_f    = date($this->fin_promocion);
+        $inicio_f = date('Y-m-d H:i:s', strtotime($this->inicio_promocion));
+        $fin_f    = date('Y-m-d H:i:s', strtotime($this->fin_promocion));
 
         if ($this->inicio_promocion != "" && $this->fin_promocion != "") {
             if ($fecha_actual >= $inicio_f && $fecha_actual <= $fin_f) {
