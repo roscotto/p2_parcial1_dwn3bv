@@ -4,8 +4,21 @@ $idSeleccionado = $_GET['id'] ?? FALSE;
 $producto = (new Producto())->producto_x_id($idSeleccionado);
 $titulo_categoria = ucwords(str_replace("cion", "ción", $producto->getCategoria()));
 
+$carrito = new Carrito();
+$productosCarrito = $carrito->listar_productos();
+
+foreach ($productosCarrito as $key => $value){
+    if($idSeleccionado == $value['id']){
+        $cantidad = $value['cantidad'];
+    } else {
+        $cantidad = 0;
+    }
+}
+
+
+
 echo "<pre>";
-print_r($producto);
+print_r($productosCarrito);
 echo "</pre>";
 ?>
 
@@ -115,16 +128,7 @@ echo "</pre>";
                     </form>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
-                    <p>En tu carrito ya agregaste
-                        <!-- Este fragmento no funciona -->
-                        <?PHP
-                    
-                        if ((isset($_SESSION['carrito']['id'])) == $producto->getId()) {
-                            echo $_SESSION['carrito'][$key]['cantidad'] = $value;
-                        } else {
-                            echo "0";
-                        }
-                        ?> unidades de este producto.</p>
+                    <p>En tu carrito ya agregaste <?= $cantidad ?> unidades de este producto.</p>
                 </div>
             </div>
     </div>

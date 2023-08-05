@@ -8,11 +8,6 @@ $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 
 $comprasUsuario = (new Compra())->compras_x_usuario($idUsuario);
 
-
-echo "<pre>";
-print_r($comprasUsuario);
-echo "</pre>";
-
 $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
 
 ?>
