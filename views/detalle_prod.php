@@ -15,11 +15,6 @@ foreach ($productosCarrito as $key => $value){
     }
 }
 
-
-
-echo "<pre>";
-print_r($productosCarrito);
-echo "</pre>";
 ?>
 
 

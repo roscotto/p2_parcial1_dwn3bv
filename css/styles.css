@@ -147,6 +147,15 @@ a.nav-link:hover {
     color: #101010;
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: #e6896a;
+    color: whitesmoke;
+}
+
+.accordion-button:not(.collapsed)::after{
+    color: #101010;
+}
+
 h1 {
     font-family: 'Catamaran', sans-serif;
     font-weight: 800;
