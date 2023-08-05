@@ -141,6 +141,12 @@ a.nav-link:hover {
     color: #101010 !important;
     font-weight: 600;
 }
+
+.dropdown-item:hover {
+    background-color: #8ea3a6;
+    color: #101010;
+}
+
 h1 {
     font-family: 'Catamaran', sans-serif;
     font-weight: 800;
