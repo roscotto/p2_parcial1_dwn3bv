@@ -22,22 +22,22 @@ $etiquetasSeleccionadas = $producto->getEtiquetasIds();
 
 <section>
     <div class="container">
+    <form action="actions/edit_producto_act.php?id=<?= $producto->getId() ?>" class="row g-4" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="d-flex pt-lg-0 align-self-center">
                 <div class="col-10 p-2 p-lg-5 pb-md-0">
                     <h2 class="p3 text-center mt-5">Editar Producto existente</h2>
                 </div>
-                <div class="col-2">
-                    <label for="imagen_actual" class="form-label"> Imagen actual</label>
-
-                    <img src="../img/productos/<?= $producto->getImagen() ?>" alt="foto de <?= $producto->getNombre_prod() ?>" class="img-fluid">
-                    <input type="hidden" class="form-control" id="imagen_actual" name="imagen_actual" value="<?= $producto->getImagen() ?>">
-
-                </div>
-
+                
             </div>
             <div class="col-12 ">
-                <form action="actions/edit_producto_act.php?id=<?= $producto->getId() ?>" class="row g-4" method="POST" enctype="multipart/form-data">
+                <div class="col-2">
+                    <label for="imagen_actual" class="form-label"> Imagen actual</label>
+    
+                    <img src="../img/productos/<?= $producto->getImagen() ?>" alt="foto de <?= $producto->getNombre_prod() ?>" class="img-fluid">
+                    <input type="hidden" class="form-control" id="imagen_actual" name="imagen_actual" value="<?= $producto->getImagen() ?>">
+    
+                </div>                
                     <div class="col-12">
                         <div class="row pt-3">
                             <div class="col-4">
