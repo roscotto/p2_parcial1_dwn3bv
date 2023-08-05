@@ -50,6 +50,7 @@
 
                 <p> <em>¡Explorá entre las diferentes categorías y encontrá el producto perfecto para vos!.</em></p>
                 </p>
+                <a href="index.php?sec=catalogo_completo" class="btn shadow-sm btn-grey-white mt-3 p-3 py-2">Tienda</a>
             </div>
         </div>
         <div class="col-12 col-lg-6 my-sm-3 mb-md-5 py-sm-5 pb-md-2 align-self-center">
