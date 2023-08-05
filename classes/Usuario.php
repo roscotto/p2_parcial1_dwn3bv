@@ -9,7 +9,15 @@ class Usuario
     private $contrasena;
     private $email;
     private $rol;
-
+    private $ult_digitos_tarj;
+    private $dni;
+    private $telefono;
+    private $calle;
+    private $altura;
+    private $cp;
+    private $localidad;
+    private $provincia;
+    
 
     /**
      * Encuentra un usuario por su nombre de usuario
@@ -46,7 +54,9 @@ class Usuario
     public function get_x_id(int $id): ?Usuario
     {
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM usuarios WHERE id = ?";
+        $query = "SELECT * FROM usuarios
+        LEFT JOIN usuarios_info_adicional ON usuarios_info_adicional.id = usuarios.id
+        WHERE usuarios.id = ?";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -116,5 +126,13 @@ class Usuario
     public function getRol()
     {
         return $this->rol;
+    }
+
+    /**
+     * Get the value of ult_digitos_tarj
+     */ 
+    public function getUlt_digitos_tarj()
+    {
+        return $this->ult_digitos_tarj;
     }
 }

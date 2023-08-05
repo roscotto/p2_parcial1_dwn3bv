@@ -10,6 +10,9 @@ $comprasUsuario = (new Compra())->compras_x_usuario($idUsuario);
 
 $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
 
+echo    "<pre>";
+print_r($usuarioDatosDB);
+echo    "</pre>";
 ?>
 
 <div class="container pb-5">
