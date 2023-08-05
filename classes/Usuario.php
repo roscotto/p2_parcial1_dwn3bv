@@ -95,7 +95,25 @@ class Usuario
                 'rol' => $rol
             ]
         );
+        
     }
+
+    /**
+     * Método que crea una nueva fila vacía en la tabla usuarios_info_adicional, al momento de registrarse un usuario
+     */
+    public function crear_fila_info_adicional() 
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO usuarios_info_adicional (id) VALUES (:id)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $_SESSION['id_usuario']
+            ]
+        );
+    }
+
 
 
     // /**

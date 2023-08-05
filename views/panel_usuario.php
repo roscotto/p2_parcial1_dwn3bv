@@ -40,6 +40,9 @@ echo    "</pre>";
                         <h3 class="py-3"">Tus compras:</h3>
                         <?PHP
                         $vuelta = 0;
+                        if (empty($comprasUsuario)) { ?>
+                            <p class="text-center">Aún no tenés compras realizadas.</p>
+                        <?PHP } else {
                         foreach ($comprasUsuario as $c) { ?>
                 <div class=" accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
@@ -67,7 +70,7 @@ echo    "</pre>";
                                 </div>
                             </div>
                         <?PHP $vuelta += 1;
-                        } ?>
+                        }} ?>
                 </div>
 
 
