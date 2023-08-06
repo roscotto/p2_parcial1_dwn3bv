@@ -9,9 +9,6 @@ $datosUsuario = $_SESSION['usuarioLogueado'];
 
 $usuarioDB = (new Usuario())->get_x_id($datosUsuario['id']);
 
-echo "<pre>";
-print_r($usuarioDB);
-echo "</pre>";
 
 ?>
 
@@ -24,18 +21,13 @@ echo "</pre>";
 
         <section id="medios-pago" class="py-5">
             <div>
-                <div id="container-formulario" class="row mx-auto py-5 d-flex">
+                <div id="container-formulario" class="row mx-auto py-3 d-flex">
 
 
                     <form class="row" action="admin/actions/edit_usuario_act.php" method="POST" autocomplete="off">
-
-
-
-                        <div class="col-12 border-bottom border-2 py-2"></div>
-
-                        <div class="col-12 pt-4">
+                        <div class="col-12">
                             <div class="row g-3">
-                                <div class="col-12 d-flex mt-md-4">
+                                <div class="col-12 d-flex">
                                     <h3 class="h2">Tus datos personales</h3>
                                 </div>
                                 <div class="col-6">

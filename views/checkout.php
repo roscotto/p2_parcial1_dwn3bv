@@ -59,7 +59,9 @@ $usuarioDB = (new Usuario())->get_x_id($datosUsuario['id']);
                         <div class="col-6">
                             <label for="inputNombre" class="form-label">Nombre *</label>
                             <input autocomplete="off" type="text" class="form-control border-dark-violet" id="inputNombre" name="inputNombre" value="<?= $datosUsuario['nombre'] ?>" disabled readonly>
+                            <p class="form-text" id="d-dni">Si necesitás cambiar estos datos podés hacerlo desde el panel de usuario.</p>
                             <span id="text"></span>
+
                         </div>
                         <div class="col-6">
                             <label for="inputApellido" class="form-label">Apellido *</label>

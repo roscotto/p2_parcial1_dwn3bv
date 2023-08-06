@@ -7,18 +7,6 @@ $postData = $_POST;
 
 $idUsuario = $_SESSION['usuarioLogueado']['id'] ?? FALSE;
 
-// echo "<pre>";
-// print_r($productosCarrito);
-// echo "</pre>";
-
-echo "<pre>";
-print_r($idUsuario);
-echo "</pre>";
-echo "<pre>";
-print_r($postData);
-echo "</pre>";
-
-
 
 try {
    if($idUsuario) {

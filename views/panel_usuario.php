@@ -10,9 +10,7 @@ $comprasUsuario = (new Compra())->compras_x_usuario($idUsuario);
 
 $usuarioDatosDB = (new Usuario())->get_x_id($idUsuario);
 
-echo    "<pre>";
-print_r($usuarioDatosDB);
-echo    "</pre>";
+
 ?>
 
 <div class="container pb-5">
@@ -39,7 +37,12 @@ echo    "</pre>";
                 <p><b>Usuario:</b> <?= $usuarioDatosDB->getUsuario() ?></p>
                 <p><b>Nombre completo:</b> <?= $usuarioDatosDB->getNombre() . " " . $usuarioDatosDB->getApellido() ?></p>
                
-                <p><b>Email:</b><?= $usuarioDatosDB->getEmail() ?></p>
+                <p><b>Email: </b><?= $usuarioDatosDB->getEmail() ?></p>
+                <p><b>DNI: </b><?= $usuarioDatosDB->getDni() ?></p>
+                <p><b>Teléfono: </b><?= $usuarioDatosDB->getTelefono() ?></p>
+                <p><b>Dirección: </b><?= $usuarioDatosDB->getCalle() . " " . $usuarioDatosDB->getAltura() ?> <b>- CP: </b><?= $usuarioDatosDB->getCp() ?></p>
+                <p><b>Localidad: </b><?= $usuarioDatosDB->getLocalidad() ?></p>
+                <p><b>Provincia: </b><?= $usuarioDatosDB->getProvincia() ?></p>
              
 
             </div>
