@@ -18,7 +18,7 @@
                  </div>
 
                  <div class="col-12 col-lg-7 col-xxl-7">
-                     <form class="row g-3" action="index.php?sec=form_process" method="post">
+                     <form class="row g-3" action="actions/procesar_contacto.php" method="POST">
                          <div class="col-xxl-6">
                              <label for="inputNombre" class="form-label">Nombre</label>
                              <input type="text" class="form-control border-brown" id="inputNombre" name="inputNombre" placeholder="Juan" >
