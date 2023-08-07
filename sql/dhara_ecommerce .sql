@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2023 a las 01:34:50
+-- Tiempo de generación: 07-08-2023 a las 21:15:53
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -53,9 +53,28 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `fecha_lanzamiento`) VAL
 CREATE TABLE `compras` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_usuario` int(11) UNSIGNED NOT NULL,
-  `fecha_hora` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `importe` float(12,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_usuario`, `fecha`, `importe`) VALUES
+(1, 1, '2023-08-04', 3400.00),
+(2, 1, '2023-08-04', 25091.50),
+(3, 1, '2023-08-04', 2580.00),
+(4, 2, '2023-08-04', 23560.00),
+(5, 1, '2023-08-05', 113805.00),
+(6, 1, '2023-08-05', 10200.00),
+(7, 1, '2023-08-05', 3625.00),
+(8, 3, '2023-08-05', 10225.00),
+(9, 4, '2023-08-05', 6800.00),
+(10, 4, '2023-08-05', 6800.00),
+(11, 2, '2023-08-06', 2930.50),
+(12, 2, '2023-08-06', 2930.50),
+(13, 5, '2023-08-06', 6500.00);
 
 -- --------------------------------------------------------
 
@@ -101,7 +120,9 @@ INSERT INTO `etiquetas_x_producto` (`id`, `producto_id`, `etiqueta_id`) VALUES
 (1, 1, 4),
 (2, 1, 3),
 (3, 15, 2),
-(4, 12, 4);
+(4, 12, 4),
+(25, 31, 1),
+(26, 31, 2);
 
 -- --------------------------------------------------------
 
@@ -181,7 +202,8 @@ INSERT INTO `productos` (`id`, `nombre_prod`, `categoria`, `imagen`, `alt`, `des
 (17, 'Campana de meditación de tres tonos', 5, '17.jpg', 'Campana de meditación de tres tonos', 'El timbre Aklot de 3 tonos es ideal para yoga o meditación. tiene un sonido melodioso, golpeando el timbre con la baqueta suavemente, obtendrás un sonido sorpresa de larga duración y un buen eco relajante. El tono de los tres timbres es de 440 Hz C7, D7, E7.', 22, 'Metal y madera', '20 cm.', '800gr.', 'Limpiar con un trapo humedecido con agua dulce o destilada.', 25, '8000.00', NULL, NULL),
 (18, 'Jardín Zen grande', 1, '18.jpg', 'Jardín Zen grande', 'Los jardines zen son áreas verdes diseñadas para transmitir tranquilidad. Su composición es muy sencilla, se basa en dos elementos al alcance de todos: arena y piedras. Su principal objetivo es favorecer la serenidad interior y reducir el estrés a través de su belleza y elegancia. Aquí tienes un jardín zen en miniatuara, con un gong, arena blanca, una piedra, una planta y un buda.', 3, 'arena, piedras, madera, metal, plástico', '15 x 17 x 12 cm.', '3200gr.', 'Producto frágil', 8, '10500.00', NULL, NULL),
 (19, 'Vajra Dorje Tibetano', 5, '19.jpg', 'Vajra Dorje Tibetano', 'El más importante de los objetos de culto del budismo tibetano: el Dorje, se ha convertido en el símbolo de toda manifestación de la verdad clara e invariable. En la iconografía y en los ritos del budismo Tibetano el Dorje está siempre acompañado de una Campana y junto a estos dos símbolos representan lo opuesto de convivencia, la campana símbolo del lado femenino, mientras el Dorje, es del lado masculino, del trueno y de la mente.', 7, 'Bronce', '9 cm.', '400gr.', 'Limpiar con un paño suave.', 3, '3801.00', NULL, NULL),
-(20, 'Farol solar decorativo de jardín', 1, '20.jpg', 'Farol solar decorativo de jardín', 'Adorno de jardín de estilo japonés o chino, pagoda Zen y linternas de palacio de cuatro esquinas de diseño arquitectónico antiguo. Ilumina tus noches con la energía silenciosa de nuestros graciosos. Sin cableado fácil de instalar.', 3, 'resina', '30 cm.', '1500gr.', 'Resistente al agua.', 10, '20300.00', NULL, NULL);
+(20, 'Farol solar decorativo de jardín', 1, '20.jpg', 'Farol solar decorativo de jardín', 'Adorno de jardín de estilo japonés o chino, pagoda Zen y linternas de palacio de cuatro esquinas de diseño arquitectónico antiguo. Ilumina tus noches con la energía silenciosa de nuestros graciosos. Sin cableado fácil de instalar.', 3, 'resina', '30 cm.', '1500gr.', 'Resistente al agua.', 10, '20300.00', NULL, NULL),
+(31, 'producto1', 1, '1691254687.jfif', '  ffff', 'value=\"value=\"ffff\"\"', 3, 'ffff', '30 cm', '1500 gr', 'fragil', 10, '50.00', '2023-09-06 13:57:00', '2023-10-27 13:57:00');
 
 -- --------------------------------------------------------
 
@@ -193,8 +215,31 @@ CREATE TABLE `productos_x_compra` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_compra` int(10) UNSIGNED NOT NULL,
   `id_producto` int(10) UNSIGNED NOT NULL,
-  `cantidad_producto` int(11) NOT NULL
+  `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos_x_compra`
+--
+
+INSERT INTO `productos_x_compra` (`id`, `id_compra`, `id_producto`, `cantidad`) VALUES
+(1, 1, 2, 1),
+(2, 2, 2, 1),
+(3, 2, 6, 3),
+(4, 2, 8, 3),
+(5, 3, 14, 1),
+(6, 4, 9, 2),
+(7, 5, 1, 5),
+(8, 5, 7, 5),
+(9, 6, 2, 3),
+(10, 7, 3, 1),
+(11, 8, 3, 1),
+(12, 8, 11, 1),
+(13, 9, 2, 2),
+(14, 10, 2, 2),
+(15, 11, 8, 1),
+(16, 12, 8, 1),
+(17, 13, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -219,7 +264,14 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `contrasena`, `email`, `rol`) VALUES
 (1, 'jperez_dv', 'Jorge', 'Perez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'jorge.perez@davinci.edu.ar', 'usuario'),
 (2, 'ro_scotto', 'Rocio', 'Scotto', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'rocio.scotto@davinci.edu.ar', 'admin'),
-(3, 'pedro_gch', 'Pedro', 'Gonzalez Chavez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'pedro.gonzalez@davinci.edu.ar', 'superadmin');
+(3, 'pedro_gch', 'Pedro', 'Gonzalez Chavez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'pedro.gonzalez@davinci.edu.ar', 'superadmin'),
+(4, 'vero_carranza', 'Veronica', 'Carranza', '$2y$10$immrEqyWTF37RPbL9.rAhewiekUQGfPbBb3VXCspFtyxsEHPsEaKe', 'veronicacarranza@gmail.com', 'usuario'),
+(5, 'usuario_prueba2', 'Nombre2', 'Apellido2', '$2y$10$QegJuQWVef1n/BTHqap/muUNBfsH.LdTN86Vg3dJRJKMBqJb2mLmC', 'emailprueba2@gmail.com', 'usuario'),
+(6, 'usuario_prueba2', 'Nombre2', 'Apellido2', '$2y$10$dZdtQym4XtJfzuM2Zl5Msu1OkbJ2rx852V6vLNuy9yLZztrb8QAU2', 'emailprueba2@gmail.com', 'usuario'),
+(7, 'usuario_prueba3', 'Nombre3', 'Apellido3', '$2y$10$to4TX7x0CgW0l61GHqGBc.F9teBq5uqGmc8fejv62xayES6HFXMmi', 'emailprueba3@gmail.com', 'usuario'),
+(8, 'usuario_prueba4', 'Nombre4', 'Apellido4', '$2y$10$uwv0vlibWKL2p7F1MscFp.GOaESSH7G0YGlMQTEL6kioyHjACu5ZG', 'emailprueba4@gmail.com', 'usuario'),
+(9, 'usuario_prueba9', 'Nombre9', 'Apellido9', '$2y$10$Su0kzNq10fLIi5Khp/CWbO9bQPcmQiZ8dBJ/wrK4dFCw3LMafVVLS', 'emailprueba9@gmail.com', 'usuario'),
+(10, 'usuario_prueba10', 'Nombre10', 'Apellido10', '$2y$10$1iImgOFgJICoznqw13VXmOtySkf2Qq.PT/V.vNVzDvtsWhvAYQXZK', 'emailprueba10@gmail.com', 'usuario');
 
 -- --------------------------------------------------------
 
@@ -230,8 +282,6 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `contrasena`, `em
 CREATE TABLE `usuarios_info_adicional` (
   `id` int(10) UNSIGNED NOT NULL,
   `ult_digitos_tarj` int(4) NOT NULL,
-  `vto_tarj` varchar(5) NOT NULL,
-  `nombre_tarj` int(11) NOT NULL,
   `dni` varchar(256) NOT NULL,
   `telefono` varchar(256) NOT NULL,
   `calle` varchar(256) NOT NULL,
@@ -240,6 +290,22 @@ CREATE TABLE `usuarios_info_adicional` (
   `localidad` varchar(256) NOT NULL,
   `provincia` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios_info_adicional`
+--
+
+INSERT INTO `usuarios_info_adicional` (`id`, `ult_digitos_tarj`, `dni`, `telefono`, `calle`, `altura`, `cp`, `localidad`, `provincia`) VALUES
+(1, 0, '', '', '', '', '', '', ''),
+(2, 0, '34949860', '1132419968', 'Franz Liszt', '1987', '1746', 'Francisco Álvarez', 'Buenos Aires'),
+(3, 0, '', '', '', '', '', '', ''),
+(4, 0, '', '', '', '', '', '', ''),
+(5, 0, '34949860', '1123232323', 'Saraza', '1746', '1746', 'MORENO', 'BUENOS AIRES'),
+(6, 0, '', '', '', '', '', '', ''),
+(7, 0, '', '', '', '', '', '', ''),
+(8, 0, '', '', '', '', '', '', ''),
+(9, 1234, '34949860', '1132419968', 'Av. Cabildo', '5960', '1429', 'CABA', 'BSAS'),
+(10, 0, '', '', '', '', '', '', '');
 
 --
 -- Índices para tablas volcadas
@@ -320,7 +386,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -332,7 +398,7 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT de la tabla `etiquetas_x_producto`
 --
 ALTER TABLE `etiquetas_x_producto`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `origen`
@@ -344,25 +410,25 @@ ALTER TABLE `origen`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_x_compra`
 --
 ALTER TABLE `productos_x_compra`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_info_adicional`
 --
 ALTER TABLE `usuarios_info_adicional`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
