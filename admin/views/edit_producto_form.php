@@ -114,7 +114,7 @@ $etiquetasSeleccionadas = $producto->getEtiquetasIds();
                             <div class="col-12">
                                 <div>
                                     <label for="descripcion" class="form-label">Descripción del producto</label>
-                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del producto">value="<?= $producto->getDescripcion() ?>"</textarea>
+                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del producto"><?= $producto->getDescripcion() ?></textarea>
                                 </div>
                             </div>
                             <div class="row pt-3">
