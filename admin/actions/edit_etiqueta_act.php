@@ -5,21 +5,6 @@ $postData = $_POST;
 $idEtiqueta = $_GET['id'] ?? FALSE;
 $fileData = $_FILES['icono_etiq'] ?? FALSE;
 
-// echo "<pre>";
-// echo "<p>POST</p>";
-// print_r($postData);
-// echo "</pre>";
-
-// echo "<pre>";
-// echo "<p>id</p>";
-// print_r($idEtiqueta);
-// echo "</pre>";
-
-// echo "<pre>";
-// echo "<p>file data</p>";
-// print_r($fileData);
-// echo "</pre>";
-
 try {
     $etiqueta = (new Etiqueta())->get_x_id($idEtiqueta);
 

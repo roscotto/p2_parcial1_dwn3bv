@@ -12,9 +12,6 @@ if (isset($terminoBusqueda) && $terminoBusqueda !== FALSE) {
 //corrijo la falta de tildes y agrego mayúscula en la categoría
 $titulo = ucwords(str_replace("cion", "ción", $nombre_categoria));
 
-// echo "<pre>";
-// print_r($catalogo);
-// echo "</pre>";
 
 ?>
 

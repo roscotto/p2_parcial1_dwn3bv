@@ -13,9 +13,6 @@ class Autenticacion
     public function log_in(string $usuario, string $contrasena): mixed
     {
 
-        // echo "<p>Vamos a intentar autenticar al usuario $usuario</p>";
-        // echo "<p>La contraseña es $contrasena</p>";
-
         $usuarioDB = (new Usuario())->encontrar_x_usuario($usuario); //busca el usuario en la base de datos
 
         //primero chequeamos que los datos del usuario existan en la base de datos
@@ -34,11 +31,6 @@ class Autenticacion
                 $datosLogin['rol'] = $usuarioDB->getRol();
                 $_SESSION['usuarioLogueado'] = $datosLogin;
     
-                // echo "<pre>";
-                // print_r($_SESSION['usuarioLogueado']);
-                // echo "</pre>";
-    
-                echo "Contraseña correcta";
                 return $datosLogin['rol']; //devuelve el rol del usuario
             } else {
                 //echo "Contraseña incorrecta. Intentá nuevamente";

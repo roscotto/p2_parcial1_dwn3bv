@@ -1,10 +1,6 @@
 <?PHP
 require_once "../functions/autoload.php";
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
-
 $seccionesValidas = [
     "dashboard" => [
         "titulo" => "Panel de Administración",
@@ -104,14 +100,6 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 $rolUsuarioLogueado = $datosUsuarioLogueado['rol'] ?? FALSE;
 
-
-//echo "<pre>";
-//var_dump('usuario logueado', $datosUsuarioLogueado);
-//echo "</pre>";
-
-// echo "<pre>";
-// print_r($rolUsuarioLogueado);
-// echo "</pre>";
 
 
 ?>

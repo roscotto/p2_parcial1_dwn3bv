@@ -216,9 +216,7 @@ class Producto
             $catalogo[] = $this->crear_producto($result);
         }
 
-        // echo "<pre>";
-        // print_r($catalogo);
-        // echo "</pre>";
+
 
         return $catalogo;
     }

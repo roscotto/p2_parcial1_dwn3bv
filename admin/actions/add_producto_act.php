@@ -4,16 +4,6 @@ require_once '../../functions/autoload.php';
 $postData = $_POST;
 $fileData = $_FILES['imagen'];
 
-
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";
-
-
 try {
     $producto = (new Producto());
     
@@ -49,9 +39,6 @@ try {
 
 } catch (Exception $e) {
     (new Alerta())->registrar_alerta('error', "No se pudo cargar el producto.");
-    echo "<pre>";
-    print_r($e);
-    echo "</pre>";
     die("No se pudo cargar el producto.");   
     header('Location: ../index.php?sec=admin_productos');
 }

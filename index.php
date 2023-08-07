@@ -7,9 +7,6 @@ $botonesCategorias = (new Categoria())->listar_categorias();
 $carrito = new Carrito();
 $totalProductos = $carrito->cantidad_total_productos();
 
-// echo "<pre>";
-// print_r($botonesCategorias);
-// echo "</pre>";
 
 $seccionesValidas = [
     "home" => [

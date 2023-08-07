@@ -1,8 +1,6 @@
 <?PHP
 $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
-// echo "<pre>";
-// print_r($listaEtiquetas);
-// echo "</pre>";
+
 ?>
 
 

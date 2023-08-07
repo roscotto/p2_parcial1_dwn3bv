@@ -3,9 +3,7 @@
 $idCategoria = $_GET['id'] ?? FALSE;
 
 $categoria = (new Categoria())->get_x_id($idCategoria);
-// echo "<pre>";
-// print_r($categoria);
-// echo "</pre>";
+
 ?>
 
 

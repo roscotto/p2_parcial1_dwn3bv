@@ -8,7 +8,6 @@ $idProducto = $_GET['id'] ?? FALSE;
 $producto = (new Producto())->producto_x_id($idProducto);
 
 $etiquetasSeleccionadas = $producto->getEtiquetasIds();
-
 ?>
 
 

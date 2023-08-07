@@ -1,9 +1,6 @@
 <?PHP
 $listaProductos = (new Producto())->catalogo_completo();
 
-// echo "<pre>";
-// print_r($listaProductos);
-// echo "</pre>";
 ?>
 
 

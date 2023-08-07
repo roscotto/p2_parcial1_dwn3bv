@@ -3,9 +3,7 @@
 $idPaisOrigen = $_GET['id'] ?? FALSE;
 
 $paisOrigen = (new Origen())->get_x_id($idPaisOrigen);
-// echo "<pre>";
-// print_r($categoria);
-// echo "</pre>";
+
 ?>
 
 
