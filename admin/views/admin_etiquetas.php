@@ -63,7 +63,7 @@ $listaEtiquetas = (new Etiqueta())->listar_etiquetas();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="h5 modal-title">Eliminar Etiqueta</h1>
+                <h2 class="h5 modal-title">Eliminar Etiqueta</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

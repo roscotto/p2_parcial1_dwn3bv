@@ -62,7 +62,7 @@ $listaCategorias = (new Categoria())->listar_categorias();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="h5 modal-title">Eliminar Categoría</h1>
+                <h2 class="h5 modal-title">Eliminar Categoría</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
