@@ -17,8 +17,8 @@
                             </div>
                             <div class="col-6">
                                 <label for="f-lanzamiento" class="form-label">Fecha de Lanzamiento</label>
-                                <input type="datetime-local" class="form-control" id="f-lanzamiento" name="f-lanzamiento" placeholder="Nombre de la categoría" required>
-                                <div class="form-text">Seleccionar fecha y hora del momento de la carga.</div>
+                                <input type="date" class="form-control" id="f-lanzamiento" name="f-lanzamiento" placeholder="Nombre de la categoría">
+                                <div class="form-text">Seleccionar fecha del momento de la carga.</div>
                             </div>
                         </div>
                     </div>
