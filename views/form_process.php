@@ -1,10 +1,17 @@
+<?PHP
+$nombre = $_GET['nombre'];
+$emial  = $_GET['email'];
+$tel    = $_GET['tel'];
+$coment = $_GET['comentario'];
+
+?>
 <section class="contacto">
   <div class="container mt-3  mx-auto py-5">
-    <h2>Muchas gracias por tu mensaje! <?= $inputNombre ?> <?= $inputApellido ?></h2>
+    <h2>Muchas gracias por tu mensaje! <?= $nombre ?> </h2>
     
     <h3>A la brevedad te estaremos contactando por la siguiente consulta:</h3>
-    <p>Comentario: <?= $inputComentario ?></p>
+    <p>Comentario: <?= $coment ?></p>
   
-    <p>Te contactaremos a este email <strong><?= $inputEmail ?></strong> o a este télefono <strong><?= $inputTelefono ?></strong>.</p>
+    <p>Te contactaremos a este email <strong><?= $emial ?></strong> o a este télefono <strong><?= $tel ?></strong>.</p>
   </div>
 </section>

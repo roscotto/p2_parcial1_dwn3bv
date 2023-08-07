@@ -20,7 +20,7 @@
                  <div class="col-12 col-lg-7 col-xxl-7">
                      <form class="row g-3" action="actions/procesar_contacto.php" method="POST">
                          <div class="col-xxl-6">
-                             <label for="inputNombre" class="form-label">Nombre</label>
+                             <label for="inputNombre" class="form-label">Nombre(*)</label>
                              <input type="text" class="form-control border-brown" id="inputNombre" name="inputNombre" placeholder="Juan" >
                          </div>
                          <div class="col-xxl-6">
@@ -28,17 +28,17 @@
                              <input type="text" class="form-control border-brown" id="inputApellido" name="inputApellido" placeholder="Pérez" >
                          </div>
                          <div class="col-xxl-6">
-                             <label for="inputEmail" class="form-label">Email</label>
+                             <label for="inputEmail" class="form-label">Email(*)</label>
                              <input type="email" class="form-control border-brown" id="inputEmail" name="inputEmail" aria-describedby="d-email" >
                              <p class="form-text" id="d-email">emaildeejemplo@hotmail.com</p>
                          </div>
                          <div class="col-xxl-6">
-                            <label class="form-label" for="inputTelefono">Teléfono</label>
+                            <label class="form-label" for="inputTelefono">Teléfono(*)</label>
                             <input class="form-control border-brown" type="text" name="inputTelefono" id="inputTelefono" placeholder="54 9 11 xxxx xxxx " oninput="validarNumerico(event)">                            
                             <p class="form-text" id="inputTelefono">solo números, sin guiones.</p>
                          </div>
                          <div class="mb-3 col-xxl-12">
-                             <label for="inputComentario" class="form-label">Comentario</label>
+                             <label for="inputComentario" class="form-label">Comentario(*)</label>
                              <textarea class="form-control border-brown" id="inputComentario" name="inputComentario" rows="5" ></textarea>
                          </div>
                          
