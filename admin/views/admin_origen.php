@@ -40,7 +40,7 @@ $listaPaisesOrigen = (new Origen())->listar_origen();
                             <td><?= $c->getContinente() ?></td>
                             <td class="flex-column align-items-stretch">
                                 <div class="p-2"><a href="index.php?sec=edit_origen_form&id=<?= $c->getId() ?>" class="ps-3"><img src="./../img/iconos/icon-edit.png" alt="editar"></a></div>
-                                <div class="p-2"><a href="" class="ps-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <div class="p-2"><a href="#" class="ps-3" onclick="eliminarOrigen(<?= $c->getId() ?>, event)">
                                         <img src="./../img/iconos/icon-delete.png" alt="eliminar"></a></div>
                             </td>
 
@@ -68,8 +68,19 @@ $listaPaisesOrigen = (new Origen())->listar_origen();
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a href="actions/delete_origen_act.php?id=<?= $c->getId() ?>" class="btn btn-primary">Eliminar</a>
+                <a id="btnEliminarOrigen" href="#" class="btn btn-primary">Eliminar</a>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Fin Modal de confirmación (acción de eliminar)-->
+<script>
+    function eliminarOrigen(id,e){
+        e.preventDefault();
+        let cartelModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {backdrop: 'static', keyboard: false});
+        cartelModal.show();
+        let btnEliminarOrigen = document.getElementById("btnEliminarOrigen")
+        btnEliminarOrigen.href = "actions/delete_origen_act.php?id="+id;
+    }
+</script>
