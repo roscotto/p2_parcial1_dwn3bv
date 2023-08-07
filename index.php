@@ -126,35 +126,36 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
 
 <body>
     <div class="navbar navbar-expand-lg bg-orange text-light ">
-        <div class="container-xl container-fluid ">
-            <div class="align-self-start ">
-                <a class="navbar-brand mt-2 p-2 " href="index.php?sec=home">
-                    <img src="./img/logo.png" alt="Logo Dhara" class="d-inline-block align-text-top m-2" id="logo">
-                    <h1 class="d-none">Dhara</h1>
-                </a>
-            </div>
-            <div>
-            <div class="pe-3">
+        <div class="container-xl container-fluid justify-content-center">
+            <div class="row d-flex">
+                <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center">
+                    <a class="navbar-brand mt-2 p-2 " href="index.php?sec=home">
+                        <img src="./img/logo.png" alt="Logo Dhara" class="d-inline-block align-text-top m-2" id="logo">
+                        <h1 class="d-none">Dhara</h1>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-6 pe-3 d-flex align-items-center justify-content-center">
                     <form class="d-flex" role="search" action="actions/procesar_busqueda.php" method="get">
                         <input class="form-control me-2" type="search" aria-label="Search" name="q" placeholder="Buscar productos">
                         <button class="btn btn-light" type="submit">Buscar</button>
                     </form>
                 </div>
-            </div>
-            <div class="align-self-center d-flex ">
-                <div class="navbar-nav ">
-                    <div>
-                        <a class="nav-link text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
-                    </div>
-                    <div>
-                        <a class="nav-link text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
-                    </div>
 
 
+
+                <div class="col-8 col-md-10 col-lg-4 navbar-nav justify-content-around pt-3">
+                    <div class="row d-flex">
+                        <div class="col-6 px-md-3">
+                            <a class="nav-link text-center text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
+                        </div>
+                        <div class="col-6 px-md-3">
+                            <a class="nav-link text-center text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-3 mt-md-4 mt-lg-2 ">
-
+                <div class="col-4 col-md-2 col-lg-2 mt-3 mt-md-4 mt-lg-2 justify-content-around  pt-3 d-flex align-items-center">
                     <button type="button" class="btn text-light position-relative ">
                         <a href="index.php?sec=carrito">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -180,7 +181,7 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
         <div class="container-xl container-fluid justify-content-center">
 
             <div class="row">
-                <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler p-3 mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon navbar-dark"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">

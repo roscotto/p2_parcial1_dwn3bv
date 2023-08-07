@@ -44,12 +44,12 @@ if (empty($productosCarrito)) {
                             <h3 class="card-text fw-bold text-dark-violet fs-2"><?= $producto->getNombre_prod() ?></h3>
                             <p class="h4 card-text fw-bold text-dark-violet fs-5">Origen: <?= $producto->getOrigen() ?></p>
                             <div class="row">
-                                <div class="col-6 ">
+                                <div class="col-12 col-lg-6 ">
                                     <div class="mt-4">
                                         <p><?= $producto->getDescripcion() ?>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6 ">
                                     <div class="d-flex row justify-content-end">
 
                                         <?PHP foreach ($producto->getEtiquetas() as $e) { ?>
@@ -118,12 +118,12 @@ if (empty($productosCarrito)) {
 
                 <div>
                     <form action="actions/add_prod_carrito_act.php" method="GET" class="row justify-content-end align-items-end">
-                        <div class="col-1">
+                        <div class="col-6 col-lg-1">
                             <label for="cantidad" class="form-label">Cantidad: </label>
                             <input type="number" name="cantidad" id="cantidad" class="form-control" value="1">
                             <input type="hidden" name="id" id="id" value="<?= $producto->getId() ?>">
                         </div>
-                        <div class="col-2">
+                        <div class="col-6 col-lg-2">
                             <input type="submit" class="btn shadow-sm btn-grey-white w-100" value="Agregar al carrito"></input>
                             <input type="hidden" value="<?= $producto->getId() ?>" name="id" id="id">
                         </div>
