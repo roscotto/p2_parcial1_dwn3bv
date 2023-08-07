@@ -9,14 +9,6 @@ $producto = (new Producto())->producto_x_id($idProducto);
 
 $etiquetasSeleccionadas = $producto->getEtiquetasIds();
 
-
-// echo "<pre>";
-// print_r($etiquetasSeleccionadas);
-// echo "</pre>";
-
-//  echo "<pre>";
-//  print_r($producto);
-//  echo "</pre>";
 ?>
 
 
