@@ -7,11 +7,6 @@ $fileData = $_FILES['imagen'] ?? FALSE;
 
 $postData[] = $fileData;
 
-// echo "<pre>";
-// var_dump($postData['imagen_actual']);
-// echo "</pre>";
-// die();
-
 try {
     $producto = (new Producto())->producto_x_id($idProducto);
 

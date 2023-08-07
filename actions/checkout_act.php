@@ -21,13 +21,6 @@ try {
       foreach($productosCarrito as $key => $value) { //
          $productosAdquiridos[$key] = $value['cantidad'];
       }
-
-      // echo "<pre>";
-      // print_r($compraRealizada);
-      // echo "</pre>";
-      // echo "<pre>";
-      // print_r($productosAdquiridos);
-      // echo "</pre>";
       // me quedo con los últimos 4 dígitos de la tarjeta de crédito
       
       (new Usuario())->editar_datos_adicionales($postData['ult_digitos_tarj'], $postData['dni'], $postData['telefono'], $postData['calle'], $postData['altura'], $postData['cp'], $postData['localidad'], $postData['provincia']);
@@ -46,12 +39,6 @@ try {
    }
 
 } catch (Exception $e) {
-   echo "<pre>";
-   print_r($e);
-   echo "</pre>";
    (new Alerta())->registrar_alerta('danger', "No se pudo procesar el pago.");
    //header('Location: ../index.php?sec=panel_usuario');
-   echo "<pre>";
-   print_r($e);
-   echo "</pre>";
 }

@@ -15,9 +15,5 @@ try {
     );
     header('Location: ../index.php?sec=admin_etiquetas');
 } catch (Exception $e) {
-    echo "<pre>";
-    print_r($e);
-    echo "</pre>";
-
     die("No se pudo cargar la etiqueta.");
 }

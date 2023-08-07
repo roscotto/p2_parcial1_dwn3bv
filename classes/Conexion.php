@@ -26,18 +26,6 @@ class Conexion
 
         } catch (Exception $e) {
 
-            //bloque con detalle de error
-            // echo "<pre>";
-            // print_r($e);
-            // echo "</pre>";
-            // echo "<p>El error se generó en el siguiente archivo:</p>";
-            // echo $e->getFile();
-            // echo "<p>El error se generó en la siguiente línea:</p>";
-            // echo $e->getLine();
-            // echo "<p>El error es el siguiente:</p>";
-            // echo $e->getMessage();
-
-
             die('Error al conectar con MySQL.'); // corta la ejecucion
         }
     }
