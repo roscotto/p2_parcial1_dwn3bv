@@ -42,6 +42,11 @@ if ($inputComentario == ""){
   $mensaje = $mensaje."*el comentario es requerido <br>";
   $bandera = false;
 }
+if ($inputTelefono == ""){
+  $mensaje = $mensaje."*el telefono es requerido <br>";
+  $bandera = false;
+}
+
 
 
 if ($bandera){
