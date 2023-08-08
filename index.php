@@ -147,10 +147,10 @@ $datosUsuarioLogueado = $_SESSION['usuarioLogueado'] ?? FALSE;
                 <div class="col-8 col-md-10 col-lg-4 navbar-nav justify-content-around pt-3">
                     <div class="row d-flex">
                         <div class="col-6 px-md-3">
-                            <a class="nav-link text-center text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
+                            <a class="nav-link text-center shadow-sm text-dark bg-light rounded mx-2" href="index.php?sec=login">Log In</a>
                         </div>
                         <div class="col-6 px-md-3">
-                            <a class="nav-link text-center text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
+                            <a class="nav-link text-center shadow-sm text-dark bg-light rounded mx-2" href="./admin/index.php?sec=login">Admin</a>
                         </div>
                     </div>
                 </div>

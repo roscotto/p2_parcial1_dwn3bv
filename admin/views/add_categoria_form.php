@@ -29,7 +29,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-grey-white">Agregar</button>
+                    <button type="submit" class="btn btn-grey-white shadow-sm">Agregar</button>
 
                 </form>
             </div>

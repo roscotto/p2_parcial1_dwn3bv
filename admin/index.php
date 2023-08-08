@@ -155,10 +155,10 @@ $rolUsuarioLogueado = $datosUsuarioLogueado['rol'] ?? FALSE;
                             </li>
 
                             <li class="nav-item p-3">
-                                <a class="nav-link text-dark bg-light rounded " href="../index.php">Volver al sitio web</a>
+                                <a class="nav-link text-dark bg-light rounded shadow-sm" href="../index.php">Volver al sitio web</a>
                             </li>
                             <li class="nav-item p-3">
-                                <a class="nav-link text-dark bg-light rounded <?= $datosUsuarioLogueado ? "d-none" : ""  ?>" href="index.php?sec=login">Login</a>
+                                <a class="nav-link shadow-sm text-dark bg-light rounded <?= $datosUsuarioLogueado ? "d-none" : ""  ?>" href="index.php?sec=login">Login</a>
                             </li>
                             <li  class="nav-item">
                                 <a class="nav-link active text-light <?= $datosUsuarioLogueado ? "" : "d-none"  ?>" aria-current="page" href="actions/auth_logout.php"><img src="../img/iconos/icono-logout.png" alt="cerrar sesión"></a>
