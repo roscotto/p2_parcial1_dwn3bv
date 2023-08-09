@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-08-2023 a las 21:15:53
+-- Tiempo de generación: 09-08-2023 a las 17:59:26
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -31,7 +31,7 @@ CREATE TABLE `categoria` (
   `id` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(256) NOT NULL,
   `descripcion` text DEFAULT NULL,
-  `fecha_lanzamiento` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_lanzamiento` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,10 +39,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `fecha_lanzamiento`) VALUES
-(1, 'Decoración', 'Te ofrecemos una amplia gama de artículos diseñados para embellecer y personalizar todos tus espacios. Incluye elementos como cuadros, esculturas, jarrones, alfombras, espejos y lámparas, entre otros. Estos productos están disponibles en diversos estilos y materiales, lo que te permitirá a las personas expresar tu individualidad y crear ambientes únicos en tu casa u oficina.', '2023-06-19 21:35:00'),
-(4, 'Yoga', 'Te ofrecemos una amplia gama de productos para practicar esta antigua disciplina y alcanzar un mayor bienestar físico, flexibilidad, equilibrio y paz mental. Encontrarás MAT de yoga de alta calidad, bloques de apoyo, pelotas, correas de estiramiento, ropa cómoda para la práctica, y mucho más.', '2023-06-14 13:19:14'),
-(5, 'Meditación', 'En esta categoría podrás encontrar herramientas y accesorios que te ayudarán a practicar la meditación y lograr un estado de calma y claridad mental. Estos productos pueden incluir cojines de meditación ergonómicos, bancos de meditación, mantas suaves y confortables, inciensos relajantes, campanas tibetanas y música tranquila.  Los productos de meditación están diseñados para fomentar la relajación, reducir el estrés y promover un mayor bienestar emocional y espiritual.', '2023-06-14 13:19:14'),
-(8, 'Rebajas', 'En esta sección podrás encontrar una amplia variedad de productos con descuentos especiales, todos por debajo de $5000. No olvides que estas ofertas son por tiempo limitado, por lo que te recomendamos aprovecharlas mientras estén disponibles.', '2023-06-17 21:07:47');
+(1, 'Decoración', 'Te ofrecemos una amplia gama de artículos diseñados para embellecer y personalizar todos tus espacios. Incluye elementos como cuadros, esculturas, jarrones, alfombras, espejos y lámparas, entre otros. Estos productos están disponibles en diversos estilos y materiales, lo que te permitirá a las personas expresar tu individualidad y crear ambientes únicos en tu casa u oficina.', '2023-06-19'),
+(4, 'Yoga', 'Te ofrecemos una amplia gama de productos para practicar esta antigua disciplina y alcanzar un mayor bienestar físico, flexibilidad, equilibrio y paz mental. Encontrarás MAT de yoga de alta calidad, bloques de apoyo, pelotas, correas de estiramiento, ropa cómoda para la práctica, y mucho más.', '2023-06-14'),
+(5, 'Meditación', 'En esta categoría podrás encontrar herramientas y accesorios que te ayudarán a practicar la meditación y lograr un estado de calma y claridad mental. Estos productos pueden incluir cojines de meditación ergonómicos, bancos de meditación, mantas suaves y confortables, inciensos relajantes, campanas tibetanas y música tranquila.  Los productos de meditación están diseñados para fomentar la relajación, reducir el estrés y promover un mayor bienestar emocional y espiritual.', '2023-06-14'),
+(8, 'Rebajas', 'En esta sección podrás encontrar una amplia variedad de productos con descuentos especiales, todos por debajo de $5000. No olvides que estas ofertas son por tiempo limitado, por lo que te recomendamos aprovecharlas mientras estén disponibles.', '2023-06-17');
 
 -- --------------------------------------------------------
 
@@ -121,8 +121,7 @@ INSERT INTO `etiquetas_x_producto` (`id`, `producto_id`, `etiqueta_id`) VALUES
 (2, 1, 3),
 (3, 15, 2),
 (4, 12, 4),
-(25, 31, 1),
-(26, 31, 2);
+(29, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -202,8 +201,8 @@ INSERT INTO `productos` (`id`, `nombre_prod`, `categoria`, `imagen`, `alt`, `des
 (17, 'Campana de meditación de tres tonos', 5, '17.jpg', 'Campana de meditación de tres tonos', 'El timbre Aklot de 3 tonos es ideal para yoga o meditación. tiene un sonido melodioso, golpeando el timbre con la baqueta suavemente, obtendrás un sonido sorpresa de larga duración y un buen eco relajante. El tono de los tres timbres es de 440 Hz C7, D7, E7.', 22, 'Metal y madera', '20 cm.', '800gr.', 'Limpiar con un trapo humedecido con agua dulce o destilada.', 25, '8000.00', NULL, NULL),
 (18, 'Jardín Zen grande', 1, '18.jpg', 'Jardín Zen grande', 'Los jardines zen son áreas verdes diseñadas para transmitir tranquilidad. Su composición es muy sencilla, se basa en dos elementos al alcance de todos: arena y piedras. Su principal objetivo es favorecer la serenidad interior y reducir el estrés a través de su belleza y elegancia. Aquí tienes un jardín zen en miniatuara, con un gong, arena blanca, una piedra, una planta y un buda.', 3, 'arena, piedras, madera, metal, plástico', '15 x 17 x 12 cm.', '3200gr.', 'Producto frágil', 8, '10500.00', NULL, NULL),
 (19, 'Vajra Dorje Tibetano', 5, '19.jpg', 'Vajra Dorje Tibetano', 'El más importante de los objetos de culto del budismo tibetano: el Dorje, se ha convertido en el símbolo de toda manifestación de la verdad clara e invariable. En la iconografía y en los ritos del budismo Tibetano el Dorje está siempre acompañado de una Campana y junto a estos dos símbolos representan lo opuesto de convivencia, la campana símbolo del lado femenino, mientras el Dorje, es del lado masculino, del trueno y de la mente.', 7, 'Bronce', '9 cm.', '400gr.', 'Limpiar con un paño suave.', 3, '3801.00', NULL, NULL),
-(20, 'Farol solar decorativo de jardín', 1, '20.jpg', 'Farol solar decorativo de jardín', 'Adorno de jardín de estilo japonés o chino, pagoda Zen y linternas de palacio de cuatro esquinas de diseño arquitectónico antiguo. Ilumina tus noches con la energía silenciosa de nuestros graciosos. Sin cableado fácil de instalar.', 3, 'resina', '30 cm.', '1500gr.', 'Resistente al agua.', 10, '20300.00', NULL, NULL),
-(31, 'producto1', 1, '1691254687.jfif', '  ffff', 'value=\"value=\"ffff\"\"', 3, 'ffff', '30 cm', '1500 gr', 'fragil', 10, '50.00', '2023-09-06 13:57:00', '2023-10-27 13:57:00');
+(20, 'Farol solar decorativo de jardín', 1, '1691437833.jpg', '  Farol solar decorativo de jardín', 'Adorno de jardín de estilo japonés o chino, pagoda Zen y linternas de palacio de cuatro esquinas de diseño arquitectónico antiguo. Ilumina tus noches con la energía silenciosa de nuestros graciosos. Sin cableado fácil de instalar.', 3, 'resina', '30 cm.', '1500gr.', 'Resistente al agua.', 10, '20300.00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'producto1', 1, '1691438012.jpg', ' gggg', 'bbbb', 9, 'cemento', '30 cm', '1500 gr', 'fragil', 20, '1500.50', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -263,7 +262,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `contrasena`, `email`, `rol`) VALUES
 (1, 'jperez_dv', 'Jorge', 'Perez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'jorge.perez@davinci.edu.ar', 'usuario'),
-(2, 'ro_scotto', 'Rocio', 'Scotto', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'rocio.scotto@davinci.edu.ar', 'admin'),
+(2, 'ro_scotto', 'Rocio Belen', 'Scotto', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'rocio.scotto@davinci.edu.ar', 'admin'),
 (3, 'pedro_gch', 'Pedro', 'Gonzalez Chavez', '$2y$10$ifIpiDhQEBY/fJFJ7jGn4eoX8m7syw5ngWDvEvk7mt3LoGeok4HUO', 'pedro.gonzalez@davinci.edu.ar', 'superadmin'),
 (4, 'vero_carranza', 'Veronica', 'Carranza', '$2y$10$immrEqyWTF37RPbL9.rAhewiekUQGfPbBb3VXCspFtyxsEHPsEaKe', 'veronicacarranza@gmail.com', 'usuario'),
 (5, 'usuario_prueba2', 'Nombre2', 'Apellido2', '$2y$10$QegJuQWVef1n/BTHqap/muUNBfsH.LdTN86Vg3dJRJKMBqJb2mLmC', 'emailprueba2@gmail.com', 'usuario'),
@@ -380,7 +379,7 @@ ALTER TABLE `usuarios_info_adicional`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -392,25 +391,25 @@ ALTER TABLE `compras`
 -- AUTO_INCREMENT de la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas_x_producto`
 --
 ALTER TABLE `etiquetas_x_producto`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `origen`
 --
 ALTER TABLE `origen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_x_compra`
