@@ -105,13 +105,11 @@ $usuarioDB = (new Usuario())->get_x_id($datosUsuario['id']);
                     </form>
                 </div>
                 <div class="row">
-                    <a href="index.php?sec=panel_usuario">
-                        <div class="col-12 d-flex justify-content-center">
-                            <button type="" class="btn btn-grey-white w-50 mt-3">Cancelar
-
-                            </button>
-                        </div>
-                    </a>
+                    <div class="col-12 d-flex justify-content-center">
+                            <a class="btn btn-grey-white w-50 mt-3" href="index.php?sec=panel_usuario">
+                            Cancelar
+                        </a>
+                    </div>
                 </div>
             </div>
     </div>
